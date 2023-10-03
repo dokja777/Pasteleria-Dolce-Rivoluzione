@@ -39,19 +39,20 @@
     <!-- Tabla de  lista de  producto  titulo -->
     <br>
     <div class="container">
-      <h1 class="text-center" style=" background-color:black;color:white; height: 80px; "> Lista de productos</h1>
+      <h1 class="text-center" style=" background-color:black;color:white; height: 80px; font-family:var;"> Lista de productos</h1>
     </div>
 
     <!-- Tabla de lista de productos  -->
     
     <div class="container" >
-    <table class="table  table-striped"   style="background-color:#f9cb9c;">
+    <table class="table  table-striped"   style="background-color:#f9cb9c; font-family:var;">
   <thead >
     <tr>
       <th scope="col">ID</th>
       <th scope="col">ADMIN</th>
       <th scope="col">NOMBRE DEL PRODUCTO</th>
       <th scope="col">CATEGORIA</th>
+      <th scope="col">IMAGEN</th>
       <th scope="col">DESCRIPCION</th>
       <th scope="col">PRECIO</th>
       <th scope="col">STOCK</th>
@@ -66,7 +67,7 @@
   //  conexion para mostrar los productos
  require("config/conexion.php");
 
-$sql = $conexion->query("SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.PRECIO, producto.STOCK
+$sql = $conexion->query("SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK
                         FROM PRODUCTO
                         INNER JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
                         INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN");
@@ -78,6 +79,7 @@ if ($sql) {
         $nombreAdmin = $resultado['ADMIN_NOMBRE'];
         $nombreProducto = $resultado['N_PRODUCTO'];
         $nombreCategoria = $resultado['N_CATEGORIA'];
+        $imagen = $resultado['IMG'];
         $descripcion = $resultado['DESCRIPCION'];
         $precio = $resultado['PRECIO'];
         $stock = $resultado['STOCK'];
@@ -86,14 +88,16 @@ if ($sql) {
         echo "<tr>";
         echo "<th scope='row'>$idProducto</th>";
         echo "<td>$nombreAdmin</td>";
-        echo "<th>$nombreProducto</th>";
-        echo "<th>$nombreCategoria</th>";
-        echo "<th>$descripcion</th>";
-        echo "<th> S/ $precio </th>";
-        echo "<th>$stock</th>";
+        echo "<td>$nombreProducto</td>";
+        echo "<td>$nombreCategoria</td>";
+        echo "<td><img  style='width: 120px; border-radius: 30px;'  src='data:image/jpg;base64," . base64_encode($imagen) . "'></td>";
+        echo "<td>$descripcion</td>";
+        echo "<td> S/ $precio </td>";
+        echo "<td>$stock</td>";
         echo "<th>
-        <a href='editar.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
-
+        <a href='Formulario/editar.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
+        <br>
+        <br>
         <a href='CRUD/eliminar.php?ID_PRODUCTO=$idProducto'class=\"btn btn-danger\">Eliminar</a>
       </th>";
        echo "</tr>";
@@ -119,7 +123,6 @@ $conexion->close();
   <style>
     .container{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    
 }
   </style>
 
