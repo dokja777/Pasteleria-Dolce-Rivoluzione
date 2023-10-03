@@ -2,20 +2,14 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css" />
-  <script defer src="js/inicio.js"></script>
   <!-- Iconos en font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Libreria splide -->
-  <link rel="stylesheet" href="splide-4.1.3/splide-4.1.3/dist/css/splide.min.css">
-  <script src="splide-4.1.3/splide-4.1.3/dist/js/splide.min.js"></script>
-
-
-  <title>Inicio</title>
+  <title>Productos</title>
 </head>
 
 <body>
@@ -30,10 +24,10 @@
       <nav>
         <ul>
           <li>
-            <a href="indexCliente.php" class="active">Inicio</a>
+            <a href="indexCliente.php">Inicio</a>
           </li>
           <li>
-            <a href="productos.php">Productos</a>
+            <a href="productos.php" class="active">Productos</a>
           </li>
           <li>
             <a href="nosotros.html">Nosotros</a>
@@ -64,30 +58,20 @@
       nav.classList.toggle("active");
     };
   </script>
-  <!-- Sliders -->
 
-  <section class="banner">
-    <div class="splide">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide"><img src="img/newbanner_1.jpg" alt=""></li>
-          <li class="splide__slide"><img src="img/newbanner_2.jpg" alt=""></li>
-          <li class="splide__slide"><img src="img/newbanner_3.jpg" alt=""></li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <!--Filtrado-->
 
-  <!-- Productos más vendidos -->
+  <!--Productos-->
+  <!-- Catálogo de Productos -->
 
-  <h1 class="title">Productos Más Vendidos</h1>
-  <div class="container__masVendidos">
+  <h1 class="title">Catálogo de Productos</h1>
+  <div class="container__productos">
     <?php
       include ('config/conexion.php');
       $query = "SELECT * FROM producto";
       $resultado = $conexion->query($query);
       while ($row = $resultado->fetch_assoc()) {
-        ?>
+      ?>
     <div class="card">
       <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
       <h4>
@@ -100,8 +84,8 @@
       <button class="ver-detalle">Ver Detalle del Producto</button>
     </div>
     <?php
-      }
-    ?>
+    }
+  ?>
   </div>
   <style>
     .title {
@@ -111,7 +95,7 @@
       margin-top: 100px;
     }
 
-    .container__masVendidos {
+    .container__productos {
       width: auto;
       max-width: auto;
       height: auto;
@@ -121,7 +105,7 @@
       overflow: hidden;
     }
 
-    .container__masVendidos .card {
+    .container__productos .card {
       width: 280px;
       height: 320px;
       border-radius: 8px;
@@ -135,12 +119,12 @@
       overflow: hidden;
     }
 
-    .container__masVendidos .card:hover {
+    .container__productos .card:hover {
       transform: translate(-15px);
       box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
     }
 
-    .container__masVendidos .card::before {
+    .container__productos .card::before {
       content: "";
       position: absolute;
       top: 0;
@@ -153,11 +137,11 @@
       pointer-events: none;
     }
 
-    .container__masVendidos .card:hover::before {
+    .container__productos .card:hover::before {
       opacity: 1;
     }
 
-    .container__masVendidos .card img {
+    .container__productos .card img {
       width: 270px;
       height: 260px;
       object-fit: cover;
@@ -165,24 +149,24 @@
       transition: filter 0.3s;
     }
 
-    .container__masVendidos .card h4 {
+    .container__productos .card h4 {
       font-weight: 600;
       filter: brightness(70%);
     }
 
-    .container__masVendidos .card p {
+    .container__productos .card p {
       padding: 0 2rem;
       font-weight: 400;
       font-size: 14px;
     }
 
-    .container__masVendidos .card a {
+    .container__productos .card a {
       font-weight: 500;
       text-decoration: none;
       color: #783f04;
     }
 
-    .container__masVendidos .card .ver-detalle {
+    .container__productos .card .ver-detalle {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -198,7 +182,7 @@
       width: auto;
     }
 
-    .container__masVendidos .card:hover .ver-detalle {
+    .container__productos .card:hover .ver-detalle {
       opacity: 1;
     }
   </style>
@@ -239,6 +223,7 @@
       <p>Todos los derechos reservados © 2023 <b>Pastelería Dolce Rivoluzione</b></p>
     </div>
   </footer>
+
 </body>
 
 </html>
