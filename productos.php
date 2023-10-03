@@ -61,9 +61,8 @@
 
   <!--Filtrado-->
 
-  <!--Productos-->
+  
   <!-- Catálogo de Productos -->
-
   <h1 class="title">Catálogo de Productos</h1>
   <div class="container__productos">
     <?php
@@ -186,6 +185,7 @@
       opacity: 1;
     }
   </style>
+
   <!-- Footer -->
   <footer>
     <div class="container__footer">

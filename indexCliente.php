@@ -84,7 +84,18 @@
   <div class="container__masVendidos">
     <?php
       include ('config/conexion.php');
-      $query = "SELECT * FROM producto";
+      $query = "SELECT p.N_PRODUCTO, p.IMG, p.PRECIO
+              FROM producto p
+              JOIN (
+                SELECT dp.ID_PRODUCTO, SUM(dp.CANTIDAD) AS VENTAS
+                FROM detalle_pedido dp
+                JOIN pedido pe ON dp.ID_PEDIDO = pe.ID_PEDIDO
+                WHERE pe.ESTADO = 'Completado'
+                AND pe.FECHA BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW()
+                GROUP BY dp.ID_PRODUCTO
+                ORDER BY MAX(pe.FECHA) DESC
+                LIMIT 50
+              ) top_products ON p.ID_PRODUCTO = top_products.ID_PRODUCTO";
       $resultado = $conexion->query($query);
       while ($row = $resultado->fetch_assoc()) {
         ?>
