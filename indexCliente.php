@@ -70,9 +70,9 @@
     <div class="splide">
       <div class="splide__track">
         <ul class="splide__list">
-          <li class="splide__slide"><img src="img/newbanner_1.jpg" alt=""></li>
-          <li class="splide__slide"><img src="img/newbanner_2.jpg" alt=""></li>
-          <li class="splide__slide"><img src="img/newbanner_3.jpg" alt=""></li>
+          <li class="splide__slide"><img src="img/bannerPasteles.jpg" alt=""></li>
+          <li class="splide__slide"><img src="img/bannerHalloween.jpg" alt=""></li>
+          <li class="splide__slide"><img src="img/bannerPersonalizados.jpg" alt=""></li>
         </ul>
       </div>
     </div>
