@@ -63,6 +63,11 @@
   <main class="cuerpo">
         <div class="header">
            <div class="header-home"><a href="index.html"><i class="fa-solid fa-house"></i></a></div>
+           <form action="" method="get">
+           <input type="text" name="busqueda" style="width: 500px" id="busqueda" placeholder="Buscar...">
+           <input type="submit" name="enviar" class="busca_nom" value="Buscar">
+          </form>
+
         </div>
         <hr>
         <h1 class="title">Catálogo de Productos</h1>
@@ -97,6 +102,30 @@
               include ('config/conexion.php');
               $query = "SELECT * FROM producto";
               $resultado = $conexion->query($query);
+
+              if(isset($_GET['enviar'])){
+                $busqueda = $_GET['busqueda'];
+
+                $consulta =$conexion->query("SELECT * FROM producto WHERE N_PRODUCTO LIKE '%$busqueda%'");
+                while ($row = $consulta->fetch_array()) {
+                  //echo $row['N_PRODUCTO'].'<br>';
+                  ?>
+                  <div class="card">
+
+                    <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
+                    <h4>
+                      <?php echo $row['N_PRODUCTO']; ?>
+                    </h4>
+                    <p>
+                      <a>S/</a>
+                      <?php echo $row['PRECIO']; ?>
+                    </p>
+                    <button class="ver-detalle">Ver Detalle del Producto</button>
+                    </div>
+                  <?php
+                }
+              }
+
               while ($row = $resultado->fetch_assoc()) {
               ?>
             <div class="card">
@@ -114,7 +143,6 @@
             }
           ?>
           </div>
-           
         </div> 
   </main>
   
@@ -222,6 +250,10 @@
       opacity: 1;
     }
     /*filtro*/
+    .header form{
+      display: flex;
+      padding: 2px 50px;
+    }
     .cuerpo{
       background: #f4f1f1;
     }
@@ -244,6 +276,7 @@
     }
     .container{
     margin-top: 7px;
+    margin-left: 10px;
     }
     .contenedor-items{
     margin: 20px 15px;
@@ -305,6 +338,12 @@
     margin-top: 5px;
     margin-bottom: 10px;
     margin-left: 70px;
+    }
+    .busca_nom{
+      padding: 10px;
+      padding-left: 20px;
+      margin-left: 20px;
+      text-align: center;
     }
   </style>
 
