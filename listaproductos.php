@@ -45,6 +45,16 @@
     <!-- Tabla de lista de productos  -->
     
     <div class="container" >
+
+        <form action="buscar.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px";>
+            <a style="margin-right:20px">Buscar por:</a>
+
+            <select class="CODIGO" name="CODIGO" id="" style="margin-right:10px">
+                <option value="Todos">Código</option>
+            </select>
+            <input type="text" name="buscar" id="" style="margin-right:10px">
+            <input type="submit" value="Buscar">
+        </form>
     <table class="table  table-striped"   style="background-color:#f9cb9c; font-family:var;">
   <thead >
     <tr>
