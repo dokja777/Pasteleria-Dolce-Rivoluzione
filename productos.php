@@ -1,3 +1,17 @@
+<?php
+include('config/conexion.php');
+
+if (isset($_GET['categoria'])) {
+    $categoria = $_GET['categoria'];
+    $query = "SELECT * FROM producto WHERE CATEGORIA = '$categoria'";
+} else {
+    $query = "SELECT * FROM producto";
+}
+
+$resultado = $conexion->query($query);
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,6 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css" />
   <!-- Iconos en font awesome -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -71,6 +86,8 @@
     </div>
     <hr>
     <h1 class="title">Catálogo de Productos</h1>
+
+    
     <div class="contenido">
       <div class="container">
         <!--filtrado de productos-->
@@ -78,21 +95,13 @@
           <div class="titulo">
             <p>CATEGORÍAS</p>
           </div>
-          <a href="#">
-            <p>Tortas</p>
-          </a>
-          <a href="#">
-            <p>Personalizado</p>
-          </a>
-          <a href="#">
-            <p>Galletas</p>
-          </a>
-          <a href="#">
-            <p>Cupcakes</p>
-          </a>
-          <a href="#">
-            <p>Postres</p>
-          </a>
+          <!-- Agrega enlaces para seleccionar la categoría -->
+<a href="productos.php?categoria=Tortas">Tortas</a>
+<a href="productos.php?categoria=Personalizado">Personalizado</a>
+<a href="productos.php?categoria=Galletas">Galletas</a>
+<a href="productos.php?categoria=Cupcakes">Cupcakes</a>
+<a href="productos.php?categoria=Postres">Postres</a>
+
         </aside>
 
         <aside class="aside_filtro">
@@ -124,6 +133,8 @@
           while ($row = $consulta->fetch_array()) {
             //echo $row['N_PRODUCTO'].'<br>';
             ?>
+
+            
             <div class="card">
 
             <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
@@ -144,12 +155,13 @@
         while ($row = $resultado->fetch_assoc()) {
             $idProducto = $row['ID_PRODUCTO'];
         ?>
-            <div class="card">
+            <div class="card" data-aos="zoom-in">
                 
                     <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
                
                 <h4><?php echo $row['N_PRODUCTO']; ?></h4>
                 <p><a>S/</a><?php echo $row['PRECIO']; ?></p>
+
                 <a href="DetalleProducto.php?id=<?php echo $idProducto; ?>">
                 <button class="ver-detalle">Ver Detalle del Producto</button>
                 </a>
@@ -161,6 +173,10 @@
       </div>
     </div>
   </main>
+
+
+
+
 
 
   <style>
@@ -418,6 +434,12 @@
       <p>Todos los derechos reservados © 2023 <b>Pastelería Dolce Rivoluzione</b></p>
     </div>
   </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
 
 </body>
 
