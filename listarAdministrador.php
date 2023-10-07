@@ -42,7 +42,7 @@
   <br>
   <div class="container">
     <h1 class="text-center" style=" background-color:black;color:white; height: 80px; font-family:var;"> Lista de
-      productos</h1>
+      Administradores</h1>
   </div>
 
   <!-- Tabla de lista de administradores  -->
