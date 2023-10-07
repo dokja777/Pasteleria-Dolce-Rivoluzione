@@ -66,12 +66,12 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a href="indexAdministrador.html">
+        <a href="indexAdministrador.php">
           <i class='fa-solid fa-house'></i>
           <span class="link_name">Inicio</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a href="#" class="link_name">Inicio</a></li>
+          <li><a href="indexAdministrador.php" class="link_name">Inicio</a></li>
         </ul>
       </li>
       <li>
@@ -82,7 +82,7 @@
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a href="#" class="link_name">Pedidos</a></li>
+          <li><a href="pedidos.php" class="link_name">Pedidos</a></li>
 
         </ul>
       </li>
@@ -94,7 +94,7 @@
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a href="#" class="link_name">Productos</a></li>
+          <li><a href="listaproductos.php" class="link_name">Productos</a></li>
         </ul>
       </li>
       <li>
@@ -103,7 +103,7 @@
           <span class="link_name">Usuarios</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a href="#" class="link_name">Usuarios</a></li>
+          <li><a href="listarAdministrador.php" class="link_name">Usuarios</a></li>
         </ul>
       </li>
       <li>
@@ -112,7 +112,7 @@
           <span class="link_name">Demanda</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a href="#" class="link_name">Demanda</a></li>
+          <li><a href="demanda.php" class="link_name">Demanda</a></li>
         </ul>
       </li>
       <li>
@@ -123,7 +123,7 @@
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a href="#" class="link_name">Ingresos</a></li>
+          <li><a href="ingresos.php" class="link_name">Ingresos</a></li>
         </ul>
       </li>
 
