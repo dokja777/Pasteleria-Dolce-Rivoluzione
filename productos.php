@@ -61,74 +61,71 @@
 
   <!--Filtrado-->
   <main class="cuerpo">
-        <div class="header">
-           <div class="header-home"><a href="index.html"><i class="fa-solid fa-house"></i></a></div>
-           <form action="" method="get">
-           <input type="text" name="busqueda" style="width: 500px" id="busqueda" placeholder="Buscar...">
-           <input type="submit" name="enviar" class="busca_nom" value="Buscar">
-          </form>
+    <div class="header">
+      <div class="header-home"><a href="index.html"><i class="fa-solid fa-house"></i></a></div>
+      <form action="" method="get">
+        <input type="text" name="busqueda" style="width: 500px" id="busqueda" placeholder="Buscar...">
+        <input type="submit" name="enviar" class="busca_nom" value="Buscar">
+      </form>
 
-        </div>
-        <hr>
-        <h1 class="title">Catálogo de Productos</h1>
-        <div class="contenido">
-         <div class="container">
-            <!--filtrado de productos-->
-             <aside class="aside">
-               <div class="titulo"><p>CATEGORÍAS</p></div>
-               <a href="#"><p>Tortas</p></a>
-               <a href="#"><p>Personalizado</p></a>
-               <a href="#"><p>Galletas</p></a>
-               <a href="#"><p>Cupcakes</p></a>
-               <a href="#"><p>Postres</p></a>
-             </aside>
+    </div>
+    <hr>
+    <h1 class="title">Catálogo de Productos</h1>
+    <div class="contenido">
+      <div class="container">
+        <!--filtrado de productos-->
+        <aside class="aside">
+          <div class="titulo">
+            <p>CATEGORÍAS</p>
+          </div>
+          <a href="#">
+            <p>Tortas</p>
+          </a>
+          <a href="#">
+            <p>Personalizado</p>
+          </a>
+          <a href="#">
+            <p>Galletas</p>
+          </a>
+          <a href="#">
+            <p>Cupcakes</p>
+          </a>
+          <a href="#">
+            <p>Postres</p>
+          </a>
+        </aside>
 
-             <aside class="aside_filtro">
-              <div class="titulo_filtro"><p>FILTRO</p></div>
-              <p>Ordenar por:</p>
-              <select class="PRECIO" name="PRECIO" id="PRECIO">
-                <option value="Todos">Todos</option>
-                  <option value="DESC">De mayor a menor</option>
-                  <option value="ASC">De menor a mayor</option>
-              </select>
-              <br>
-                <button class="btn-buscar" type="submit" onclick="buscar_precio($('#PRECIO'.val()));">Buscar</button>
-             </aside>
-         </div>
-          <!--Productos-->
-          <!-- Catálogo de Productos -->
-          <div class="container__productos">
-            <?php
-              include ('config/conexion.php');
-              $query = "SELECT * FROM producto";
-              $resultado = $conexion->query($query);
+        <aside class="aside_filtro">
+          <div class="titulo_filtro">
+            <p>FILTRO</p>
+          </div>
+          <p>Ordenar por:</p>
+          <select class="PRECIO" name="PRECIO" id="PRECIO">
+            <option value="Todos">Todos</option>
+            <option value="DESC">De mayor a menor</option>
+            <option value="ASC">De menor a mayor</option>
+          </select>
+          <br>
+          <button class="btn-buscar" type="submit" onclick="buscar_precio($('#PRECIO'.val()));">Buscar</button>
+        </aside>
+      </div>
+      <!--Productos-->
+      <!-- Catálogo de Productos -->
+      <div class="container__productos">
+        <?php
+        include('config/conexion.php');
+        $query = "SELECT * FROM producto";
+        $resultado = $conexion->query($query);
 
-              if(isset($_GET['enviar'])){
-                $busqueda = $_GET['busqueda'];
+        if (isset($_GET['enviar'])) {
+          $busqueda = $_GET['busqueda'];
 
-                $consulta =$conexion->query("SELECT * FROM producto WHERE N_PRODUCTO LIKE '%$busqueda%'");
-                while ($row = $consulta->fetch_array()) {
-                  //echo $row['N_PRODUCTO'].'<br>';
-                  ?>
-                  <div class="card">
-
-                    <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
-                    <h4>
-                      <?php echo $row['N_PRODUCTO']; ?>
-                    </h4>
-                    <p>
-                      <a>S/</a>
-                      <?php echo $row['PRECIO']; ?>
-                    </p>
-                    <button class="ver-detalle">Ver Detalle del Producto</button>
-                    </div>
-                  <?php
-                }
-              }
-
-              while ($row = $resultado->fetch_assoc()) {
-              ?>
+          $consulta = $conexion->query("SELECT * FROM producto WHERE N_PRODUCTO LIKE '%$busqueda%'");
+          while ($row = $consulta->fetch_array()) {
+            //echo $row['N_PRODUCTO'].'<br>';
+            ?>
             <div class="card">
+
               <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
               <h4>
                 <?php echo $row['N_PRODUCTO']; ?>
@@ -140,12 +137,29 @@
               <button class="ver-detalle">Ver Detalle del Producto</button>
             </div>
             <?php
-            }
+          }
+        }
+
+        while ($row = $resultado->fetch_assoc()) {
           ?>
+          <div class="card">
+            <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
+            <h4>
+              <?php echo $row['N_PRODUCTO']; ?>
+            </h4>
+            <p>
+              <a>S/</a>
+              <?php echo $row['PRECIO']; ?>
+            </p>
+            <button class="ver-detalle">Ver Detalle del Producto</button>
           </div>
-        </div> 
+          <?php
+        }
+        ?>
+      </div>
+    </div>
   </main>
-  
+
 
   <style>
     .title {
@@ -249,97 +263,115 @@
     .container__productos .card:hover .ver-detalle {
       opacity: 1;
     }
+
     /*filtro*/
-    .header form{
+    .header form {
       display: flex;
       padding: 2px 50px;
     }
-    .cuerpo{
+
+    .cuerpo {
       background: #f4f1f1;
     }
-    .header{
+
+    .header {
       display: flex;
       padding-top: 10px;
     }
-    .header .header-home{
+
+    .header .header-home {
       padding: 10px 20px;
     }
-    .header .header-home a{
+
+    .header .header-home a {
       color: #783f04;
     }
-    p{
+
+    p {
       padding: 10px;
     }
-    .header .header-txt{
+
+    .header .header-txt {
       padding: 10px 20px;
       color: #783f04;
     }
-    .container{
-    margin-top: 7px;
-    margin-left: 10px;
+
+    .container {
+      margin-top: 7px;
+      margin-left: 10px;
     }
-    .contenedor-items{
-    margin: 20px 15px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 30px;
+
+    .contenedor-items {
+      margin: 20px 15px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 30px;
     }
-    .aside{
-    margin-top: 35px;
-    margin-left: 2%;
-    flex-basis: 17%;
-    background: #f9cb9c;
-    border-radius: 5px;
-    border: 1.5px solid #783f04;
+
+    .aside {
+      margin-top: 35px;
+      margin-left: 2%;
+      flex-basis: 17%;
+      background: #f9cb9c;
+      border-radius: 5px;
+      border: 1.5px solid #783f04;
     }
-    .aside_filtro{
-    margin-top: 35px;
-    margin-left: 2%;
-    flex-basis: 17%;
-    background: #f9cb9c;
-    border-radius: 5px;
-    border: 1.5px solid #783f04;
+
+    .aside_filtro {
+      margin-top: 35px;
+      margin-left: 2%;
+      flex-basis: 17%;
+      background: #f9cb9c;
+      border-radius: 5px;
+      border: 1.5px solid #783f04;
     }
+
     .titulo p {
-    font-weight: bold;
-    text-align: center
+      font-weight: bold;
+      text-align: center
     }
-    .titulo_filtro p{
-    font-weight: bold;
-    text-align: center;
+
+    .titulo_filtro p {
+      font-weight: bold;
+      text-align: center;
     }
-    .aside_filtro p{
-    text-align: center;
+
+    .aside_filtro p {
+      text-align: center;
     }
-    .aside a{
-    color: #000;
-    text-align: center;
+
+    .aside a {
+      color: #000;
+      text-align: center;
     }
-    
-    .container{
+
+    .container {
       flex-basis: 13rem;
       flex-grow: 1;
       height: 200px;
 
     }
-    .PRECIO{
-    position: center;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 30px;
+
+    .PRECIO {
+      position: center;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      margin-left: 30px;
     }
-    .contenido{
+
+    .contenido {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
     }
 
-    .btn-buscar{
-    margin-top: 5px;
-    margin-bottom: 10px;
-    margin-left: 70px;
+    .btn-buscar {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      margin-left: 70px;
     }
-    .busca_nom{
+
+    .busca_nom {
       padding: 10px;
       padding-left: 20px;
       margin-left: 20px;
