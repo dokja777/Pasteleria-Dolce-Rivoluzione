@@ -126,7 +126,7 @@
             ?>
             <div class="card">
 
-              <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
+            <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
               <h4>
                 <?php echo $row['N_PRODUCTO']; ?>
               </h4>
@@ -140,22 +140,22 @@
           }
         }
 
+        
         while ($row = $resultado->fetch_assoc()) {
-          ?>
-          <div class="card">
-            <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
-            <h4>
-              <?php echo $row['N_PRODUCTO']; ?>
-            </h4>
-            <p>
-              <a>S/</a>
-              <?php echo $row['PRECIO']; ?>
-            </p>
-            <button class="ver-detalle">Ver Detalle del Producto</button>
-          </div>
-          <?php
+            $idProducto = $row['ID_PRODUCTO'];
+        ?>
+            <div class="card">
+                <a href="DetalleProducto.php?id=<?php echo $idProducto; ?>">
+                    <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
+                </a>
+                <h4><?php echo $row['N_PRODUCTO']; ?></h4>
+                <p><a>S/</a><?php echo $row['PRECIO']; ?></p>
+                <button class="ver-detalle">Ver Detalle del Producto</button>
+            </div>
+        <?php
         }
         ?>
+        
       </div>
     </div>
   </main>
