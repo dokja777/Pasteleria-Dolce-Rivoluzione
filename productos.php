@@ -1,16 +1,12 @@
+<!-------------------- consulta para mostrar la categorias ---------------------------------->
 <?php
 include('config/conexion.php');
 
-if (isset($_GET['categoria'])) {
-    $categoria = $_GET['categoria'];
-    $query = "SELECT * FROM producto WHERE CATEGORIA = '$categoria'";
-} else {
-    $query = "SELECT * FROM producto";
-}
+// Consulta de categorías
+$sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($conexion->error);
 
-$resultado = $conexion->query($query);
 ?>
-
+<!----------------------------------------------------------------------------->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -19,16 +15,17 @@ $resultado = $conexion->query($query);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css" />
-  <!-- Iconos en font awesome -->
+  
+  <!-------------------- Iconos en font awesome ------------------->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Productos</title>
+    <title>Productos</title>
 </head>
-
+<!-------------------------------------------------------------------------->
 <body>
-  <!-- Configuración del navbar -->
+  <!---------------------------------- Configuración del navbar ----------------->
   <header>
     <div class="header-left">
       <div class="logo">
@@ -66,6 +63,9 @@ $resultado = $conexion->query($query);
       </div>
     </div>
   </header>
+  <!-------------------------------------------------------------------------------------->
+
+  <!--------------------Scrip para la hambuerguesa/lista -------------------------------->
   <script>
     hamburger = document.querySelector(".hamburger");
     nav = document.querySelector("nav");
@@ -73,8 +73,9 @@ $resultado = $conexion->query($query);
       nav.classList.toggle("active");
     };
   </script>
+  <!------------------------------------------------------------------------------------------>
 
-  <!--Filtrado-->
+  <!------------------------Filtrado de busqueda html-------------------------------->
   <main class="cuerpo">
     <div class="header">
       <div class="header-home"><a href="index.html"><i class="fa-solid fa-house"></i></a></div>
@@ -85,25 +86,38 @@ $resultado = $conexion->query($query);
 
     </div>
     <hr>
-    <h1 class="title">Catálogo de Productos</h1>
+    <h1 class="title" style="padding-bottom:1em; margin-top:1em;">Catálogo de Productos</h1>
 
-    
+  <!----------------filtrado de productos html incluye categoria y mayor y menor ----------------------------------->
     <div class="contenido">
       <div class="container">
-        <!--filtrado de productos-->
+
+<!--------------------------- Lista por categoria  sql --------------------------------------------------------->
         <aside class="aside">
-          <div class="titulo">
-            <p>CATEGORÍAS</p>
-          </div>
-          <!-- Agrega enlaces para seleccionar la categoría -->
-<a href="productos.php?categoria=Tortas">Tortas</a>
-<a href="productos.php?categoria=Personalizado">Personalizado</a>
-<a href="productos.php?categoria=Galletas">Galletas</a>
-<a href="productos.php?categoria=Cupcakes">Cupcakes</a>
-<a href="productos.php?categoria=Postres">Postres</a>
+              <div class="titulo">
+                <p style="font-size:19px;">CATEGORÍAS</p>
+              </div>
+           <ul class="categoria-lista">
+              <?php 
+                while($row=$sql_categorias->fetch_array()){ 
+                $id_categoria=$row[0]; // IDCategoria de la base de datos
+                $categoria=$row[1];// nombre de la categoria base de datos 
+              ?>
+              
+              <li ><a   href="productos.php?id_categoria=<?php echo $id_categoria;?>"><?php echo $categoria;?></a></li>
 
-        </aside>
+              <?php
+            } //cierre del bucle while   ?>  
+             <li><a href="productos.php">Todos los productos</a></li>
 
+           </ul>
+      </aside>
+<!----------------------------------------- ---------------------------------->
+
+
+
+
+<!-------------------- Filtro mayor  a menor  ---------------------------------->
         <aside class="aside_filtro">
           <div class="titulo_filtro">
             <p>FILTRO</p>
@@ -118,8 +132,9 @@ $resultado = $conexion->query($query);
           <button class="btn-buscar" type="submit" onclick="buscar_precio($('#PRECIO'.val()));">Buscar</button>
         </aside>
       </div>
-      <!--Productos-->
-      <!-- Catálogo de Productos -->
+<!----------------------------------------------------------------------------->
+
+<!--------------------------------- busqueda por productos  SQL--------------------------- -->
       <div class="container__productos">
         <?php
         include('config/conexion.php');
@@ -131,10 +146,9 @@ $resultado = $conexion->query($query);
 
           $consulta = $conexion->query("SELECT * FROM producto WHERE N_PRODUCTO LIKE '%$busqueda%'");
           while ($row = $consulta->fetch_array()) {
+            $idProducto = $row['ID_PRODUCTO'];
             //echo $row['N_PRODUCTO'].'<br>';
             ?>
-
-            
             <div class="card">
 
             <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
@@ -145,41 +159,84 @@ $resultado = $conexion->query($query);
                 <a>S/</a>
                 <?php echo $row['PRECIO']; ?>
               </p>
-              <button class="ver-detalle">Ver Detalle del Producto</button>
+              <a href="DetalleProducto.php?id=<?php echo $idProducto; ?>">
+                <button class="ver-detalle">Ver Detalle del Producto</button>
+            </a>
             </div>
             <?php
           }
         }
-
-        
-        while ($row = $resultado->fetch_assoc()) {
-            $idProducto = $row['ID_PRODUCTO'];
         ?>
-            <div class="card" data-aos="zoom-in">
-                
-                    <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>">
-               
-                <h4><?php echo $row['N_PRODUCTO']; ?></h4>
-                <p><a>S/</a><?php echo $row['PRECIO']; ?></p>
+<!--------------------------------------------------------------------------------------->
 
-                <a href="DetalleProducto.php?id=<?php echo $idProducto; ?>">
-                <button class="ver-detalle">Ver Detalle del Producto</button>
-                </a>
-            </div>
-        <?php
-        }
-        ?>
+
+ <!------------------------Filtro por categoria ----------------------------------------->
+
+         <?php
+
+    //  esto es para el filtro de categoria 
+    include('config/conexion.php');
+
+// Consulta de productos
+if (isset($_GET['id_categoria'])) {
+    $id_categoria = $_GET['id_categoria'];
+    $sql_producto = $conexion->query("SELECT * FROM producto WHERE ID_CATEGORIA = $id_categoria") or die($conexion->error);
+} else {
+    $sql_producto = $conexion->query("SELECT * FROM producto") or die($conexion->error);
+}
+
+while ($fila = $sql_producto->fetch_assoc()) {
+    $idProducto = $fila['ID_PRODUCTO'];
+    $nombre = $fila['N_PRODUCTO'];
+    $precio = $fila['PRECIO'];
+    $img = base64_encode($fila['IMG']);
+?>
+    <div class="card"data-aos="zoom-in">
+        <img src="data:image/jpg;base64, <?php echo $img; ?>">
+        <h4><?php echo $nombre; ?></h4>
+        <p><a>S/</a><?php echo $precio; ?></p>
+
+        <a href="DetalleProducto.php?id=<?php echo $idProducto; ?>">
+            <button class="ver-detalle">Ver Detalle del Producto</button>
+        </a>
+    </div>
+<?php
+}
+?>
+<!-------------------------------------------- ---------------------------------->
         
-      </div>
     </div>
   </main>
 
 
 
-
-
-
   <style>
+    
+/* ------------- Estilos del filtro de categoria -----------------------  */
+ul.categoria-lista li {
+    margin-bottom: 2px; 
+    margin-left:2px;
+    text-align:center;
+}
+
+ul.categoria-lista li a {
+    text-decoration: none; 
+    color: black; 
+    font-style:italic;
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+ul.categoria-lista li a:hover {
+    background-color: LightSalmon; 
+    color: black; 
+    font-weight:bold;
+    letter-spacing:3px;
+}
+/* ---------------------------------------------------------------------- */
+
     .title {
       text-align: center;
       font-size: 40px;
@@ -396,8 +453,10 @@ $resultado = $conexion->query($query);
       text-align: center;
     }
   </style>
+<!-------------------------------------------------------------------->
 
-  <!-- Footer -->
+
+  <!---------------------------- Footer------------------------------------->
   <footer>
     <div class="container__footer">
       <div class="box__footer">
@@ -434,12 +493,14 @@ $resultado = $conexion->query($query);
       <p>Todos los derechos reservados © 2023 <b>Pastelería Dolce Rivoluzione</b></p>
     </div>
   </footer>
+  <!--------------------------------------------------------------------------->
 
+  <!--------------------scrip de  estilos para la ismagees--------------------------------->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
-
+ <!------------------------------------------------------------------------------------->
 
 </body>
 
