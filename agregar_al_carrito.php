@@ -9,7 +9,7 @@
             $encontro=false;
             $numero = 0;
             for($i=0;$i<count($arreglo);$i++){
-                if($arreglo[$i]['id'] == $_GET['Id']){
+                if($arreglo[$i]['Id'] == $_GET['id']){
                     $encontro=true;
                     $numero=$i;
                 }
@@ -154,7 +154,7 @@
                     if(isset($_SESSION['carrito'])){
                         $arregloCarrito =$_SESSION['carrito'];
                         for($i=0;$i<count($arregloCarrito);$i++){
-
+                            $imagen = $arregloCarrito[$i]['Imagen'];
                     ?>
                   <tr>
                     <td class="product-img">
