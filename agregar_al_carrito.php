@@ -158,7 +158,7 @@
                     ?>
                   <tr>
                     <td class="product-img">
-                      <img src="data:image/jpg;base64, <?php echo base64_encode($imagen);?>" alt="Image" class="img-fluid">
+                      <img src="data:image/jpg;base64, <?php echo base64_encode($imagen);?>" alt="" class="img-fluid" style="width:100px">
                     </td>
                     <td class="product-name">
                         <h2 class="h5 text-black"><?php echo $arregloCarrito[$i]['Nombre'];?></h2> 
