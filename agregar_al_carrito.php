@@ -196,7 +196,7 @@
         </div>
 
         <style>
-            /* Estilo para el botón de agregar al carrito */
+   
 .btn-compra {
     letter-spacing: 2px;
     font-family: monospace;
@@ -211,14 +211,14 @@
     cursor: pointer;
     transition: background-color 0.3s;
     position: relative;
-    overflow: hidden; /* Oculta el contenido fuera del botón */
+    overflow: hidden; 
 }
 
 .btn-compra:hover {
     background-color: LightSalmon;
 }
 
-/* Estilo para la línea superior */
+
 .btn-compra::before,
 .btn-compra::after {
     content: "";
@@ -229,30 +229,30 @@
     transition: transform 0.3s ease;
 }
 
-/* Estilo para la línea superior */
+
 .btn-compra::before {
     top: 0;
     left: 0;
-    transform: scaleX(0); /* Inicialmente, la línea está invisible */
+    transform: scaleX(0);
     transform-origin: left;
 }
 
-/* Estilo para la línea inferior */
+
 .btn-compra::after {
     bottom: 0;
     right: 0;
-    transform: scaleX(0); /* Inicialmente, la línea está invisible */
+    transform: scaleX(0); 
     transform-origin: right;
 }
 
-/* Estilo para las líneas cuando el botón se desplace */
+
 .btn-compra:hover::before {
-    transform: scaleX(1); /* Muestra la línea superior */
+    transform: scaleX(1); 
 }
 
-/* Estilo para las líneas cuando el botón se desplace */
+
 .btn-compra:hover::after {
-    transform: scaleX(1); /* Muestra la línea inferior */
+    transform: scaleX(1); 
 }
         </style>
         
@@ -300,25 +300,6 @@
         </div>
     </footer>
 
-    <script>
-        $(document).ready(function(){
-            $(".btnEliminar").click(function(event){
-                event.preventDefault();
-                var id = $(this).data('id');
-                var boton = $(this);
-
-                $.ajax({
-                    method:'POST',
-                    url:'./eliminarCarrito.php',
-                    data:{
-                        id:id
-                    }
-                }).done(function(respuesta){
-                   boton.parent('td').parent('tr').remove();
-                  });
-            });
-        });
-    </script>
 
 </body>
 </html>
