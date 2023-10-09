@@ -47,14 +47,14 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
         </ul>
         <div class="perfil-carrito">
           <a href="perfil.html"><i class="fa-solid fa-user"></i></a>
-          <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="agregar_al_carrito.php"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
       </nav>
     </div>
     <div class="header-right">
       <div class="perfil-carrito">
         <a href="perfil.html"><i class="fa-solid fa-user"></i></a>
-        <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="agregar_al_carrito.php"><i class="fa-solid fa-cart-shopping"></i></a>
       </div>
       <div class="hamburger">
         <div></div>
