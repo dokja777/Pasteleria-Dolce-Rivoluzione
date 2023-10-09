@@ -1,0 +1,50 @@
+
+.contenido-nosotros div {
+    flex: 1;
+    margin: 40px 0px;
+    border-right: 2px solid #1f1f1f;
+    display: flex;
+    flex-direction: column; /* Apila los elementos uno encima del otro */
+    align-items: center; /* Centra horizontalmente el contenido */
+    text-align: center;
+}
+
+/* Iconos de misión y visión */
+.contenido-nosotros div i {
+    color: rgb(245, 109, 31);
+}
+
+/* título de la misión y visión */
+.contenido-nosotros div h6 {
+    margin: 15px 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: #fe4801;
+    font-size: 20px;
+}
+
+/* párrafo de misión y visión */
+.contenido-nosotros div p {
+    color: #783f04;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 19px;
+    margin: 20px auto; 
+    max-width: 900px; /* Establece el ancho máximo del párrafo */
+    text-align: center;
+    line-height: 175%;
+}
+
+/* imágenes de misión y visión */
+.contenido-nosotros div img {
+    width: 400px; 
+    height: 370px; 
+    margin-top: 20px; /* Agrega un margen superior para separar la imagen del párrafo */
+}
+
+hr {
+    width: 950px; 
+    height: 1px; 
+    background-color: #783f04; 
+    border: none; 
+    margin: 20px auto; /* Margen superior e inferior: 20px, Margen izquierdo-derecho: automático */
+}
