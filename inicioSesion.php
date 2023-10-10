@@ -122,8 +122,8 @@
       <div class="box__footer">
         <h2>Nosotros</h2>
         <a href="nosotros.html">¿Quiénes somos?</a>
-        <a href="horarioAtencion.html">Horario de Atención</a>
-        <a href="#">Política de privacidad</a>
+        <a href="horarioAtencion.html">Horarios de Atención</a>
+        <a href="politicas_privacidad">Política de privacidad</a>
         <a href="#">Política de cookies</a>
         <a href="#">Libro de reclamaciones</a>
       </div>
@@ -132,11 +132,11 @@
         <h2>Contáctanos</h2>
         <a href="#"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
         <a href="mailto:dolcerivoluzionepasteleria@gmail.com"><i class="fa-regular fa-envelope"></i> Correo</a>
-
         <a href="#"><i class="fa-solid fa-phone"></i> Teléfono</a>
         <a href="https://www.google.com/maps?q=Av+San+Juan+N%C2%B0+1061,+SJM+15801" target="_blank">
-    <i class="fa-solid fa-location-dot"></i> Av San Juan N° 1061, SJM 15801
-</a>
+          <i class="fa-solid fa-location-dot"></i> Av San Juan N° 1061, SJM 15801
+        </a>
+      </div>
 
       </div>
 
