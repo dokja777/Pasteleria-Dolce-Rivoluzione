@@ -40,11 +40,12 @@
         </div>
       </nav>
     </div>
-    <div class="header-right">
-      <div class="perfil-carrito">
-        <a href="perfil.html"><i class="fa-solid fa-user"></i></a>
-        <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
-      </div>
+     <div class="header-right">
+        <div class="perfil-carrito">
+          <a href="inicioSesion.php"><i class="fa-solid fa-right-to-bracket" style="color: #51361f;"></i> Inicia Sesión</a>
+          <a href="perfil.php"><i class="fa-solid fa-user"></i></a>
+          <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
       <div class="hamburger">
         <div></div>
         <div></div>
