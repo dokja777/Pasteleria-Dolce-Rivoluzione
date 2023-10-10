@@ -117,6 +117,23 @@
   </style>
 </head>
 
+  
+<?php
+include('config/conexion.php');
+
+session_start();
+if (!isset($_SESSION['Id'])){
+    header("Location: indexCliente.php");
+}
+
+$iduser = $_SESSION['Id'];
+$sql = "SELECT ID_CLIENTE, Nombre, Apellido, NUMERO_DOC, Telefono, Correo FROM cliente WHERE ID_CLIENTE = '$iduser' ";
+
+$resultado = $conexion->query($sql);
+$row = $resultado->fetch_assoc();
+?>
+
+
 <body>
   <!-- Configuración del navbar -->
   <header>
@@ -146,8 +163,9 @@
     </div>
     <div class="header-right">
       <div class="perfil-carrito">
-        <a href="perfil.html"><i class="fa-solid fa-user"></i></a>
-        <a href="agregar_al_carrito.php"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="inicioSesion.php"><i class="fa-solid fa-right-to-bracket" style="color: #51361f;"></i> Inicia Sesión</a>
+        <a href="perfil.php"><i class="fa-solid fa-user"></i> Bienvenido(a), <?php echo utf8_decode($row['Nombre']); ?></a>
+        <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
       </div>
       <div class="hamburger">
         <div></div>
@@ -244,7 +262,8 @@
       <div class="box__footer">
         <h2>Nosotros</h2>
         <a href="nosotros.html">¿Quiénes somos?</a>
-        <a href="#">Política de privacidad</a>
+        <a href="horarioAtencion.html">Horarios de Atención</a>
+        <a href="politicas_privacidad">Política de privacidad</a>
         <a href="#">Política de cookies</a>
         <a href="#">Libro de reclamaciones</a>
       </div>
@@ -252,11 +271,13 @@
       <div class="box__footer">
         <h2>Contáctanos</h2>
         <a href="#"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-        <a href="#"><i class="fa-regular fa-envelope"></i> Correo</a>
+        <a href="mailto:dolcerivoluzionepasteleria@gmail.com"><i class="fa-regular fa-envelope"></i> Correo</a>
         <a href="#"><i class="fa-solid fa-phone"></i> Teléfono</a>
-        <a href="#"><i class="fa-solid fa-location-dot"></i> Av San Juan N° 1061, SJM
-          15801</a>
+        <a href="https://www.google.com/maps?q=Av+San+Juan+N%C2%B0+1061,+SJM+15801" target="_blank">
+          <i class="fa-solid fa-location-dot"></i> Av San Juan N° 1061, SJM 15801
+        </a>
       </div>
+
 
       <div class="box__footer">
         <h2>Síguenos</h2>
