@@ -135,8 +135,6 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
           </div>
           <div class="col-md-9">
               <br>
-            <div class="row filter_data">
-          </div>
         </div>
           
             <script>
@@ -149,7 +147,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
                     var minimum_price = $('#hidden_minimum_price').val();
                     var maximum_price = $('#hidden_maximum_price').val();
                     $.ajax({
-                        url:"feiltro_precio.php",
+                        url:"filtro_precio.php",
                         method:"POST",
                         data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price},
                         success:function(data){
@@ -159,10 +157,10 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
                 }
                 $('#price_range').slider({
                     range:true,
-                    min:50,
-                    max:500,
-                    values:[50, 500],
-                    step:50,
+                    min:5,
+                    max:200,
+                    values:[5, 200],
+                    step:10,
                     stop:function(event, ui)
                     {
                         $('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
