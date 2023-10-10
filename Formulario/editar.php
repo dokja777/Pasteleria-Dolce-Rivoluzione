@@ -100,11 +100,8 @@
 
 <body>
   <?php
-  ini_set('display_errors', 1);
-  ini_set('log_errors', 1);
-  error_reporting(E_ALL);
   $imagenExistente = "";
-  include("C:/xampp/htdocs/Pasteleria-Dolce-Rivoluzione/config/conexion.php");
+  include("../config/conexion.php");
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idProducto = $_POST["idProducto"];
@@ -115,6 +112,15 @@
     $categoriaP = $_POST["categoriaP"];
     $medidaP = $_POST["medidaP"];
     $adminP = $_POST["adminP"];
+
+    // Asegurar y validar los datos (ejemplo utilizando MySQLi)
+    $nombreP = mysqli_real_escape_string($conexion, $nombreP);
+    $descripcionP = mysqli_real_escape_string($conexion, $descripcionP);
+    $precioP = floatval($precioP);
+    $stockP = intval($stockP);
+    $categoriaP = intval($categoriaP);
+    $medidaP = mysqli_real_escape_string($conexion, $medidaP);
+    $adminP = intval($adminP);
 
     // Manejo de la imagen
     if (!empty($_FILES["imagenP"]["tmp_name"])) {
@@ -155,8 +161,25 @@
   }
   ?>
 
+  <!-- Agregar este bloque de código PHP para mostrar información antes del envío -->
+
   <div class="container">
     <h1>Editar Producto</h1>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      echo "<div class='container'>";
+      echo "<h2>Información antes de enviar el formulario:</h2>";
+      echo "<p>Nombre Producto: " . htmlspecialchars($nombreP) . "</p>";
+      echo "<p>Descripción: " . htmlspecialchars($descripcionP) . "</p>";
+      echo "<p>Precio: " . $precioP . "</p>";
+      echo "<p>Stock: " . $stockP . "</p>";
+      echo "<p>Categoría (ID): " . $categoriaP . "</p>";
+      echo "<p>Medida: " . htmlspecialchars($medidaP) . "</p>";
+      echo "<p>Admin: " . $adminP . "</p>";
+      echo "</div>";
+    }
+    ?>
+
     <form action="editar.php" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="idProducto" value="<?php echo $idProducto; ?>">
 
@@ -214,6 +237,8 @@
       <button type="submit" class="btn-primary">Guardar Cambios</button>
     </form>
   </div>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
