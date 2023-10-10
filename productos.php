@@ -147,10 +147,12 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
                     var action = 'fetch_data';
                     var minimum_price = $('#hidden_minimum_price').val();
                     var maximum_price = $('#hidden_maximum_price').val();
+                    var id_categoria = <?php echo isset($_GET['id_categoria']) ? $_GET['id_categoria'] : 'null'; ?>;
+                    
                     $.ajax({
                         url:"filtro_precio.php",
                         method:"POST",
-                        data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price},
+                        data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price,id_categoria:id_categoria},
                         success:function(data){
                             $('.filter_data').html(data);
                         }
@@ -170,6 +172,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
                         filter_data();
                     }
                 });
+                filter_data();
             });
             </script>
         </aside>
