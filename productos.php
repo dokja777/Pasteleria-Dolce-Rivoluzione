@@ -177,7 +177,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
 
 <!--------------------------------- busqueda por productos  SQL--------------------------- -->
       <div class="container__productos">
-        <div class="filter_data">
+        
         <?php
         include('config/conexion.php');
         $query = "SELECT * FROM producto";
@@ -233,6 +233,7 @@ while ($fila = $sql_producto->fetch_assoc()) {
     $precio = $fila['PRECIO'];
     $img = base64_encode($fila['IMG']);
 ?>
+    <div class="filter_data">
     <div class="card"data-aos="zoom-in">
         <img src="data:image/jpg;base64, <?php echo $img; ?>">
         <h4><?php echo $nombre; ?></h4>
