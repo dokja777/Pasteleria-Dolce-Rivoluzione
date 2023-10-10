@@ -149,7 +149,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
                     var minimum_price = $('#hidden_minimum_price').val();
                     var maximum_price = $('#hidden_maximum_price').val();
                     $.ajax({
-                        url:"fetch_data.php",
+                        url:"feiltro_precio.php",
                         method:"POST",
                         data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price},
                         success:function(data){
@@ -179,6 +179,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
 
 <!--------------------------------- busqueda por productos  SQL--------------------------- -->
       <div class="container__productos">
+        <div class="filter_data">
         <?php
         include('config/conexion.php');
         $query = "SELECT * FROM producto";
@@ -247,7 +248,7 @@ while ($fila = $sql_producto->fetch_assoc()) {
 }
 ?>
 <!-------------------------------------------- ---------------------------------->
-        
+    </div>   
     </div>
   </main>
 
