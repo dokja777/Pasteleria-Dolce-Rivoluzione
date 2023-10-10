@@ -10,28 +10,47 @@
                                    <!-- el diseño esta hecho con boostrap  --> 
                                  <!-- el styleLista.css es solo para el banner --> 
                                    
-  <body>
+  <body style="background-color:#EAE6CA;">
     <!-- Configuración del navbar user y lista -->
-  <div class="navbar">
-        <div class="navbar-left">
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-        </div>
-        <div class="navbar-right">
-            <i class="fas fa-user"></i>
-        </div>
- </div>
- <!-- Configuración del navbar user y lista -->
-    <div class="menu" id="menu">
-        <!-- Coloca aquí los elementos de menú -->
-        <a href="#">Inicio</a>
-        <a href="#">Acerca de</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#f9cb9c;" >
+  <div class="container-fluid"   style="background-color:#f9cb9c;"  >
+  <img src="img/logo.png" alt="" style="width:5em ;margin-botton:1em;">
+    <a class="navbar-brand" href="indexAdministrador.php"  style="font-family:var;color:#783f04;margin-left:1em;font-weight:600;font-size:22px;">Pastelería Dolce Rivoluzione</a>
+    
+    <div class="collapse navbar-collapse" id="bar" >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn btn-outline-light" href="indexAdministrador.php"  aria-current="page"  style="color:#783f04;margin-left:3em;font-weight:600;">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light" href="pedidos.php" style="margin-left:2em;color:#783f04;font-weight:600;">Pedidos</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light" href="listaproductos.php"  style="color:#783f04;margin-left:2em;font-weight:600;" >Productos </a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light" href="listarAdministrador.php" style="color:#783f04;margin-left:2em;font-weight:600;" >Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light" href="demanda.php" style="color:#783f04;margin-left:2em;font-weight:600;">Demandas</a>
+        </li>
+        <li class="nav-item">
+          <a  class="btn btn-outline-light"  href="ingreso.php" style="color:#783f04;margin-left:2em;font-weight:600;">Ingresos</a>
+        </li>
+      </ul>
+     
     </div>
+  </div>
+</nav>
+   
+  <style>
+    #bar a{
+        border-style:none;
+        background-color:;
+        border-radius:10px;
+    }
+  </style>
 
  <!-- Formulario de agregar Productos -->
      <br>
@@ -41,9 +60,9 @@
  
       <!-- llamamos al administrador de  la base de datos  con php -->
       <!-- esta dentro del formulario  -->
-        <label for="">Administrador</label>
-    <select class="form-select mb-3 " name="Administrador">
-        <option selected disabled>-- Selecciona tu nombre si vas a agregar --</option>
+        <label for=""  style="margin-left:1em;font-style:italic;font-size:20px;letter-spacing:2px;"  >Administrador :</label>
+    <select class="form-select mb-3 " style="background-color:#EAE6CA;border-color:black;"   name="Administrador">
+        <option     selected disabled>-- Selecciona tu nombre si vas a agregar --</option>
        
         <?php
          include ("config/conexion.php");
@@ -56,8 +75,8 @@
         <!-- Llamaos a la categoria de la base de datos con php   -->
         <!-- esta dentro del formulario  -->
     </select>  
-    <label for="">CATEGORIA</label>
-    <select class="form-select mb-3 " name="CategoriaP">
+    <label for="" style="margin-left:1em;font-style:italic;font-size:20px; " >Categoria :</label>
+    <select class="form-select mb-3 "  style="background-color:#EAE6CA;border-color:black;"   name="CategoriaP">
         <option selected disabled>-- Selecciona la categoria del producto --</option>
 
         <?php
@@ -72,37 +91,42 @@
         <!-- es el formulario de registro  -->
     </select>   
 
-        <div class="mb-3">
-            <label class="form-label">Nombre Producto </label>
-            <input type="text" class="form-control" name="nombreP" >
+        <div class="mb-3"  >
+            <label class="form-label"  style="margin-left:1em;font-style:italic;font-size:20px;"  >Nombre Producto : </label>
+            <input type="text" class="form-control" style="background-color:#EAE6CA;border-color:black;"   name="nombreP" >
             
         </div>   
         <div class="mb-3">
-            <label class="form-label">Descripcion </label>
-            <input type="text" class="form-control" name="descripcionP">
+            <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;"  >Descripcion : </label>
+            <input type="text" class="form-control"  style="background-color:#EAE6CA;border-color:black;"  name="descripcionP">
             
         </div>
         <div class="mb-3">
-            <label class="form-label">Precio </label>
-            <input type="text" class="form-control" name="precioP">
+            <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;"  >Precio : </label>
+            <input type="text" class="form-control" style="background-color:#EAE6CA;border-color:black;"   name="precioP">
             
         </div>
         <div class="mb-3">
-            <label class="form-label">Stock </label>
-            <input type="text" class="form-control" name="stockP" >
+            <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;" >Stock : </label>
+            <input type="text" class="form-control"  style="background-color:#EAE6CA;border-color:black;"  name="stockP" >
+            
+        </div> 
+        <div class="mb-3">
+            <label class="form-label"style="margin-left:1em;font-style:italic;font-size:20px;">Medida del pastel : </label>
+            <input type="text" class="form-control" name="medidaP"  style="background-color:#EAE6CA;border-color:black;"   placeholder="E.j 12 cm de diametro">
             
         </div> 
         <!-- en este apartado se agrega la imagen de los productos   -->
         <div class="mb-3">
-            <label for="imagen" class="form-label" > Imagen del producto :</label>
-            <input type="file" name="imagenP" id="imagen" class="form-control">
+            <label for="imagen" class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;"> Imagen del producto :</label>
+            <input type="file" name="imagenP" id="imagen"  style="background-color:#EAE6CA;border-color:black;"  class="form-control">
         </div>  
         
         <!-- este boton agregar sirve apra agregar  a la base de datos   -->
         <!-- este boton volver te redirecciona a la lista de productos , por ello dice
          listaproductos.php  -->
-        <div class="text-center">
-        <button type="submit" class="btn btn-danger">Agregar</button>
+        <div class="text-center" style="margin-bottom:1em;">
+        <button type="submit" class="btn btn-danger"    >Agregar</button>
         <a href="listaproductos.php" class="btn btn-dark">Volver</a>
         </div>   
         

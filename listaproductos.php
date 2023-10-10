@@ -80,7 +80,7 @@
 
         <div class="container ">
         <a href="agregar.php"class="btn btn-success">Agregar producto</a>
-
+   
     </div>
 
     <table class="table  table-striped"   style="background-color:#f9cb9c; font-family:var; text-align:justify;">
@@ -94,6 +94,7 @@
       <th scope="col">DESCRIPCION</th>
       <th scope="col">PRECIO</th>
       <th scope="col">STOCK</th>
+      <th scope ="col">MEDIDA DEL PASTEL</th>
       <th scope="col">ACCIONES</th>
 
     </tr>
@@ -105,10 +106,10 @@
   //  conexion para mostrar los productos
  require("config/conexion.php");
 
-$sql = $conexion->query("SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK
-                        FROM PRODUCTO
-                        INNER JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
-                        INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN");
+ $sql = $conexion->query("SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK, producto.MEDIDA
+ FROM PRODUCTO
+ INNER JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
+ INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN");
 
 if ($sql) {
     while ($resultado = $sql->fetch_assoc()) {
@@ -121,6 +122,7 @@ if ($sql) {
         $descripcion = $resultado['DESCRIPCION'];
         $precio = $resultado['PRECIO'];
         $stock = $resultado['STOCK'];
+        $medida=$resultado['MEDIDA'];
 
         // Imprime las filas de la tabla con las columnas específicas
         echo "<tr  data-aos=\"zoom-in-up\"  >";
@@ -132,6 +134,7 @@ if ($sql) {
         echo "<td>$descripcion</td>";
         echo "<td> S/ $precio </td>";
         echo "<td>$stock</td>";
+        echo "<td>$medida</td>";
         echo "<th>
         <a href='Formulario/editar.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
         <br>

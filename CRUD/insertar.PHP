@@ -8,14 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = mysqli_real_escape_string($conexion, $_POST['descripcionP']);
     $precio = mysqli_real_escape_string($conexion, $_POST['precioP']);
     $stock = mysqli_real_escape_string($conexion, $_POST['stockP']);
+    $medida = mysqli_real_escape_string($conexion,$_POST['medidaP']);
     
     if (isset($_FILES['imagenP']) && $_FILES['imagenP']['error'] === UPLOAD_ERR_OK) {
         $imagen = file_get_contents($_FILES['imagenP']['tmp_name']);
         
-        $sql = "INSERT INTO producto (ID_CATEGORIA, N_PRODUCTO, PRECIO, STOCK, IMG, DESCRIPCION, ID_ADMIN) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO producto (ID_CATEGORIA, N_PRODUCTO, PRECIO, STOCK, IMG, MEDIDA ,DESCRIPCION, ID_ADMIN) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = mysqli_prepare($conexion, $sql);
-        mysqli_stmt_bind_param($stmt, "isddssi", $categoria, $nombre, $precio, $stock, $imagen, $descripcion, $administrador);
+        mysqli_stmt_bind_param($stmt, "isddsssi", $categoria, $nombre, $precio, $stock, $imagen, $medida,$descripcion, $administrador);
 
         
         if (mysqli_stmt_execute($stmt)) {
