@@ -15,10 +15,8 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
+
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
  
   
@@ -62,7 +60,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
         <div class="perfil-carrito">
           <a href="inicioSesion.php"><i class="fa-solid fa-right-to-bracket" style="color: #51361f;"></i> Inicia Sesión</a>
           <a href="perfil.php"><i class="fa-solid fa-user"></i></a>
-          <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="agregar_al_carrito.php"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
       <div class="hamburger">
         <div></div>
