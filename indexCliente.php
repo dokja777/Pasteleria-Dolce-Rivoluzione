@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/style.css" />
   <script defer src="js/inicio.js"></script>
   <!-- Iconos en font awesome -->
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -127,7 +128,7 @@ if (!isset($_SESSION['Id'])){
 }
 
 $iduser = $_SESSION['Id'];
-$sql = "SELECT ID_CLIENTE, Nombre, Apellido, NUMERO_DOC, Telefono, Correo FROM cliente WHERE ID_CLIENTE = '$iduser' ";
+$sql = "SELECT ID_CLIENTE, NOMBRE, APELLIDO, NUMERO_DOC, TELEFONO, CORREO FROM cliente WHERE ID_CLIENTE = '$iduser' ";
 
 $resultado = $conexion->query($sql);
 $row = $resultado->fetch_assoc();
@@ -164,7 +165,7 @@ $row = $resultado->fetch_assoc();
     <div class="header-right">
       <div class="perfil-carrito">
         <a href="inicioSesion.php"><i class="fa-solid fa-right-to-bracket" style="color: #51361f;"></i> Inicia Sesión</a>
-        <a href="perfil.php"><i class="fa-solid fa-user"></i> Bienvenido(a), <?php echo utf8_decode($row['Nombre']); ?></a>
+        <a href="perfil.php"><i class="fa-solid fa-user"></i> Bienvenido(a), <?php echo utf8_decode($row['NOMBRE']); ?></a>
         <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
       </div>
       <div class="hamburger">
