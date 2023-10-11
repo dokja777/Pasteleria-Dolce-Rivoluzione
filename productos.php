@@ -15,11 +15,12 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css" />
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 
   
   <!-------------------- Iconos en font awesome ------------------->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -30,6 +31,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
 </head>
 <!-------------------------------------------------------------------------->
 <body>
+  
   <!---------------------------------- Configuración del navbar ----------------->
   <header>
     <div class="header-left">
@@ -177,6 +179,10 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
             </script>
         </aside>
       </div>
+      
+
+
+
 <!----------------------------------------------------------------------------->
 
 <!--------------------------------- busqueda por productos  SQL--------------------------- -->
@@ -544,7 +550,7 @@ ul.categoria-lista li a:hover {
     </div>
   </footer>
   <!--------------------------------------------------------------------------->
-
+  
   <!--------------------scrip de  estilos para la ismagees--------------------------------->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
