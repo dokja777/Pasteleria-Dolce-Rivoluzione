@@ -7,6 +7,9 @@
   <title>Editar producto</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
   <style>
     body {
@@ -104,6 +107,14 @@
   include("../config/conexion.php");
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Verifica si se ha cargado una nueva imagen
+    if ($_FILES["nuevaImagenP"]["tmp_name"]) {
+      $imagenP = $_FILES["nuevaImagenP"]["tmp_name"];
+      $imagenData = file_get_contents($imagenP);
+    } else {
+      // Si no se cargó una nueva imagen, utiliza la imagen existente.
+      $imagenData = $imagenExistente;
+    }
     $idProducto = $_POST["idProducto"];
     $nombreP = $_POST["nombreP"];
     $descripcionP = $_POST["descripcionP"];
@@ -122,21 +133,17 @@
     $medidaP = mysqli_real_escape_string($conexion, $medidaP);
     $adminP = intval($adminP);
 
-    // Manejo de la imagen
-    if (!empty($_FILES["imagenP"]["tmp_name"])) {
-      $imagenP = $_FILES["imagenP"]["tmp_name"];
-      $imagenData = file_get_contents($imagenP);
-    } else {
-      $imagenData = $imagenExistente;
-    }
-
     // Realizar la actualización en la base de datos
     $sql = "UPDATE producto SET N_PRODUCTO=?, DESCRIPCION=?, PRECIO=?, STOCK=?, ID_CATEGORIA=?, IMG=?, MEDIDA=?, ID_ADMIN=? WHERE ID_PRODUCTO=?";
     $stmt = $conexion->prepare($sql);
-    $stmt->bind_param("ssdibisii", $nombreP, $descripcionP, $precioP, $stockP, $categoriaP, $imagenData, $medidaP, $adminP, $idProducto);
+    $stmt->bind_param("ssdiibsii", $nombreP, $descripcionP, $precioP, $stockP, $categoriaP, $imagenData, $medidaP, $adminP, $idProducto);
 
     if ($stmt->execute()) {
-      echo "Producto actualizado correctamente.";
+      // JavaScript para mostrar la ventana emergente y redirigir
+      echo '<script>';
+      echo 'alert("Producto actualizado correctamente.");';
+      echo 'window.location.href = "../listaproductos.php";';
+      echo '</script>';
     } else {
       echo "Error al actualizar el producto: " . $stmt->error;
     }
@@ -158,6 +165,17 @@
       $stmt->fetch();
       $stmt->close();
     }
+    // Aquí, obtén los datos de la imagen existente y almacénalos en $imagenExistente
+    $sqlImagenExistente = "SELECT IMG FROM producto WHERE ID_PRODUCTO = ?";
+    $stmtImagenExistente = $conexion->prepare($sqlImagenExistente);
+    $stmtImagenExistente->bind_param("i", $idProducto);
+
+    if ($stmtImagenExistente->execute()) {
+      $stmtImagenExistente->bind_result($imagenExistente);
+      $stmtImagenExistente->fetch();
+      $stmtImagenExistente->close();
+    }
+
   }
   ?>
 
@@ -165,20 +183,7 @@
 
   <div class="container">
     <h1>Editar Producto</h1>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      echo "<div class='container'>";
-      echo "<h2>Información antes de enviar el formulario:</h2>";
-      echo "<p>Nombre Producto: " . htmlspecialchars($nombreP) . "</p>";
-      echo "<p>Descripción: " . htmlspecialchars($descripcionP) . "</p>";
-      echo "<p>Precio: " . $precioP . "</p>";
-      echo "<p>Stock: " . $stockP . "</p>";
-      echo "<p>Categoría (ID): " . $categoriaP . "</p>";
-      echo "<p>Medida: " . htmlspecialchars($medidaP) . "</p>";
-      echo "<p>Admin: " . $adminP . "</p>";
-      echo "</div>";
-    }
-    ?>
+
 
     <form action="editar.php" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="idProducto" value="<?php echo $idProducto; ?>">
@@ -231,8 +236,10 @@
       <label for="imagenP">Imagen (JPG, JPEG o PNG)</label>
       <?php if (!empty($imagenData)): ?>
         <img src="data:image/jpeg;base64,<?php echo base64_encode($imagenData); ?>" alt="Imagen" class="img-preview">
+        <input type="file" id="nuevaImagenP" name="nuevaImagenP">
+      <?php else: ?>
+        <input type="file" id="imagenP" name="imagenP">
       <?php endif; ?>
-      <input type="file" id="imagenP" name="imagenP">
 
       <button type="submit" class="btn-primary">Guardar Cambios</button>
     </form>
@@ -240,9 +247,6 @@
 
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
 </body>
 
 </html>
