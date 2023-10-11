@@ -257,8 +257,8 @@ if (isset($_SESSION['carrito'])) {
                         S/
                         <?php echo $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad']; ?>
                       </td>
-                      <td><a href="#" class="btn btn-primary btn-sm btnEliminar"
-                          data-id="<?php echo $arregloCarrito[$i]['Id']; ?>">X</a></td>
+                      <td><a href="eliminar_producto.php?id=<?php echo $arregloCarrito[$i]['Id']; ?>" class="btn btn-primary btn-sm">X</a></td>
+
                     </tr>
                   <?php }
                 } ?>

@@ -166,7 +166,7 @@ $row = $resultado->fetch_assoc();
       <div class="perfil-carrito">
         <a href="inicioSesion.php"><i class="fa-solid fa-right-to-bracket" style="color: #51361f;"></i> Inicia Sesión</a>
         <a href="perfil.php"><i class="fa-solid fa-user"></i> Bienvenido(a), <?php echo utf8_decode($row['NOMBRE']); ?></a>
-        <a href="carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="agregar_al_carrito.php"><i class="fa-solid fa-cart-shopping"></i></a>
       </div>
       <div class="hamburger">
         <div></div>
