@@ -265,7 +265,7 @@ if (isset($_SESSION['carrito'])) {
               </tbody>
             </table>
             <div class=" col-6 " style="margin-left: 800px; border: 2px ;">
-              <a class="btn-compra" href="">Realizar Compra</a>
+              <a class="btn-compra" href="resumenCompra.php">Realizar Compra</a>
             </div>
             <!--<form action="" class="resumen">
             <h4>Resumen de compra: </h4>
