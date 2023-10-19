@@ -1,6 +1,6 @@
 <!-------------------- consulta para mostrar la categorias ---------------------------------->
 <?php
-include('config/conexion.php');
+  include('MVC/Config/conexion.php');
 
 // Consulta de categorías
 $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($conexion->error);
@@ -14,7 +14,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="MVC/Public/Assets/css/style.css" />
   
 
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -187,7 +187,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
       <div class="container__productos">
         
         <?php
-        include('config/conexion.php');
+        include('MVC/Config/conexion.php');
         $query = "SELECT * FROM producto";
         $resultado = $conexion->query($query);
 
@@ -225,7 +225,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
          <?php
 
     //  esto es para el filtro de categoria 
-    include('config/conexion.php');
+    include('MVC/Config/conexion.php');
 
 // Consulta de productos
 if (isset($_GET['id_categoria'])) {
@@ -508,45 +508,7 @@ ul.categoria-lista li a:hover {
 
 
   <!---------------------------- Footer------------------------------------->
-  <footer>
-    <div class="container__footer">
-      <div class="box__footer">
-        <div class="logo">
-          <img src="img/logo.png" alt="" />
-        </div>
-      </div>
-      <div class="box__footer">
-        <h2>Nosotros</h2>
-        <a href="nosotros.html">¿Quiénes somos?</a>
-        <a href="horarioAtencion.html">Horarios de Atención</a>
-        <a href="politicas_privacidad">Política de privacidad</a>
-        <a href="#">Política de cookies</a>
-        <a href="#">Libro de reclamaciones</a>
-      </div>
-
-      <div class="box__footer">
-        <h2>Contáctanos</h2>
-        <a href="#"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-        <a href="mailto:dolcerivoluzionepasteleria@gmail.com"><i class="fa-regular fa-envelope"></i> Correo</a>
-        <a href="#"><i class="fa-solid fa-phone"></i> Teléfono</a>
-        <a href="https://www.google.com/maps?q=Av+San+Juan+N%C2%B0+1061,+SJM+15801" target="_blank">
-          <i class="fa-solid fa-location-dot"></i> Av San Juan N° 1061, SJM 15801
-        </a>
-      </div>
-
-      <div class="box__footer">
-        <h2>Síguenos</h2>
-        <a href="#"><i class="fab fa-facebook-square"></i> Facebook</a>
-        <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
-        <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
-      </div>
-    </div>
-
-    <div class="box__copyright">
-      <hr />
-      <p>Todos los derechos reservados © 2023 <b>Pastelería Dolce Rivoluzione</b></p>
-    </div>
-  </footer>
+  <iframe src="footer/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
   <!--------------------------------------------------------------------------->
   
   <!--------------------scrip de  estilos para la ismagees--------------------------------->
