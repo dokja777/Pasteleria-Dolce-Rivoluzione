@@ -1,16 +1,14 @@
 <?php
-class PageController
+class PageController extends Controller
 {
-  public function home()
-  {
+  public function home(){
+  $this->render('home',[],'site');
 
   }
-  public function productos()
-  {
-
+  public function productos(){
+    $this->render('productos');
   }
-  public function nosotros()
-  {
-
+  public function nosotros(){
+    $this->render('nosotros');
   }
 }
