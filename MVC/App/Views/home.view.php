@@ -21,7 +21,7 @@
 <h1 class="title">Productos Más Vendidos</h1>
 <div class="container__masVendidos">
     <div class="card">
-      <img src="data:image/jpg;base64" />
+      <img src="" />
       <h4 class="nombre">
       </h4>
       <p class="precio">
