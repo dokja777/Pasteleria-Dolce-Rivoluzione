@@ -12,14 +12,20 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="<?= URL_PATH ?>/Assets/js/banner.js"></script>
   <!-- Libreria splide -->
-  <link rel="stylesheet" href="splide-4.1.3/splide-4.1.3/dist/css/splide.min.css" />
-  <script src="splide-4.1.3/splide-4.1.3/dist/js/splide.min.js"></script>
-  <script defer src="js/banner.js"></script>
+  <link rel="stylesheet" href="<?= URL_PATH ?>/Assets/libs/splide-4.1.3/splide-4.1.3/dist/css/splide.min.css" />
+  <script src="<?= URL_PATH ?>/Assets/libs/splide-4.1.3/splide-4.1.3/dist/js/splide.min.js"></script>
+  <script defer src="<?= URL_PATH ?>/Assets/js/banner.js"></script>
   <title></title>
 </head>
 
 <body>
+  <!-- Configuración del navbar -->
+
+  <!-- Contenido -->
   <?php echo $content ?>
+
+  <!-- Configuración del footer -->
+  
 </body>
 
 </html>
