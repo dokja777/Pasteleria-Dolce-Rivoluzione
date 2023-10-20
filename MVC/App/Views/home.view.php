@@ -1,4 +1,10 @@
-<!-- Sliders -->
+<script src="<?= URL_PATH ?>/Assets/js/banner.js"></script>
+  <!-- Libreria splide -->
+  <link rel="stylesheet" href="<?= URL_PATH ?>/Assets/libs/splide-4.1.3/splide-4.1.3/dist/css/splide.min.css" />
+  <script src="<?= URL_PATH ?>/Assets/libs/splide-4.1.3/splide-4.1.3/dist/js/splide.min.js"></script>
+  <script defer src="<?= URL_PATH ?>/Assets/js/banner.js"></script>
+  
+  <!-- Sliders -->
 <section class="banner">
   <div class="splide">
     <div class="splide__track">
