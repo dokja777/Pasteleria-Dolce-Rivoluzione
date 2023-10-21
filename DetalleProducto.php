@@ -1,6 +1,6 @@
 <?php
 // se llama a la base de datos
-include('MVC/Config/conexion.php');
+include('Config/conexion.php');
 
 // verificamos si existe el parametro id
 if (isset($_GET['id'])) {

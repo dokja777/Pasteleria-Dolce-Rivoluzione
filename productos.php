@@ -1,6 +1,6 @@
 <!-------------------- consulta para mostrar la categorias ---------------------------------->
 <?php
-  include('MVC/Config/conexion.php');
+  include('Config/conexion.php');
 
 // Consulta de categorías
 $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($conexion->error);
@@ -32,7 +32,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
   
   <!---------------------------------- Configuración del navbar ----------------->
 
-  <?php include 'headerCliente.php';?>
+  <?php include ('headerCliente.php');?>
   
   <!------------------------------------------------------------------------------------------>
 
@@ -142,7 +142,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
       <div class="container__productos">
         
         <?php
-        include('MVC/Config/conexion.php');
+        include('Config/conexion.php');
         $query = "SELECT * FROM producto";
         $resultado = $conexion->query($query);
 
@@ -180,7 +180,7 @@ $sql_categorias = $conexion->query("SELECT * FROM categoria_producto") or die($c
          <?php
 
     //  esto es para el filtro de categoria 
-    include('MVC/Config/conexion.php');
+    include('Config/conexion.php');
 
 // Consulta de productos
 if (isset($_GET['id_categoria'])) {

@@ -59,7 +59,7 @@
 
 <body>
   <!-- SIDEBAR -->
-  <?php include 'includes/headerEmpleado.php';?>
+  <?php include 'headerEmpleado.php';?>
 
   <!-- HOME -->
   <section class="home-section">
