@@ -175,7 +175,7 @@ body {
   display: block;
 }
 .sidebar .nav-links li .sub-menu.blank {
-  padding:3px 20px 6px 16px;
+  padding: 3px 20px 6px 16px;
   opacity: 0;
   pointer-events: none;
 }

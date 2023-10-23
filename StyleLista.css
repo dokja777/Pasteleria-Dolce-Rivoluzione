@@ -1,63 +1,63 @@
 /* Estilos básicos para el navbar */
 body {
-    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+  margin: 0; /* Elimina el margen predeterminado del cuerpo */
 }
 
 .navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:#f9cb9c;
-    color: #783f04;
-    padding: .5rem 1rem; /* Ajusta el espaciado vertical */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9cb9c;
+  color: #783f04;
+  padding: 0.5rem 1rem; /* Ajusta el espaciado vertical */
 }
-.navbar-right{
-    margin-right: 50px;
-    cursor: pointer;
+.navbar-right {
+  margin-right: 50px;
+  cursor: pointer;
 }
 /* Estilos para el ícono de hamburguesa */
 .menu-icon {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    margin-left: 50px; /* Ajusta el margen izquierdo */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px; /* Ajusta el margen izquierdo */
 }
 
 .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #783f04;
-    margin: 3px 0;
+  width: 25px;
+  height: 3px;
+  background-color: #783f04;
+  margin: 3px 0;
 }
 
 /* Estilos para el menú desplegable */
 .menu {
-    display: none;
-    flex-direction: column;
-    background-color: #783f04;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    z-index: 1;
+  display: none;
+  flex-direction: column;
+  background-color: #783f04;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  z-index: 1;
 }
 
 .menu.active {
-    display: flex;
+  display: flex;
 }
 
 .menu a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    transition: background-color 0.3s;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s;
 }
 
 .menu a:hover {
-    background-color: #555;
+  background-color: #555;
 }
 
-.container{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border: #783f04;
+.container {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  border: #783f04;
 }
