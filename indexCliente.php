@@ -120,7 +120,7 @@
 
   
 <?php
-include('MVC/Config/conexion.php');
+include('Config/conexion.php');
 
 session_start();
 if (!isset($_SESSION['Id'])){
