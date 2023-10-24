@@ -11,37 +11,29 @@ include('../Empleado/SessionAbierta.php');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tabla de pedidos </title>
-    <link rel="stylesheet" href="../css/styleAdmin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
  </head>
 
 
   <body>
     <!-------- incluir el  navbar ----->
-  <?php include '../headerEmpleado.php';?>
-  <section class="home-section">
-    <div class="home-content">
-      <i class='fa-solid fa-bars'></i>
-      <span class="text">Inicio</span>
-    </div>
-    
-
-
-        <div class="contenidoTabla"  >
-        <table class="table table-hover">
+   
+     
+          <h1 class="text-center">Tabla Pedido</h1>
+        <div class="container" >
+        <table class="table table-hover text-center">
         <thead>
-            <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Empleado</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Monto final</th>
-            <th scope="col">Metodo de pago</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Acciones</th>
+            <tr >
+            <th scope="col" style="background-color:#f9cb9c;">ID</th>
+            <th scope="col" style="background-color:#f9cb9c;">Cliente</th>
+            <th scope="col"style="background-color:#f9cb9c;">Empleado</th>
+            <th scope="col"style="background-color:#f9cb9c;">Fecha</th>
+            <th scope="col"style="background-color:#f9cb9c;">Monto final</th>
+            <th scope="col"style="background-color:#f9cb9c;">Metodo de pago</th>
+            <th scope="col"style="background-color:#f9cb9c;">Estado</th>
+            <th scope="col"style="background-color:#f9cb9c;">Acciones</th>
             </tr>
         </thead>
 
@@ -49,6 +41,7 @@ include('../Empleado/SessionAbierta.php');
         <?php
           require('../Config/conexion.php');
 
+         
           // Consulta preparada
           $query = "SELECT pedido.ID_PEDIDO, cliente.NOMBRE, empleado.N_EMPLEADO, pedido.FECHA, pedido.MONTO_FINAL, pedido.METODO_PAGO, pedido.ESTADO 
           FROM pedido 
@@ -71,7 +64,13 @@ include('../Empleado/SessionAbierta.php');
               echo "<td>$montofinal</td>";
               echo "<td>$metodopago</td>";
               echo "<td>$estado</td>";
-              echo "<td></td>";
+              echo "<td>
+              <a href='Formulario/editar.php?id=$idpedido' class=\"btn btn-warning\"><i class='fas fa-pencil-alt'></i></a>
+              <br>
+              <br>
+              <a href='../Empleado/eliminarPedido.php?ID_PEDIDO=$idpedido'class=\"btn btn-danger\"><i class='fas fa-trash-alt'></i>
+              </a>
+              </td>";
 
               echo "</tr>";
             }
@@ -91,9 +90,16 @@ include('../Empleado/SessionAbierta.php');
         </table>
 
         </div>
-        </section>
-
-   <script src="../js/inicioAdministrador.js"></script>
+        
+    <style>
+      .container{
+        font-family: monospace;
+    margin-top:1em;
+    margin-bottom:1em;
+   border-radius:1em;
+    }
+    </style>
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>
