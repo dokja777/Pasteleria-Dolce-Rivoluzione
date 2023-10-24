@@ -77,9 +77,17 @@ $row = $resultado->fetch_assoc();
                 </section>
             </main>
 
-            <form action="cerrarSesionCliente.php" method="post">
-                <button type="submit" class="cerrar-sesion-button">Cerrar Sesión</button>
+            <form id="cerrarSesionForm" action="cerrarSesionCliente.php" method="post">
+                <button type="button" class="cerrar-sesion-button" onclick="confirmarCerrarSesion()">Cerrar Sesión</button>
             </form>
+
+            <script>
+            function confirmarCerrarSesion() {
+                if (confirm("¿Estás seguro de que deseas cerrar la sesión?")) {
+                    document.getElementById("cerrarSesionForm").submit();
+                }
+            }
+            </script>
 
         
         </body>
