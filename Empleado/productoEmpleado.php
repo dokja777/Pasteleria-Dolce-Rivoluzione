@@ -97,7 +97,7 @@ if ($sql) {
         echo "<td>$stock</td>";
         echo "<td>$medida</td>";
         echo "<th>
-        <a href='../Empleado/editarProductoEm.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
+        <a href='../Empleado/editarProductoEm.php?id=$idProducto' class=\"btn btn-warning\"> <i class='fas fa-edit'></i></a>
         <br>
       </th>";
         echo "</tr>";
