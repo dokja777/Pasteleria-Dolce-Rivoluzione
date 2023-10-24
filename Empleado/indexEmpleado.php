@@ -1,16 +1,8 @@
+<!-- Esto hace que la session se mantega abierta en cada pagina  -->
 <?php
-session_start();
-
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['ID_EMPLEADO'])) {
-    // Si no está autenticado, redirigir al formulario de inicio de sesión
-    header('Location: ../Empleado/LoginEmpleado.php');
-    exit;
-}
+include('../Empleado/SessionAbierta.php');
 ?>
-
-
-
+<!-- --------------------------------------------------------------------- -->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -19,7 +11,7 @@ if (!isset($_SESSION['ID_EMPLEADO'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Empleado</title>
   <link rel="stylesheet" href="../css/styleAdmin.css">
   <!-- Iconos en font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -88,7 +80,7 @@ if (!isset($_SESSION['ID_EMPLEADO'])) {
     <div class="card-container">
       <a href="pedidos.php" class="card">
         <i class="fas fa-shopping-cart"></i>
-        <h2>Pedidos</h2>
+        <h2>Pedido</h2>
       </a>
       <a href="listaproductos.php" class="card">
         <i class="fas fa-box"></i>
@@ -100,7 +92,10 @@ if (!isset($_SESSION['ID_EMPLEADO'])) {
       </a>
       
     </div>
+    
   </section>
+
+  
 
   <script src="../js/inicioAdministrador.js"></script>
 </body>

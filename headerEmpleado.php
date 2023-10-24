@@ -6,23 +6,23 @@
     </div>
     <ul class="nav-links">
       <li>
-        <a href="indexAdministrador.php">
+        <a href="../Empleado/indexEmpleado.php">
           <i class='fa-solid fa-house'></i>
           <span class="link_name">Inicio</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a href="indexAdministrador.php" class="link_name">Inicio</a></li>
+          <li><a href="../Empleado/indexEmpleado.php" class="link_name">Inicio</a></li>
         </ul>
       </li>
       <li>
         <div class="icon-link">
-          <a href="pedidos.php">
+          <a href="../Empleado/pedidos.php">
             <i class='fas fa-shopping-cart'></i>
             <span class="link_name">Pedidos</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a href="pedidos.php" class="link_name">Pedidos</a></li>
+          <li><a href="../Empleado/pedidos.php" class="link_name">Pedidos</a></li>
 
         </ul>
       </li>
@@ -38,12 +38,12 @@
         </ul>
       </li>
       <li>
-        <a href="listarAdministrador.php">
+        <a href="">
           <i class='fas fa-users'></i>
           <span class="link_name">Usuarios</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a href="listarAdministrador.php" class="link_name">Usuarios</a></li>
+          <li><a href="" class="link_name">Usuarios</a></li>
         </ul>
       </li>
 
