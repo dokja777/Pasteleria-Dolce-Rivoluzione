@@ -28,13 +28,13 @@
       </li>
       <li>
         <div class="icon-link">
-          <a href="listaproductos.php">
+          <a href="../Empleado/productoEmpleado.php">
             <i class='fas fa-box'></i>
             <span class="link_name">Productos</span>
           </a>
         </div>
         <ul class="sub-menu">
-          <li><a href="listaproductos.php" class="link_name">Productos</a></li>
+          <li><a href="../Empleado/productoEmpleado.php" class="link_name">Productos</a></li>
         </ul>
       </li>
       <li>

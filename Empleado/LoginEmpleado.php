@@ -20,7 +20,7 @@
         </div>
        <div class="info">
          <h2>Pateleria Dolce Rivoluzione</h2>
-         <h4> Login Empleado</h4>
+         <h4> Login Empleados</h4>
          <img src="../MVC/Public/Assets/img/pastel.png"  width="40px"alt="Descripción de la imagen">
        </div>
       </div>

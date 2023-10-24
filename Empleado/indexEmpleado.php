@@ -82,7 +82,7 @@ include('../Empleado/SessionAbierta.php');
         <i class="fas fa-shopping-cart"></i>
         <h2>Pedido</h2>
       </a>
-      <a href="listaproductos.php" class="card">
+      <a href="../Empleado/productoEmpleado.php" class="card">
         <i class="fas fa-box"></i>
         <h2>Productos</h2>
       </a>
