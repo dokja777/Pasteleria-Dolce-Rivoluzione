@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['ID_EMPLEADO'])) {
+    // Si no está autenticado, redirigir al formulario de inicio de sesión
+    header('Location: ../Empleado/LoginEmpleado.php');
+    exit;
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,7 +20,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="css/styleAdmin.css">
+  <link rel="stylesheet" href="../css/styleAdmin.css">
   <!-- Iconos en font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -57,9 +71,11 @@
   </style>
 </head>
 
+
+
 <body>
   <!-- SIDEBAR -->
-  <?php include 'headerEmpleado.php';?>
+  <?php include '../headerEmpleado.php';?>
 
   <!-- HOME -->
   <section class="home-section">
@@ -86,7 +102,7 @@
     </div>
   </section>
 
-  <script src="js/inicioAdministrador.js"></script>
+  <script src="../js/inicioAdministrador.js"></script>
 </body>
 
 </html>

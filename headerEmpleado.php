@@ -1,7 +1,7 @@
 
 <div class="sidebar close">
     <div class="logo-details">
-      <img src="img/logo.png" alt="" />
+      <img src="../img/logo.png" alt="" />
       <span class="logo_name">Pastelería Dolce Rivoluzione</span>
     </div>
     <ul class="nav-links">
@@ -53,11 +53,21 @@
             <i class="fa-solid fa-user"></i>
           </div>
           <div class="name-job">
-            <div class="profile_name">Usuario01</div>
-            <div class="job">Administrador</div>
+            <div class="profile_name">
+            <?php
+             echo $_SESSION['nombre_usuario']; // Mostrar el nombre del usuario
+              ?>
+            </div>
+            <div class="job">Empleado</div>
           </div>
-          <i class='fa-solid fa-arrow-right-from-bracket'></i>
+          <i class='fa-solid fa-arrow'></i>
         </div>
       </li>
+      <li>
+        <a href="../Empleado/cerrarSession.php">
+        <i class="fa-solid fa-sign-out"></i> <!-- Icono de cerrar sesión -->
+        <span class="link_name">Cerrar sesión</span>
+  </a>
+</li>
     </ul>
   </div>
