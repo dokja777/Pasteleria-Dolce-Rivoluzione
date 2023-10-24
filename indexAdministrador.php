@@ -107,6 +107,15 @@
         </ul>
       </li>
       <li>
+        <a href="listarAdministrador.php">
+          <i class="fa-solid fa-users-line"></i>
+          <span class="link_name">Empleados</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a href="listarEmpleados.php" class="link_name">Empleados</a></li>
+        </ul>
+      </li>
+      <li>
         <a href="demanda.php">
           <i class='fas fa-chart-bar'></i>
           <span class="link_name">Demanda</span>
@@ -162,6 +171,10 @@
       <a href="listarAdministrador.php" class="card">
         <i class="fas fa-users"></i>
         <h2>Usuarios</h2>
+      </a>
+      <a href="listarEmpleados.php" class="card">
+        <i class="fa-solid fa-users-line"></i>
+        <h2>Empleados</h2>
       </a>
       <a href="demanda.php" class="card">
         <i class="fas fa-chart-bar"></i>
