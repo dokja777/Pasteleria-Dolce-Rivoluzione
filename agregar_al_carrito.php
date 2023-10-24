@@ -1,34 +1,43 @@
 <?php
 session_start();
 include('config/conexion.php');
+
+// Inicializamos la variable $row como un arreglo vacío
+$row = array();
+
+if (isset($_GET['id'])) {
+  $id_producto = $_GET['id'];
+  $query = "SELECT N_PRODUCTO, PRECIO, IMG FROM producto WHERE ID_PRODUCTO = $id_producto";
+  $result = $conexion->query($query);
+
+  if ($result) {
+    $row = $result->fetch_assoc();
+  }
+}
+
 if (isset($_SESSION['carrito'])) {
-  //si existe buscamos ya esta agregado
+  // Si existe, buscamos si el producto ya está agregado
   if (isset($_GET['id'])) {
     $arreglo = $_SESSION['carrito'];
     $encontro = false;
     $numero = 0;
+
     for ($i = 0; $i < count($arreglo); $i++) {
       if ($arreglo[$i]['Id'] == $_GET['id']) {
         $encontro = true;
         $numero = $i;
       }
     }
+
     if ($encontro == true) {
       $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad'] + 1;
       $_SESSION['carrito'] = $arreglo;
     } else {
-      //no estaba el registro
+      // No estaba el registro
       $nombre = $row['N_PRODUCTO'];
       $precio = $row['PRECIO'];
       $imagen = $row['IMG'];
-      $res = $conexion->query('select * from producto where ID_PRODUCTO=' . $_GET['id']) or die("Error en la consulta: " . $conexion->error);
-      $fila = mysqli_fetch_row($res);
 
-      var_dump($fila);
-
-      $nombre = $fila[2];
-      $precio = $fila[3];
-      $imagen = $fila[5];
       $arregloNuevo = array(
         'Id' => $_GET['id'],
         'Nombre' => $nombre,
@@ -36,24 +45,18 @@ if (isset($_SESSION['carrito'])) {
         'Imagen' => $imagen,
         'Cantidad' => 1,
       );
+
       array_push($arreglo, $arregloNuevo);
       $_SESSION['carrito'] = $arreglo;
     }
   }
 } else {
-  //creamos la variable de sesion
+  // Creamos la variable de sesión si no existe
   if (isset($_GET['id'])) {
     $nombre = $row['N_PRODUCTO'];
     $precio = $row['PRECIO'];
     $imagen = $row['IMG'];
-    $res = $conexion->query('select * from producto where ID_PRODUCTO=' . $_GET['id']) or die("Error en la consulta: " . $conexion->error);
-    $fila = mysqli_fetch_row($res);
 
-    var_dump($fila);
-
-    $nombre = $fila[2];
-    $precio = $fila[3];
-    $imagen = $fila[5];
     $arreglo[] = array(
       'Id' => $_GET['id'],
       'Nombre' => $nombre,
@@ -61,11 +64,12 @@ if (isset($_SESSION['carrito'])) {
       'Imagen' => $imagen,
       'Cantidad' => 1,
     );
+
     $_SESSION['carrito'] = $arreglo;
   }
-
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">

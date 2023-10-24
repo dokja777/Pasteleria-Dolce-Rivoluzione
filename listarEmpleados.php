@@ -63,7 +63,7 @@
   <br>
   <div class="container">
     <h1 class="text-center" style=" background-color:black;color:white; height: 80px; font-family:var;"> Lista de
-      Administradores</h1>
+      Empleados</h1>
   </div>
 
   <!-- Tabla de lista de administradores  -->
@@ -72,7 +72,7 @@
     <table class="table  table-striped" style="background-color:#f9cb9c; font-family:var;">
       <thead>
         <tr>
-          <th scope="col">ID DEL ADMINISTRADOR</th>
+          <th scope="col">ID DEL EMPLEADO</th>
           <th scope="col">USUARIO</th>
           <th scope="col">NOMBRE</th>
           <th scope="col">CONTRASEÑA</th>
@@ -86,27 +86,27 @@
         //  conexion para mostrar los productos
         require("config/conexion.php");
 
-        $sql = $conexion->query("SELECT ID_ADMIN, USUARIO, NOMBRE, CONTRASEÑA FROM admin;");
+        $sql = $conexion->query("SELECT ID_EMPLEADO, USUARIO_EMPLEADO, N_EMPLEADO, CONTRASEÑA_EMPLEADO FROM empleado;");
 
         if ($sql) {
           while ($resultado = $sql->fetch_assoc()) {
 
-            $idAdmin = $resultado['ID_ADMIN'];
-            $usuarioAdmin = $resultado['USUARIO'];
-            $nombreAdmin = $resultado['NOMBRE'];
-            $contraseñaAdmin = $resultado['CONTRASEÑA'];
+            $idEmpleado = $resultado['ID_EMPLEADO'];
+            $usuarioEmpleado = $resultado['USUARIO_EMPLEADO'];
+            $nombreEmpleado = $resultado['N_EMPLEADO'];
+            $contraseñaEmpleado = $resultado['CONTRASEÑA_EMPLEADO'];
 
             // Imprime las filas de la tabla con las columnas específicas
             echo "<tr>";
-            echo "<th scope='row'>$idAdmin</th>";
-            echo "<td>$usuarioAdmin</td>";
-            echo "<td>$nombreAdmin</td>";
-            echo "<td>$contraseñaAdmin</td>";
+            echo "<th scope='row'>$idEmpleado</th>";
+            echo "<td>$usuarioEmpleado</td>";
+            echo "<td>$nombreEmpleado</td>";
+            echo "<td>$contraseñaEmpleado</td>";
             echo "<th>
-        <a href='editarAdmin.php?ID_ADMIN=$idAdmin' class=\"btn btn-warning\">Editar</a>
+        <a href='editarEmpleado.php?ID_ADMIN=$idEmpleado' class=\"btn btn-warning\">Editar</a>
         <br>
         <br>
-        <a href='eliminarAdmin.php?ID_ADMIN=$idAdmin'class=\"btn btn-danger\">Eliminar</a>
+        <a href='eliminarEmpleado.php?ID_ADMIN=$idEmpleado'class=\"btn btn-danger\">Eliminar</a>
       </th>";
             echo "</tr>";
           }
@@ -121,7 +121,7 @@
       </tbody>
     </table>
     <div class="container">
-      <a href="agregarAdmin.php" class="btn btn-success">Agregar Administrador</a>
+      <a href="agregarEmpleado.php" class="btn btn-success">Agregar Empleado</a>
     </div>
 
   </div>
