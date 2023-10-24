@@ -1,4 +1,3 @@
-
 <?php
 
 include('config/conexion.php');
@@ -11,7 +10,7 @@ if (!isset($_SESSION['Id'])){
 
 $iduser = $_SESSION['Id'];
 
-$sql = "SELECT ID_CLIENTE, Nombre, Apellido, NUMERO_DOC, Telefono, Correo FROM cliente WHERE ID_CLIENTE = '$iduser' ";
+$sql = "SELECT ID_CLIENTE, NOMBRE, Apellido, NUMERO_DOC, Telefono, Correo FROM cliente WHERE ID_CLIENTE = '$iduser' ";
 
 $resultado = $conexion->query($sql);
 $row = $resultado->fetch_assoc();
@@ -52,7 +51,7 @@ $row = $resultado->fetch_assoc();
                     <i class="fa-solid fa-circle-user"></i>
                 </div>
                 <div class="nombre">
-                    <h1>Hola, <?php echo utf8_decode($row['Nombre']); ?></h1>
+                    <h1>Hola, <?php echo utf8_decode($row['NOMBRE']); ?></h1>
                 </div>
             </section>
         
@@ -65,7 +64,7 @@ $row = $resultado->fetch_assoc();
                 <section class="perfil">
                     <h2>Mi Perfil</h2>
                     <ul>
-                        <li><i class="fa-solid fa-user"></i> Nombre: <?php echo utf8_decode($row['Nombre']); ?></li>
+                        <li><i class="fa-solid fa-user"></i> Nombre: <?php echo utf8_decode($row['NOMBRE']); ?></li>
                         <li><i class="fa-regular fa-user"></i> Apellido: <?php echo utf8_decode($row['Apellido']); ?></li>
                         <li><i class="fa-solid fa-address-card"></i> Número de documento: <?php echo utf8_decode($row['NUMERO_DOC']); ?></li>
                         <li><i class="fa-solid fa-phone"></i> Número de teléfono: <?php echo utf8_decode($row['Telefono']); ?></li>
@@ -76,6 +75,11 @@ $row = $resultado->fetch_assoc();
                     <button>Editar</button>
                 </section>
             </main>
+
+            <form action="cerrarSesionCliente.php" method="post">
+                <button type="submit" class="cerrar-sesion-button">Cerrar Sesión</button>
+            </form>
+
         
         </body>
 
