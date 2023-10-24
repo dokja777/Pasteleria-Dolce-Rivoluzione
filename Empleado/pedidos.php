@@ -17,12 +17,42 @@ include('../Empleado/SessionAbierta.php');
  </head>
 
 
-  <body>
+  <body >
     <!-------- incluir el  navbar ----->
-   
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#f9cb9c;">
+  <div class="container-fluid" style="background-color:#f9cb9c;" >
+  <img src="../img/logo.png" alt="" style="width:5em ;margin-botton:1em;">
+    <a class="navbar-brand" href="indexAdministrador.php"  style="font-family:var;color:#783f04;margin-left:1em;font-weight:600;font-size:22px;">Pastelería Dolce Rivoluzione</a>
+    
+    <div class="collapse navbar-collapse" id="bar" >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="btn btn-outline-light" href="../Empleado/indexEmpleado.php"  aria-current="page"  style="color:#783f04;margin-left:3em;font-weight:600;">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light" href="../Empleado/pedidos.php" style="margin-left:2em;color:#783f04;font-weight:600;">Pedidos</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light" href="../Empleado/productoEmpleado.php"  style="color:#783f04;margin-left:2em;font-weight:600;" >Productos </a>
+        </li>
+      </ul>
      
+    </div>
+  </div>
+</nav>
+   
+  <style>
+    #bar a{
+        border-style:none;
+        background-color:;
+        border-radius:10px;
+    }
+  </style>
+      
           <h1 class="text-center">Tabla Pedido</h1>
+          
         <div class="container" >
+        <a href="../Empleado/agregarPedido.php"class="btn btn-success"style="margin-bottom:4px">Agregar nuevo pedido</a>
         <table class="table table-hover text-center">
         <thead>
             <tr >
@@ -61,7 +91,7 @@ include('../Empleado/SessionAbierta.php');
               echo "<td>$idcliente</td>";
               echo "<td>$idempleado</td>";
               echo "<td>$fecha</td>";
-              echo "<td>$montofinal</td>";
+              echo "<td>S/ $montofinal</td>";
               echo "<td>$metodopago</td>";
               echo "<td>$estado</td>";
               echo "<td>
