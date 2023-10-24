@@ -76,6 +76,11 @@ $row = $resultado->fetch_assoc();
                     <button>Editar</button>
                 </section>
             </main>
+
+            <form action="cerrarSesionCliente.php" method="post">
+                <button type="submit" class="cerrar-sesion-button">Cerrar Sesión</button>
+            </form>
+
         
         </body>
 
