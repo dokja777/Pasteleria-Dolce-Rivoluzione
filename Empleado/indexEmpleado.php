@@ -1,3 +1,9 @@
+<!-- Esto hace que la session se mantega abierta en cada pagina  -->
+<?php
+include('../Empleado/SessionAbierta.php');
+?>
+<!-- --------------------------------------------------------------------- -->
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,8 +11,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="css/styleAdmin.css">
+  <title>Empleado</title>
+  <link rel="stylesheet" href="../css/styleAdmin.css">
   <!-- Iconos en font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -57,9 +63,11 @@
   </style>
 </head>
 
+
+
 <body>
   <!-- SIDEBAR -->
-  <?php include 'headerEmpleado.php';?>
+  <?php include '../headerEmpleado.php';?>
 
   <!-- HOME -->
   <section class="home-section">
@@ -72,7 +80,7 @@
     <div class="card-container">
       <a href="pedidos.php" class="card">
         <i class="fas fa-shopping-cart"></i>
-        <h2>Pedidos</h2>
+        <h2>Pedido</h2>
       </a>
       <a href="listaproductos.php" class="card">
         <i class="fas fa-box"></i>
@@ -84,9 +92,12 @@
       </a>
       
     </div>
+    
   </section>
 
-  <script src="js/inicioAdministrador.js"></script>
+  
+
+  <script src="../js/inicioAdministrador.js"></script>
 </body>
 
 </html>
