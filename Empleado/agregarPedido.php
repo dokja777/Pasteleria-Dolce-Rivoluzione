@@ -32,8 +32,21 @@ include('../Empleado/SessionAbierta.php');
 
         <div class="mb-3"  >
             <label class="form-label"  style="margin-left:1em;font-style:italic;font-size:20px;"  >Cliente : </label>
-            <input type="text" class="form-control" style="background-color:#EAE6CA;border-color:black;"   name="cliente" required>
-            
+            <select class="form-select mb-3 "  style="background-color:#EAE6CA;border-color:black;"   name="cliente">
+            <option selected disabled>-- Selecciona cliente --</option>
+            <?php
+         include ("../config/conexion.php");
+         $sql = $conexion-> query("SELECT*fROM cliente");
+         while($resultado=$sql->fetch_assoc()){
+            echo "<option value='".$resultado['ID_CLIENTE']."'>".$resultado['NOMBRE']."</option> ";
+         }
+        
+         
+
+
+
+         ?>
+         </select> 
         </div>
         
         
@@ -48,14 +61,20 @@ include('../Empleado/SessionAbierta.php');
             
         </div> 
         <div class="mb-3">
-            <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;"  >Metodo de pago : </label>
-            <input type="text" class="form-control" style="background-color:#EAE6CA;border-color:black;" maxlength="19" minlength="4"  name="metodoPago" required>
-            
+                    <label for="Metodo pago" style="margin-left:1em;font-style:italic;font-size:20px;">Metodo de pago :</label>
+                    <select class="form-select" style="background-color:#EAE6CA;border-color:black;"   aria-label="Default select example" name="metodoPago" required>
+                    <option value="Credito">Credito</option>
+                    <option value="Yape">Yape</option>
+                    <option value="Paypal">Paypal</option>
+                    </select>
         </div>
         <div class="mb-3">
-            <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;"  >Estado : </label>
-            <input type="text" class="form-control" style="background-color:#EAE6CA;border-color:black;" maxlength="11" minlength="11"  name="estado"  required>
-            
+                <label for="estado" style="margin-left:1em;font-style:italic;font-size:20px;">Estado</label>
+                <select class="form-select" style="background-color:#EAE6CA;border-color:black;"  aria-label="Default select example" name="estado" required>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Completado">Completado</option>
+                    <option value="Entregado">Entregado</option>
+                    </select>
         </div>
         
         <!-- este boton agregar sirve apra agregar  a la base de datos   -->

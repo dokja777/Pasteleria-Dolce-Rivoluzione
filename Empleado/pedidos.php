@@ -95,7 +95,7 @@ include('../Empleado/SessionAbierta.php');
               echo "<td>$metodopago</td>";
               echo "<td>$estado</td>";
               echo "<td>
-              <a href='Formulario/editar.php?id=$idpedido' class=\"btn btn-warning\"><i class='fas fa-pencil-alt'></i></a>
+              <a href='../Empleado/editarPedidoEm.php?id=$idpedido' class=\"btn btn-warning\"><i class='fas fa-pencil-alt'></i></a>
               <br>
               <br>
               <a href='../Empleado/eliminarPedido.php?ID_PEDIDO=$idpedido'class=\"btn btn-danger\"><i class='fas fa-trash-alt'></i>
