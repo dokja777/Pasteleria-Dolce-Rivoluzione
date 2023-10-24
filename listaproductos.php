@@ -106,7 +106,7 @@
       <?php
     require("config/conexion.php");
     // Definir la cantidad de productos por página
-    $productosPorPagina = 10;
+    $productosPorPagina = 5;
 
     // Obtener el número de página actual desde la URL
     $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
