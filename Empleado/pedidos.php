@@ -50,7 +50,10 @@ include('../Empleado/SessionAbierta.php');
           require('../Config/conexion.php');
 
           // Consulta preparada
-          $query = "SELECT pedido.ID_PEDIDO, cliente.NOMBRE, empleado.ID_EMPLEADO, pedido.FECHA, pedido.MONTO_FINAL, pedido.METODO_PAGO, pedido.ESTADO FROM pedido INNER JOIN cliente ON pedido.ID_CLIENTE = cliente.ID_CLIENTE INNER JOIN empleado ON pedido.ID_EMPLEADO = empleado.ID_EMPLEADO";
+          $query = "SELECT pedido.ID_PEDIDO, cliente.NOMBRE, empleado.N_EMPLEADO, pedido.FECHA, pedido.MONTO_FINAL, pedido.METODO_PAGO, pedido.ESTADO 
+          FROM pedido 
+          INNER JOIN cliente ON pedido.ID_CLIENTE = cliente.ID_CLIENTE 
+          INNER JOIN empleado ON pedido.ID_EMPLEADO = empleado.ID_EMPLEADO";
 
           if ($stmt = $conexion->prepare($query)) {
             // Ejecutar la consulta
