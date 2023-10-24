@@ -165,6 +165,7 @@ $row = $resultado->fetch_assoc();
     <?php
     include('config/conexion.php');
     $query = "SELECT
+                    p.ID_PRODUCTO,
                     p.N_PRODUCTO,
                     p.IMG,
                     p.PRECIO
@@ -188,10 +189,10 @@ $row = $resultado->fetch_assoc();
                     LIMIT 50
                 ) top_products ON p.ID_PRODUCTO = top_products.ID_PRODUCTO";
     $resultado = $conexion->query($query);
-    while (
-      $row =
-      $resultado->fetch_assoc()
-    ) { ?>
+    
+    while ($row = $resultado->fetch_assoc()) {
+      $idProducto = $row['ID_PRODUCTO'];
+    ?>
       <div class="card">
         <img src="data:image/jpg;base64, <?php echo base64_encode($row['IMG']); ?>" />
         <h4>
@@ -201,12 +202,15 @@ $row = $resultado->fetch_assoc();
           <a>S/</a>
           <?php echo $row['PRECIO']; ?>
         </p>
-        <button class="ver-detalle">Ver Detalle del Producto</button>
+        <a href="DetalleProducto.php?id=<?php echo $idProducto; ?>">
+            <button class="ver-detalle">Ver Detalle del Producto</button>
+        </a>
       </div>
-      <?php
+    <?php
     }
     ?>
   </div>
+
 
   <!-- Footer -->
   <iframe src="footer/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
