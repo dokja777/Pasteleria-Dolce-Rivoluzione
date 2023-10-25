@@ -47,7 +47,6 @@ include('../Empleado/SessionAbierta.php');
   <thead >
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">ADMIN</th>
       <th scope="col">NOMBRE DEL PRODUCTO</th>
       <th scope="col">CATEGORIA</th>
       <th scope="col">IMAGEN</th>
@@ -75,7 +74,6 @@ if ($sql) {
     while ($resultado = $sql->fetch_assoc()) {
 
         $idProducto = $resultado['ID_PRODUCTO'];
-        $nombreAdmin = $resultado['ADMIN_NOMBRE'];
         $nombreProducto = $resultado['N_PRODUCTO'];
         $nombreCategoria = $resultado['N_CATEGORIA'];
         $imagen = $resultado['IMG'];
@@ -87,7 +85,6 @@ if ($sql) {
         // Imprime las filas de la tabla con las columnas específicas
         echo "<tr  data-aos=\"zoom-in-up\"  >";
         echo "<th scope='row'>$idProducto</th>";
-        echo "<td>$nombreAdmin</td>";
         echo "<td>$nombreProducto</td>";
         echo "<td>$nombreCategoria</td>";
         echo "<td><img  style='width: 120px; border-radius: 30px;'  src='data:image/jpg;base64," . base64_encode($imagen) . "'></td>";
