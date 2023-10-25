@@ -210,10 +210,11 @@ $row = $resultado->fetch_assoc();
                         <label for="fecha_vencimiento">Fecha de vencimiento:</label>
                         <input type="date" id="fecha_vencimiento">
                     </p>
-                    <BR></BR>
+                    <BR>
                     <p>
                         <input type="checkbox" id="terminos_condiciones"> Acepto los términos y condiciones
                     </p>
+                    <br>
                     <button type="submit">COMPRAR</button>
                 </section>
             </div>
