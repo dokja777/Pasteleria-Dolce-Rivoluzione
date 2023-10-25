@@ -30,7 +30,7 @@
 <!-- tabla nomrbes -->
     <div class="menu" id="menu">
         <!-- Coloca aquí los elementos de menú -->
-        <a href="#">Inicio</a>
+        <a href="indexEmpleado.php">Inicio</a>
         <a href="#">Acerca de</a>
         <a href="#">Servicios</a>
         <a href="#">Contacto</a>
