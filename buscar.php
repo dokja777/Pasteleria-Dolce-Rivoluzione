@@ -30,7 +30,7 @@
 <!-- tabla nomrbes -->
     <div class="menu" id="menu">
         <!-- Coloca aquí los elementos de menú -->
-        <a href="#">Inicio</a>
+        <a href="indexAdministrador.php">Inicio</a>
         <a href="#">Acerca de</a>
         <a href="#">Servicios</a>
         <a href="#">Contacto</a>
@@ -46,15 +46,15 @@
     
     <div class="container" >
 
-        <form action="buscar.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px";>
+        <<form action="buscar.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px">
             <a style="margin-right:20px">Buscar por:</a>
-
-            <select class="CODIGO" name="CODIGO" id="" style="margin-right:10px">
-                <option value="Todos">Código</option>
+            <select name="filtro" id="filtro" style="margin-right:10px">
+                <option value="nombre">Nombre del Producto</option>
             </select>
-            <input type="text" name="buscar" id="" style="margin-right:10px">
-            <input type="submit" value="Buscar">
+            <input type="text" name="buscar" id="buscar" style="margin-right:10px; border-color:black;">
+            <input type="submit" class="btn" style="background-color:#f9cb9c" value="Buscar">
         </form>
+
     <table class="table  table-striped"   style="background-color:#f9cb9c; font-family:var;">
   <thead >
     <tr>
@@ -74,52 +74,57 @@
 
 
   <?php
-  //  conexion para mostrar los productos
-  $buscar = $_POST['buscar'];
- require("config/conexion.php");
+require("config/conexion.php");
 
-$sql = $conexion->query("SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK
-                        FROM PRODUCTO
-                        INNER JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
-                        INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN WHERE ID_PRODUCTO LIKE '$buscar' '%' ");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $buscar = mysqli_real_escape_string($conexion, $_POST['buscar']);
 
-if ($sql) {
-    while ($resultado = $sql->fetch_assoc()) {
+    // Consulta para buscar por nombre de producto y mostrar coincidencias
+    $sql = "SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK
+            FROM PRODUCTO
+            INNER JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
+            INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN
+            WHERE producto.N_PRODUCTO LIKE '%$buscar%'";
 
-        $idProducto = $resultado['ID_PRODUCTO'];
-        $nombreAdmin = $resultado['ADMIN_NOMBRE'];
-        $nombreProducto = $resultado['N_PRODUCTO'];
-        $nombreCategoria = $resultado['N_CATEGORIA'];
-        $imagen = $resultado['IMG'];
-        $descripcion = $resultado['DESCRIPCION'];
-        $precio = $resultado['PRECIO'];
-        $stock = $resultado['STOCK'];
+    $result = $conexion->query($sql);
 
-        // Imprime las filas de la tabla con las columnas específicas
-        echo "<tr>";
-        echo "<th scope='row'>$idProducto</th>";
-        echo "<td>$nombreAdmin</td>";
-        echo "<td>$nombreProducto</td>";
-        echo "<td>$nombreCategoria</td>";
-        echo "<td><img  style='width: 120px; border-radius: 30px;'  src='data:image/jpg;base64," . base64_encode($imagen) . "'></td>";
-        echo "<td>$descripcion</td>";
-        echo "<td> S/ $precio </td>";
-        echo "<td>$stock</td>";
-        echo "<th>
-        <a href='Formulario/editar.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
-        <br>
-        <br>
-        <a href='CRUD/eliminar.php?ID_PRODUCTO=$idProducto'class=\"btn btn-danger\">Eliminar</a>
-      </th>";
-       echo "</tr>";
+    if ($result) {
+        while ($resultado = $result->fetch_assoc()) {
+            $idProducto = $resultado['ID_PRODUCTO'];
+            $nombreAdmin = $resultado['ADMIN_NOMBRE'];
+            $nombreProducto = $resultado['N_PRODUCTO'];
+            $nombreCategoria = $resultado['N_CATEGORIA'];
+            $imagen = $resultado['IMG'];
+            $descripcion = $resultado['DESCRIPCION'];
+            $precio = $resultado['PRECIO'];
+            $stock = $resultado['STOCK'];
+
+            // Imprime las filas de la tabla con las columnas específicas
+            echo "<tr>";
+            echo "<th scope='row'>$idProducto</th>";
+            echo "<td>$nombreAdmin</td>";
+            echo "<td>$nombreProducto</td>";
+            echo "<td>$nombreCategoria</td>";
+            echo "<td><img  style='width: 120px; border-radius: 30px;'  src='data:image/jpg;base64," . base64_encode($imagen) . "'></td>";
+            echo "<td>$descripcion</td>";
+            echo "<td> S/ $precio </td>";
+            echo "<td>$stock</td>";
+            echo "<th>
+            <a href='Formulario/editar.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
+            <br>
+            <br>
+            <a href='CRUD/eliminar.php?ID_PRODUCTO=$idProducto' class=\"btn btn-danger\">Eliminar</a>
+            </th>";
+            echo "</tr>";
+        }
+    } else {
+        // Maneja el error si la consulta no se ejecuta correctamente
+        echo "Error en la consulta: " . $conexion->error;
     }
-} else {
-    // Maneja el error si la consulta no se ejecuta correctamente
-    echo "Error en la consulta: " . $conexion->error;
-}
 
-// Cierra la conexión a la base de datos cuando hayas terminado
-$conexion->close();
+    // Cierra la conexión a la base de datos cuando hayas terminado
+    $conexion->close();
+}
 ?>
 
         </tbody>
