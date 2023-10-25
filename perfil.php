@@ -64,7 +64,7 @@ $row = $resultado->fetch_assoc();
                 <section class="perfil">
                     <h2>Mi Perfil</h2>
                     <ul>
-                        <li><i class="fa-solid fa-user"></i> Nombre: <?php echo utf8_decode($row['Nombre']); ?></li>
+                        <li><i class="fa-solid fa-user"></i> Nombre: <?php echo utf8_decode($row['NOMBRE']); ?></li>
                         <li><i class="fa-regular fa-user"></i> Apellido: <?php echo utf8_decode($row['Apellido']); ?></li>
                         <li><i class="fa-solid fa-address-card"></i> Número de documento: <?php echo utf8_decode($row['NUMERO_DOC']); ?></li>
                         <li><i class="fa-solid fa-phone"></i> Número de teléfono: <?php echo utf8_decode($row['Telefono']); ?></li>
