@@ -195,6 +195,8 @@ $row = $resultado->fetch_assoc();
                     <p>
                         <input type="radio" name="tipo_pago" value="tarjeta_debito"> Tarjeta de débito
                         <input type="radio" name="tipo_pago" value="tarjeta_credito"> Tarjeta de crédito
+                        <input type="radio" name="tipo_pago" value="yape"> Yape
+                        <input type="radio" name="tipo_pago" value="paypal"> Paypal
                         <input type="radio" name="tipo_pago" value="efectivo"> Efectivo
                     </p>
                     <br>
