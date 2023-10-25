@@ -78,7 +78,7 @@
         <div class="icon-link">
           <a href="pedidos.php">
             <i class='fas fa-shopping-cart'></i>
-            <span class="link_name">Pedidos</span>
+            <span class="link_name">Pedidow</span>
           </a>
         </div>
         <ul class="sub-menu">
