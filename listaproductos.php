@@ -71,15 +71,14 @@
     
     <div class="container" >
 
-        <form action="buscar.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px";>
-            <a style="margin-right:20px" >Buscar por:</a>
-
-            <select class="CODIGO" name="CODIGO" id="" style="margin-right:10px">
-                <option value="Todos">Código</option>
-            </select>
-            <input type="text" name="buscar" id="" style="margin-right:10px;border-color:black;">
-            <input type="submit"  class="btn " style="background-color:#f9cb9c"  value="Buscar">
-        </form>
+          <form action="buscar.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px">
+                <a style="margin-right:20px">Buscar por:</a>
+                <select name="filtro" id="filtro" style="margin-right:10px">
+                    <option value="nombre">Nombre del Producto</option>
+                </select>
+                <input type="text" name="buscar" id="buscar" style="margin-right:10px; border-color:black;">
+                <input type="submit" class="btn" style="background-color:#f9cb9c" value="Buscar">
+            </form>
 
         <div class="container ">
         <a href="agregar.php"class="btn btn-success">Agregar producto</a>
