@@ -76,18 +76,6 @@
       </li>
       <li>
         <div class="icon-link">
-          <a href="pedidos.php">
-            <i class='fas fa-shopping-cart'></i>
-            <span class="link_name">Pedidow</span>
-          </a>
-        </div>
-        <ul class="sub-menu">
-          <li><a href="pedidos.php" class="link_name">Pedidos</a></li>
-
-        </ul>
-      </li>
-      <li>
-        <div class="icon-link">
           <a href="listaproductos.php">
             <i class='fas fa-box'></i>
             <span class="link_name">Productos</span>
@@ -160,10 +148,6 @@
 
     <!-- CARDS -->
     <div class="card-container">
-      <a href="pedidos.php" class="card">
-        <i class="fas fa-shopping-cart"></i>
-        <h2>Pedidos</h2>
-      </a>
       <a href="listaproductos.php" class="card">
         <i class="fas fa-box"></i>
         <h2>Productos</h2>
