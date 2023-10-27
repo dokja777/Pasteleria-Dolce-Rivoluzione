@@ -75,7 +75,10 @@ if (isset($_SESSION['carrito'])) {
 
 include('config/conexion.php');
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+
 if (!isset($_SESSION['Id'])){
     header("Location: indexCliente.php");
 
