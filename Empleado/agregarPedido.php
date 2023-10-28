@@ -33,7 +33,7 @@ include('../Empleado/SessionAbierta.php');
         <div class="mb-3"  >
             <label class="form-label"  style="margin-left:1em;font-style:italic;font-size:20px;"  >Cliente : </label>
             <select class="form-select mb-3 "  style="background-color:#EAE6CA;border-color:black;"   name="cliente">
-            <option selected disabled>-- Selecciona cliente --</option>
+            <option selected disabled>-- Seleccionar cliente --</option>
             <?php
          include ("../config/conexion.php");
          $sql = $conexion-> query("SELECT*fROM cliente");
