@@ -29,14 +29,13 @@ include('../Empleado/SessionAbierta.php');
     
     <div class="container" >
 
-        <form action="buscar.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px";>
-            <a style="margin-right:20px" >Buscar por:</a>
-
-            <select class="CODIGO" name="CODIGO" id="" style="margin-right:10px">
-                <option value="Todos">Código</option>
+        <form action="buscarProductoEmpleado.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px">
+            <a style="margin-right:20px">Buscar por:</a>
+            <select name="filtro" id="filtro" style="margin-right:10px">
+                <option value="nombre">Nombre del Producto</option>
             </select>
-            <input type="text" name="buscar" id="" style="margin-right:10px;border-color:black;">
-            <input type="submit"  class="btn " style="background-color:#f9cb9c"  value="Buscar">
+            <input type="text" name="buscar" id="buscar" style="margin-right:10px; border-color:black;">
+            <input type="submit" class="btn" style="background-color:#f9cb9c" value="Buscar">
         </form>
 
         <div class="container ">
@@ -48,7 +47,6 @@ include('../Empleado/SessionAbierta.php');
   <thead >
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">ADMIN</th>
       <th scope="col">NOMBRE DEL PRODUCTO</th>
       <th scope="col">CATEGORIA</th>
       <th scope="col">IMAGEN</th>
@@ -76,7 +74,6 @@ if ($sql) {
     while ($resultado = $sql->fetch_assoc()) {
 
         $idProducto = $resultado['ID_PRODUCTO'];
-        $nombreAdmin = $resultado['ADMIN_NOMBRE'];
         $nombreProducto = $resultado['N_PRODUCTO'];
         $nombreCategoria = $resultado['N_CATEGORIA'];
         $imagen = $resultado['IMG'];
@@ -88,7 +85,6 @@ if ($sql) {
         // Imprime las filas de la tabla con las columnas específicas
         echo "<tr  data-aos=\"zoom-in-up\"  >";
         echo "<th scope='row'>$idProducto</th>";
-        echo "<td>$nombreAdmin</td>";
         echo "<td>$nombreProducto</td>";
         echo "<td>$nombreCategoria</td>";
         echo "<td><img  style='width: 120px; border-radius: 30px;'  src='data:image/jpg;base64," . base64_encode($imagen) . "'></td>";

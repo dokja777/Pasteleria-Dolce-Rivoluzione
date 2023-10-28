@@ -1,3 +1,5 @@
+
+
 <header>
     <div class="header-left">
       <div class="logo">
@@ -14,7 +16,7 @@
             <a href="productos.php">Productos</a>
           </li>
           <li>
-            <a href="nosotros.html">Nosotros</a>
+            <a href="nosotros.php">Nosotros</a>
           </li>
         </ul>
         <div class="perfil-carrito">
