@@ -74,10 +74,12 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
             </div>
 
             <!-- este boton agregar sirve apra agregar  a la base de datos   -->
-            <!-- este boton volver te redirecciona a la lista de productos , por ello dice
-         listarEmpleado.php  -->
+           
             <div class="text-center" style="margin-bottom:1em;">
                 <button type="submit" class="btn btn-danger">Agregar</button>
+                
+            <!-- este boton volver te redirecciona a la lista de productos , por ello dice
+         listarEmpleado.php  -->
                 <a href="../Empleado/pedidos.php" class="btn btn-dark">Volver</a>
             </div>
 
