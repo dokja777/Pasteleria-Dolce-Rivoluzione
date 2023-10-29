@@ -1,86 +1,15 @@
 <?php
-session_start();
-include('config/conexion.php');
 
-// Inicializamos la variable $row como un arreglo vacío
-$row = array();
+include('../../../Servidor/PHP/conexion.php');
+include('../../../Servidor/PHP/Cliente/carrito.php');
 
-if (isset($_GET['id'])) {
-  $id_producto = $_GET['id'];
-  $query = "SELECT N_PRODUCTO, PRECIO, IMG FROM producto WHERE ID_PRODUCTO = $id_producto";
-  $result = $conexion->query($query);
-
-  if ($result) {
-    $row = $result->fetch_assoc();
-  }
-}
-
-if (isset($_SESSION['carrito'])) {
-  // Si existe, buscamos si el producto ya está agregado
-  if (isset($_GET['id'])) {
-    $arreglo = $_SESSION['carrito'];
-    $encontro = false;
-    $numero = 0;
-
-    for ($i = 0; $i < count($arreglo); $i++) {
-      if ($arreglo[$i]['Id'] == $_GET['id']) {
-        $encontro = true;
-        $numero = $i;
-      }
-    }
-
-    if ($encontro == true) {
-      $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad'] + 1;
-      $_SESSION['carrito'] = $arreglo;
-    } else {
-      // No estaba el registro
-      $nombre = $row['N_PRODUCTO'];
-      $precio = $row['PRECIO'];
-      $imagen = $row['IMG'];
-
-      $arregloNuevo = array(
-        'Id' => $_GET['id'],
-        'Nombre' => $nombre,
-        'Precio' => $precio,
-        'Imagen' => $imagen,
-        'Cantidad' => 1,
-      );
-
-      array_push($arreglo, $arregloNuevo);
-      $_SESSION['carrito'] = $arreglo;
-    }
-  }
-} else {
-  // Creamos la variable de sesión si no existe
-  if (isset($_GET['id'])) {
-    $nombre = $row['N_PRODUCTO'];
-    $precio = $row['PRECIO'];
-    $imagen = $row['IMG'];
-
-    $arreglo[] = array(
-      'Id' => $_GET['id'],
-      'Nombre' => $nombre,
-      'Precio' => $precio,
-      'Imagen' => $imagen,
-      'Cantidad' => 1,
-    );
-
-    $_SESSION['carrito'] = $arreglo;
-  }
-}
-?>
-
-
-<?php
-
-include('config/conexion.php');
 
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 
 if (!isset($_SESSION['Id'])){
-    header("Location: indexCliente.php");
+    header("Location: ../../../Cliente/vistas/Cliente/index.php");
 
 }
 
@@ -93,25 +22,23 @@ $row = $resultado->fetch_assoc();
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="css/style.css" />
+
 
   <!-- Iconos en font awesome -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="../../../Cliente/css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="js/jquery-3.7.1.min.js"></script>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../Cliente/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
@@ -182,7 +109,7 @@ $row = $resultado->fetch_assoc();
 
   <!-- Configuración del navbar -->
 
-  <?php include 'headerCliente.php';?>
+  <?php include('../../../Cliente/vistas/Cliente/headerCliente.php');?>
 
   <!--Carrito de compras-->
 
@@ -263,7 +190,7 @@ $row = $resultado->fetch_assoc();
       </div>
 
       <!-- Footer -->
-      <iframe src="footer/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
+      <iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
 
       <script>
         $(document).ready(function () {
@@ -284,7 +211,7 @@ $row = $resultado->fetch_assoc();
             $(".cant" + id).text("S/ " + mult);
             $.ajax({
               method: 'POST',
-              url: 'actualizarCarrito.php',
+              url: '../../../Servidor/PHP/Cliente/actualizarCarrito.php',
               data: {
                 id: id,
                 cantidad: cantidad,

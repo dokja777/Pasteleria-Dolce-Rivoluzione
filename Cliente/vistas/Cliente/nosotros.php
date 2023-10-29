@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="MVC/Public/Assets/css/style.css" />
-  <link rel="stylesheet" href="css/nosotros.css" />
+  <link rel="stylesheet" href="../../../Cliente//css/style.css" />
+  <link rel="stylesheet" href="../../../Cliente/css/nosotros.css" />
   <!-- Iconos en font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -18,11 +18,11 @@
 
   <?php
 
-  include('config/conexion.php');
+  include('../../../Servidor/conexion.php');
 
   session_start();
   if (!isset($_SESSION['Id'])) {
-    header("Location: indexCliente.php");
+    header("Location: ../../../Cliente/vistas/Cliente/index.php");
 
   }
 
@@ -35,7 +35,7 @@
 
   ?>
   <!-- Configuración del navbar -->
-  <?php include ('headerCliente.php');?>
+  <?php include('../../../Cliente/vistas/Cliente/headerCliente.php');?>
 
   <main class="cuerpo">
     <div class="header">
@@ -121,7 +121,7 @@
               prioridad es satisfacer los antojos de nuestros clientes y nos
               esforzamos constantemente en ofrecer atención de alta calidad.
             </p>
-            <img src="MVC/Public/Assets/img/pastel.png" />
+            <img src="../../../Cliente/recursos/img/pastel.png" />
           </div>
           <br />
           <hr />
@@ -140,7 +140,7 @@
               clientes manteniendo una imagen de alta calidad y distinción en
               nuestra pastelería.
             </p>
-            <img src="MVC/Public/Assets/img/tiramisupng.png" />
+            <img src="../../../Cliente/recursos/img/tiramisupng.png" />
           </div>
         </div>
       </section>
@@ -149,7 +149,7 @@
   </main>
 
   <!---------------------------------------------------- footer --------------------------------------------------->
-  <iframe src="footer/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
+  <iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
 </body>
 
 </html>

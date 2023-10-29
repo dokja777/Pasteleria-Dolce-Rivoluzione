@@ -101,7 +101,7 @@ include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
         </ul>
       </li>
       <li>
-        <a href="listarAdministrador.php">
+        <a href="listarEmpleados.php">
           <i class="fa-solid fa-users-line"></i>
           <span class="link_name">Empleados</span>
         </a>
