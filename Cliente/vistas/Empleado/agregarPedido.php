@@ -1,5 +1,5 @@
 <?php
-include('../Empleado/SessionAbierta.php');
+include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 ?>
 
 
@@ -21,7 +21,7 @@ include('../Empleado/SessionAbierta.php');
      <br>
     <div class="container" >
         <h1 class="text-center"style=" background-color:black;color:white; font-family:var;">Agregar Pedidos</h1>
-    <form style="font-family:var;" action="../Empleado/insertarPedidoEm.php" method="POST" enctype="multipart/form-data" >   
+    <form style="font-family:var;" action="../../../Servidor/PHP/EmpleadoServidor/insertarPedidoEm.php" method="POST" enctype="multipart/form-data" >   
       
     <div class="mb-3"  >
             <label class="form-label"  style="margin-left:1em;font-style:italic;font-size:20px;"  >Empleado : </label>
@@ -35,7 +35,7 @@ include('../Empleado/SessionAbierta.php');
             <select class="form-select mb-3 "  style="background-color:#EAE6CA;border-color:black;"   name="cliente">
             <option selected disabled>-- Seleccionar cliente --</option>
             <?php
-         include ("../config/conexion.php");
+         include ("../../../config/conexion.php");
          $sql = $conexion-> query("SELECT*fROM cliente");
          while($resultado=$sql->fetch_assoc()){
             echo "<option value='".$resultado['ID_CLIENTE']."'>".$resultado['NOMBRE']."</option> ";

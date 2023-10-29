@@ -1,6 +1,6 @@
 <!-- Esto hace que la session se siga manteniendo abierta -->
 <?php
-include('../Empleado/SessionAbierta.php');
+include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 ?>
 <!-- ----------------------------------------------------------- -->
 
@@ -69,7 +69,7 @@ include('../Empleado/SessionAbierta.php');
 
         <tbody>
         <?php
-          require('../Config/conexion.php');
+          require('../../../Config/conexion.php');
 
          
           // Consulta preparada
@@ -98,7 +98,7 @@ include('../Empleado/SessionAbierta.php');
               <a href='../Empleado/editarPedidoEm.php?id=$idpedido' class=\"btn btn-warning\"><i class='fas fa-pencil-alt'></i></a>
               <br>
               <br>
-              <a href='../Empleado/eliminarPedido.php?ID_PEDIDO=$idpedido'class=\"btn btn-danger\"><i class='fas fa-trash-alt'></i>
+              <a href='../../../Servidor/PHP/EmpleadoServidor/eliminarPedido.php?ID_PEDIDO=$idpedido'class=\"btn btn-danger\"><i class='fas fa-trash-alt'></i>
               </a>
               </td>";
 

@@ -1,6 +1,6 @@
 <?php
 // Incluir el archivo de conexión
-include('../Config/conexion.php');
+include('../../../Config/conexion.php');
 
 // Iniciar la sesión
 session_start();
@@ -22,9 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['nombre_usuario'] = $row['N_EMPLEADO'];
 
         // Redirigir al panel principal
-        header('Location: ../Empleado/indexEmpleado.php');
+        header('Location: ../../../Cliente/vistas/Empleado/indexEmpleado.php');
     } else {
-        header('Location: ../Empleado/LoginEmpleado.php');
+        header('Location: ../../../Cliente/vistas/Empleado/LoginEmpleado.php');
     }
 }
 ?>

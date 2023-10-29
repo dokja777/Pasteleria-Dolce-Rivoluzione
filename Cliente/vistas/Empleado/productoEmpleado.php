@@ -1,5 +1,5 @@
 <?php
-include('../Empleado/SessionAbierta.php');
+include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 ?>
 
 
@@ -63,7 +63,7 @@ include('../Empleado/SessionAbierta.php');
 
   <?php
   //  conexion para mostrar los productos
- require("../Config/conexion.php");
+ require("../../../Config/conexion.php");
 
  $sql = $conexion->query("SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK, producto.MEDIDA
  FROM PRODUCTO
@@ -93,7 +93,7 @@ if ($sql) {
         echo "<td>$stock</td>";
         echo "<td>$medida</td>";
         echo "<th>
-        <a href='../Empleado/editarProductoEm.php?id=$idProducto' class=\"btn btn-warning\"> <i class='fas fa-edit'></i></a>
+        <a href='../../../Cliente/vistas/Empleado/editarProductoEm.php?id=$idProducto' class=\"btn btn-warning\"> <i class='fas fa-edit'></i></a>
         <br>
       </th>";
         echo "</tr>";

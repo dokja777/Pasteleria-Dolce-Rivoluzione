@@ -104,7 +104,7 @@
 
 <body>
   <?php
-  include("../config/conexion.php");
+  include("../../../config/conexion.php");
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idPedido = $_POST["idPedido"];
@@ -123,7 +123,7 @@
         // JavaScript para mostrar un mensaje y redirigir
         echo '<script>';
         echo 'alert("Pedido actualizado correctamente.");';
-        echo 'window.location.href = "../Empleado/pedidos.php";';  // Reemplaza "ruta_a_tu_pagina_de_pedidos.php" con la URL correcta
+        echo 'window.location.href = "../../../Cliente/vistas/Empleado/pedidos.php";';  // Reemplaza "ruta_a_tu_pagina_de_pedidos.php" con la URL correcta
         echo '</script>';
     } else {
         echo "Error al actualizar el pedido: " . $stmt->error;
@@ -173,7 +173,7 @@
   <div class="container">
     <h1>Editar Pedido</h1>
 
-    <form action="../Empleado/editarPedidoEm.php" method="POST">
+    <form action="../../../Cliente/vistas/Empleado/editarPedidoEm.php" method="POST">
       <input type="hidden" name="idPedido" value="<?php echo $idPedido; ?>">
 
       <label for="montoFinal">Monto Final</label>

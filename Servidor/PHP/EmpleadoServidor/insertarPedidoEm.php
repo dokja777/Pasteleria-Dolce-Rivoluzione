@@ -1,5 +1,5 @@
 <?php
-include('../Config/conexion.php');
+include('../../../Config/conexion.php');
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,13 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_stmt_execute($stmt)) {
         echo '<script>';
         echo 'alert("Pedido registrado correctamente.");';
-        echo 'window.location.href = "../Empleado/pedidos.php";';  // Reemplaza "ruta_a_tu_pagina_de_pedidos.php" con la URL correcta
+        echo 'window.location.href = "../../../Cliente/vistas/Empleado/pedidos.php";';  // Reemplaza "ruta_a_tu_pagina_de_pedidos.php" con la URL correcta
         echo '</script>';
         
     } else {
         echo '<script>';
         echo 'alert("Pedido no se pudo eliminar correctamente.");';
-        echo 'window.location.href = "../Empleado/agregarPedido.php";';  // Reemplaza "ruta_a_tu_pagina_de_pedidos.php" con la URL correcta
+        echo 'window.location.href = "../../../Cliente/vistas/Empleado/agregarPedido.php";';  // Reemplaza "ruta_a_tu_pagina_de_pedidos.php" con la URL correcta
         echo '</script>';
     }
 

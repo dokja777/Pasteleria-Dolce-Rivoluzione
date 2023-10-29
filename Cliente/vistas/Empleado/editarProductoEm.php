@@ -1,5 +1,5 @@
 <?php
-include('../Empleado/SessionAbierta.php');
+include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 ?>
 
 
@@ -9,7 +9,7 @@ include('../Empleado/SessionAbierta.php');
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/styleAdmin.css">
+  <link rel="stylesheet" href="../../../Cliente/css/styleAdmin.css">
   <title>Editar producto</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -111,10 +111,10 @@ include('../Empleado/SessionAbierta.php');
 </head>
 
 <body>
-<?php include '../headerEmpleado.php';?>
+<?php include '../../../headerEmpleado.php';?>
   <?php
   $imagenExistente = "";
-  include("../config/conexion.php");
+  include("../../../config/conexion.php");
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica si se ha cargado una nueva imagen
@@ -137,7 +137,7 @@ include('../Empleado/SessionAbierta.php');
       // JavaScript para mostrar la ventana emergente y redirigir
       echo '<script>';
       echo 'alert("Producto actualizado correctamente.");';
-      echo 'window.location.href = "../Empleado/productoEmpleado.php";';
+      echo 'window.location.href = "../../../Cliente/vistas/Empleado/productoEmpleado.php";';
       echo '</script>';
     } else {
       echo "Error al actualizar el producto: " . $stmt->error;
@@ -180,7 +180,7 @@ include('../Empleado/SessionAbierta.php');
     <h1>Editar Stock</h1>
 
 
-    <form action="../Empleado/editarProductoEm.php" method="POST">
+    <form action="../../../Cliente/vistas/Empleado/editarProductoEm.php" method="POST">
   <input type="hidden" name="idProducto" value="<?php echo $idProducto; ?>">
 
   <label for="stockP">Stock</label>
@@ -190,7 +190,7 @@ include('../Empleado/SessionAbierta.php');
 </form>
   </div>
 
-  <script src="../js/inicioAdministrador.js"></script>
+  <script src="../../../Cliente/js/inicioAdministrador.js"></script>
 
 
 </body>
