@@ -1,3 +1,11 @@
+<?php
+include('../../../Config/conexion.php');
+include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,12 +13,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="css/styleAdmin.css">
+  <title>Pagina Inicio Administrador</title>
+  <link rel="stylesheet" href="../../../Cliente/css/styleAdmin.css">
   <!-- Iconos en font awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     .card-container {
@@ -61,7 +67,7 @@
   <!-- SIDEBAR -->
   <div class="sidebar close">
     <div class="logo-details">
-      <img src="img/logo.png" alt="" />
+      <img src="../../../Cliente/recursos/img/logo.png" alt="Imagen de un pastel del logo de la empresa" />
       <span class="logo_name">Pastelería Dolce Rivoluzione</span>
     </div>
     <ul class="nav-links">
@@ -125,18 +131,29 @@
       </li>
 
       <li>
-        <div class="profile-details">
-          <div class="profile-content">
-            <i class="fa-solid fa-user"></i>
-          </div>
-          <div class="name-job">
-            <div class="profile_name">Usuario01</div>
-            <div class="job">Administrador</div>
-          </div>
-          <i class='fa-solid fa-arrow-right-from-bracket'></i>
+      <div class="profile-details">
+        <div class="profile-content">
+          <i class="fa-solid fa-user"></i>
         </div>
-      </li>
-    </ul>
+        <div class="name-job">
+          <div class="profile_name">
+            <?php
+            echo $_SESSION['nombre_usuario']; // Mostrar el nombre del usuario
+            ?>
+          </div>
+          <div class="job">Administrador</div>
+        </div>
+        <i class='fa-solid fa-arrow'></i>
+      </div>  
+  </li>
+  <li>
+      <a href="../../../Servidor/PHP/Administrador/cerrarSessionAdmin.php">
+        <i class="fa-solid fa-sign-out"></i> <!-- Icono de cerrar sesión -->
+        <span class="link_name">Cerrar sesión</span>
+      </a>
+    </li>
+      
+  </ul>
   </div>
 
   <!-- HOME -->
@@ -171,7 +188,7 @@
     </div>
   </section>
 
-  <script src="js/inicioAdministrador.js"></script>
+  <script src="../../../Cliente/js/inicioAdministrador.js"></script>
 </body>
 
 </html>
