@@ -63,10 +63,33 @@
       </div>
     </li>
     <li>
-      <a href="../../../Servidor/PHP/EmpleadoServidor/cerrarSession.php">
-        <i class="fa-solid fa-sign-out"></i> <!-- Icono de cerrar sesión -->
-        <span class="link_name">Cerrar sesión</span>
-      </a>
+     <a href="#" onclick="confirmLogout()">
+      <i class="fa-solid fa-sign-out"></i>
+     <span class="link_name">Cerrar sesión</span>
+     </a>
     </li>
+    <script>
+     function confirmLogout(){
+      Swal.fire({
+    title: "¿Estás seguro de que deseas cerrar sesión :( ?",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, cerrar sesión",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Si el usuario hace clic en "Sí, cerrar sesión", redirige al archivo de cierre de sesión
+      window.location.href = "../../../Servidor/PHP/EmpleadoServidor/cerrarSession.php";
+    }
+    // Si el usuario hace clic en "Cancelar", no se hace nada
+  });
+}
+     
+
+
+    </script>
   </ul>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
