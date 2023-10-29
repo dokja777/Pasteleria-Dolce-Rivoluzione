@@ -5,11 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Editar Pedido</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
   <style>
     body {
@@ -120,13 +117,13 @@
     $stmt->bind_param("dssssi", $montoFinal, $fecha, $estado, $metodoPago, $idEmpleado, $idPedido);
 
     if ($stmt->execute()) {
-        // JavaScript para mostrar un mensaje y redirigir
-        echo '<script>';
-        echo 'alert("Pedido actualizado correctamente.");';
-        echo 'window.location.href = "../../../Cliente/vistas/Empleado/pedidos.php";';  // Reemplaza "ruta_a_tu_pagina_de_pedidos.php" con la URL correcta
-        echo '</script>';
+      // JavaScript para mostrar un mensaje y redirigir
+      echo '<script>';
+      echo 'alert("Pedido actualizado correctamente.");';
+      echo 'window.location.href = "../../../Cliente/vistas/Empleado/pedidos.php";';  // Reemplaza "ruta_a_tu_pagina_de_pedidos.php" con la URL correcta
+      echo '</script>';
     } else {
-        echo "Error al actualizar el pedido: " . $stmt->error;
+      echo "Error al actualizar el pedido: " . $stmt->error;
     }
 
     $stmt->close();
@@ -185,21 +182,21 @@
       <label for="estado">Estado</label>
       <select id="estado" name="estado">
         <option value="Pendiente" <?php if ($estado === 'Pendiente')
-          echo 'selected'; ?>>Pendiente</option>
+                                    echo 'selected'; ?>>Pendiente</option>
         <option value="Completado" <?php if ($estado === 'Completado')
-          echo 'selected'; ?>>Completado</option>
+                                      echo 'selected'; ?>>Completado</option>
         <option value="Entregado" <?php if ($estado === 'Entregado')
-          echo 'selected'; ?>>Entregado</option>
+                                    echo 'selected'; ?>>Entregado</option>
       </select>
 
       <label for="metodoPago">Método de Pago</label>
       <select id="metodoPago" name="metodoPago">
         <option value="Crédito" <?php if ($metodoPago === 'Crédito')
-          echo 'selected'; ?>>Crédito</option>
+                                  echo 'selected'; ?>>Crédito</option>
         <option value="Yape" <?php if ($metodoPago === 'Yape')
-          echo 'selected'; ?>>Yape</option>
+                                echo 'selected'; ?>>Yape</option>
         <option value="Paypal" <?php if ($metodoPago === 'Paypal')
-          echo 'selected'; ?>>Paypal</option>
+                                  echo 'selected'; ?>>Paypal</option>
       </select>
 
       <!-- Combobox para el nombre del empleado -->
