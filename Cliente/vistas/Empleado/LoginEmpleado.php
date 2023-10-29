@@ -20,9 +20,9 @@
             <img id="logo" src="../../../Cliente/recursos/img/logo.png" width="80px" alt="Logo de la pasteleria">
           </div>
           <div class="info">
-            <h2>Pateleria Dolce Rivoluzione</h2>
+            <h2>Pasteleria Dolce Rivoluzione</h2>
             <h4> Login Empleados</h4>
-            <img src="../../../Cliente/recursos/img/pastel.png" width="40px" alt="Descripción de la imagen">
+            <img src="../../../Cliente/recursos/img/pastel.png" width="300px" alt="Descripción de la imagen">
           </div>
         </div>
       </div>
