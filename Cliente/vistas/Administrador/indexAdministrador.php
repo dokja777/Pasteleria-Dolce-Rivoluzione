@@ -147,11 +147,31 @@ include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
       </div>  
   </li>
   <li>
-      <a href="../../../Servidor/PHP/Administrador/cerrarSessionAdmin.php">
-        <i class="fa-solid fa-sign-out"></i> <!-- Icono de cerrar sesión -->
-        <span class="link_name">Cerrar sesión</span>
-      </a>
-    </li>
+  <a href="#" onclick="confirmLogout()">
+    <i class="fa-solid fa-sign-out"></i>
+    <span class="link_name">Cerrar sesión</span>
+  </a>
+</li>
+
+<script>
+function confirmLogout() {
+  Swal.fire({
+    title: "¿Estás seguro de que deseas cerrar sesión?",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, cerrar sesión",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Si el usuario hace clic en "Sí, cerrar sesión", redirige al archivo de cierre de sesión
+      window.location.href = "../../../Servidor/PHP/Administrador/cerrarSessionAdmin.php";
+    }
+    // Si el usuario hace clic en "Cancelar", no se hace nada
+  });
+}
+</script>
+
       
   </ul>
   </div>
@@ -189,6 +209,9 @@ include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
   </section>
 
   <script src="../../../Cliente/js/inicioAdministrador.js"></script>
+      <!-- Scrip para diseño del mensaje de cerrar session -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>
