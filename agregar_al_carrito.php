@@ -101,6 +101,7 @@ $row = $resultado->fetch_assoc();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/style.css" />
 
   <!-- Iconos en font awesome -->
   <link rel="stylesheet" href="css/style.css" />

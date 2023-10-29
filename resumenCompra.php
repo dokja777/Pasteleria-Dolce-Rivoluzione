@@ -186,6 +186,10 @@ $row = $resultado->fetch_assoc();
                         <label for="telefono">Teléfono:</label>
                         <input type="tel" id="telefono" value="<?php echo utf8_decode($row['Telefono']); ?>">
                     </p>
+                    <p>
+                        <label for="fecha_recojo">Fecha de recojo:</label>
+                        <input type="date" id="fecha_recojo" name="fecha"  min="<?php echo date('Y-m-d', strtotime('+3 days')); ?>"/>
+                    </p>
                 </section>
                 <br>
                 <br>
