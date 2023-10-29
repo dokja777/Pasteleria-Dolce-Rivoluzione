@@ -16,7 +16,7 @@
 
 <body>
 	<!-- Configuración del navbar -->
-
+	<?php include '../../../Cliente/vistas/Cliente/headerCliente.php'; ?>
 	<!-- Sliders -->
 
 	<section class="banner">
@@ -43,25 +43,25 @@
 	<div class="container__masVendidos">
 		<?php include('../../../Servidor/PHP/Cliente/ProductosMasVendidos.php'); ?>
 		<?php foreach ($products as $product) { ?>
-		<div class="card">
-			<img src="data:image/jpg;base64, <?php echo base64_encode($product['IMG']); ?>" />
-			<h4>
-				<?php echo $product['N_PRODUCTO']; ?>
-			</h4>
-			<p><a>S/</a>
-				<?php echo $product['PRECIO']; ?>
-			</p>
-			<a href="DetalleProducto.php?id=<?php echo $product['ID_PRODUCTO']; ?>">
-				<button class="ver-detalle">Ver Detalle del Producto</button>
-			</a>
-		</div>
+			<div class="card">
+				<img src="data:image/jpg;base64, <?php echo base64_encode($product['IMG']); ?>" />
+				<h4>
+					<?php echo $product['N_PRODUCTO']; ?>
+				</h4>
+				<p><a>S/</a>
+					<?php echo $product['PRECIO']; ?>
+				</p>
+				<a href="DetalleProducto.php?id=<?php echo $product['ID_PRODUCTO']; ?>">
+					<button class="ver-detalle">Ver Detalle del Producto</button>
+				</a>
+			</div>
 		<?php } ?>
 	</div>
 
 
 
 	<!-- Footer -->
-
+	<iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
 
 </body>
 

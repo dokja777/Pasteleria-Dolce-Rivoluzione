@@ -1,6 +1,6 @@
 <!-- Esto hace que la session se mantega abierta en cada pagina  -->
 <?php
-include('../Empleado/SessionAbierta.php');
+include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 ?>
 <!-- --------------------------------------------------------------------- -->
 
@@ -12,11 +12,9 @@ include('../Empleado/SessionAbierta.php');
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Empleado</title>
-  <link rel="stylesheet" href="../css/styleAdmin.css">
+  <link rel="stylesheet" href="../../../Cliente/css/styleAdmin.css">
   <!-- Iconos en font awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     .card-container {
@@ -67,7 +65,7 @@ include('../Empleado/SessionAbierta.php');
 
 <body>
   <!-- SIDEBAR -->
-  <?php include '../headerEmpleado.php';?>
+  <?php include '../../../Cliente/vistas/Empleado/headerEmpleado.php'; ?>
 
   <!-- HOME -->
   <section class="home-section">
@@ -90,14 +88,14 @@ include('../Empleado/SessionAbierta.php');
         <i class="fas fa-users"></i>
         <h2>Usuarios</h2>
       </a>
-      
+
     </div>
-    
+
   </section>
 
-  
 
-  <script src="../js/inicioAdministrador.js"></script>
+
+  <script src="../../../Cliente/js/inicioAdministrador.js"></script>
 </body>
 
 </html>

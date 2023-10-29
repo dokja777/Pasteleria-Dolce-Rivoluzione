@@ -6,7 +6,7 @@
   list-style: none;
 }
 
-/***** nav bar *****/
+/** nav bar **/
 img {
   width: 100%;
 }
@@ -113,7 +113,7 @@ header .header-right .hamburger div {
   }
 }
 
-/***** FOOTER *****/
+/** FOOTER **/
 
 footer {
   width: 100%;
@@ -180,4 +180,111 @@ footer {
   border: none;
   height: 1px;
   background-color: #7a7a7a;
+}
+
+/*PERFIL*/
+
+/*ICONO USUARIO*/
+.fa-circle-user {
+  font-size: 100px; /* Establece el tamaño del icono */
+  width: 100px; /* Establece el ancho */
+  height: 100px; /* Establece la altura */
+  color: #783f04;
+}
+
+body.PerfilCliente {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-container {
+  display: flex;
+  align-items: center;
+  padding: 5%;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+.nombre {
+  margin-left: 20px;
+  font-size: 23px;
+}
+
+/* Estilos para centrar la sección en el centro vertical y horizontal */
+main.grid-container {
+  display: flex;
+  flex-direction: column; /* Cambiamos a flex-direction: column para centrar verticalmente */
+  align-items: center; /* Centramos horizontalmente */
+  justify-content: center; /* Centramos verticalmente */
+  padding: 0; /* Eliminamos el padding para evitar espacios innecesarios */
+  width: 70%;
+}
+
+h1 {
+  color: #783f04;
+}
+
+h2 {
+  font-size: 27px;
+  margin: 20px;
+  text-align: center;
+}
+
+.perfil {
+  background-color: #fff;
+  width: 60%;
+  padding: 70px;
+
+  box-shadow: 0 0 5px rgba(172, 75, 37, 0.384);
+  font-size: 18px;
+  color: #000000;
+  text-align: left; /* Centramos el contenido horizontalmente */
+}
+li {
+  margin: 25px;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s; /* Agregamos una transición suave */
+}
+
+button:hover {
+  background-color: #9b560d; /* Cambiamos el color de fondo al pasar el mouse */
+  border-color: #9b560d;
+}
+
+
+/* Estilo para el botón de Cerrar Sesión */
+.cerrar-sesion-button {
+  display: block;
+  margin: 0 auto; /* Centra el botón horizontalmente */
+  padding: 10px 20px;
+  background-color: #8B4513; /* Marrón */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.cerrar-sesion-button:hover {
+  background-color: #654321; /* Cambia de color al pasar el ratón por encima */
 }

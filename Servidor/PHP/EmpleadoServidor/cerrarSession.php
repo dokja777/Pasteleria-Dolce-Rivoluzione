@@ -6,5 +6,5 @@ session_start();
 session_destroy();
 
 // Redirige a la página de inicio de sesión o a la que prefieras
-header('Location: ../Empleado/LoginEmpleado.php');
+header('Location: ../../../Cliente/vistas/Empleado/LoginEmpleado.php');
 ?>
