@@ -19,10 +19,12 @@
         echo "<td>$nombreEmpleado</td>";
         echo "<td>$contraseñaEmpleado</td>";
         echo "<th>
-        <a href='editarEmpleado.php?ID_ADMIN=$idEmpleado' class=\"btn btn-warning\">Editar</a>
+        <a href='../../../Cliente/vistas/Administrador/editarEmp.php?ID_EMPLEADO=$idEmpleado' class=\"btn btn-warning\">Editar</a>
         <br>
         <br>
-        <a href='eliminarEmpleado.php?ID_ADMIN=$idEmpleado'class=\"btn btn-danger\">Eliminar</a>
+        <a href='../../../Servidor/PHP/Administrador/eliminarEmpleado.php?ID_EMPLEADO=$idEmpleado' class=\"btn btn-danger eliminar_empleado\" > Eliminar </a>
+
+
       </th>";
             echo "</tr>";
           }

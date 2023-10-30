@@ -102,7 +102,8 @@
     }
   </style>
 
-  
+  <!-- script para confirmacion de eliminar un empleado -->
+  <script src="../../../Cliente/js/confirma_elim_emp.js"> </script>
 
   <!-- Incluir Bootstrap JS y jQuery (opcional) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
