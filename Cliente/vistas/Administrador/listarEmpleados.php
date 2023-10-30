@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="StyleLista.css">
+  <link rel="stylesheet" href="../../../Cliente/css/StyleLista.css">
 
 </head>
-<title>Lista de administradores  </title>
+<title>Lista de Empleados  </title>
 </head>
 
 <body  style="background-color:#EAE6CA;">
@@ -83,8 +83,8 @@
 
 
         <?php
-        //  conexion para mostrar los productos
-        require("config/conexion.php");
+        //  conexion para mostrar los empleados
+        include('../../../Servidor/conexion.php');
 
         $sql = $conexion->query("SELECT ID_EMPLEADO, USUARIO_EMPLEADO, N_EMPLEADO, CONTRASEÑA_EMPLEADO FROM empleado;");
 
@@ -121,7 +121,7 @@
       </tbody>
     </table>
     <div class="container">
-      <a href="agregarEmpleado.php" class="btn btn-success">Agregar Empleado</a>
+      <a href="../../../Cliente/vistas/Administrador/agregarEmpleado.php" class="btn btn-success">Agregar Empleado</a>
     </div>
 
   </div>

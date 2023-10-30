@@ -1,8 +1,6 @@
 <?php
 include('../../../Config/conexion.php');
 include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
-
-
 ?>
 
 
@@ -72,12 +70,12 @@ include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
     </div>
     <ul class="nav-links">
       <li>
-        <a href="indexAdministrador.php">
+        <a href="../../../Cliente/vistas/Administrador/indexAdministrador.php">
           <i class='fa-solid fa-house'></i>
           <span class="link_name">Inicio</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a href="indexAdministrador.php" class="link_name">Inicio</a></li>
+          <li><a href="../../../Cliente/vistas/Administrador/indexAdministrador.php" class="link_name">Inicio</a></li>
         </ul>
       </li>
       <li>
@@ -101,12 +99,12 @@ include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
         </ul>
       </li>
       <li>
-        <a href="listarEmpleados.php">
+        <a href="../../../Cliente/vistas/Administrador/listarEmpleados.php">
           <i class="fa-solid fa-users-line"></i>
           <span class="link_name">Empleados</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a href="listarEmpleados.php" class="link_name">Empleados</a></li>
+          <li><a href="../../../Cliente/vistas/Administrador/listarEmpleados.php" class="link_name">Empleados</a></li>
         </ul>
       </li>
       <li>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Agregar Productos</title>
-    <link rel="stylesheet" href="StyleLista.css">
+    <link rel="stylesheet" href="../../../Cliente/css/StyleLista.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
                                    
@@ -31,7 +31,7 @@
           <a class="btn btn-outline-light" href="listarAdministrador.php" style="color:#783f04;margin-left:2em;font-weight:600;" >Usuarios</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-light" href="listarEmpleados.php" style="color:#783f04;margin-left:2em;font-weight:600;" >Empleados</a>
+          <a class="btn btn-outline-light" href="../../../Cliente/vistas/Administrador/listarEmpleados.php" style="color:#783f04;margin-left:2em;font-weight:600;" >Empleados</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-outline-light" href="demanda.php" style="color:#783f04;margin-left:2em;font-weight:600;">Demandas</a>
@@ -57,7 +57,7 @@
      <br>
     <div class="container" >
         <h1 class="text-center"style=" background-color:black;color:white; font-family:var;">Agregar Empleados</h1>
-    <form style="font-family:var;" action="insertarEmpleado.php" method="POST" enctype="multipart/form-data" >   
+    <form style="font-family:var;" action="../../../Servidor/PHP/Administrador/insertarEmpleado.php" method="POST" enctype="multipart/form-data" >   
         
         <!-- aqui se muestra los espacios para ingresar el usuario, nombre, contraseña del empleado  -->
         <!-- es el formulario de registro  --> 
@@ -83,7 +83,7 @@
          listarEmpleado.php  -->
         <div class="text-center" style="margin-bottom:1em;">
         <button type="submit" class="btn btn-danger"    >Agregar</button>
-        <a href="listarEmpleados.php" class="btn btn-dark">Volver</a>
+        <a href="../../../Cliente/vistas/Administrador/listarEmpleados.php" class="btn btn-dark">Volver</a>
         </div>   
         
     </form>

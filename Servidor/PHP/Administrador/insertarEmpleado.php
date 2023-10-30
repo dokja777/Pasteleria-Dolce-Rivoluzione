@@ -1,5 +1,5 @@
 <?php
-include("config/conexion.php");
+include('../../../Servidor/conexion.php');
 
 
 $usuarioE = $_POST['usuarioE'];
@@ -11,6 +11,6 @@ $rta = mysqli_query($conexion, $sql);
 if(!$rta){
     echo "No se Inserto!";
 } else{
-    header("Location: listarEmpleados.php");
+    header("Location: ../../../Cliente/vistas/Administrador/listarEmpleados.php");
 }
 ?>

@@ -10,6 +10,9 @@
 </head>
 
 <body>
+	 <!-- Configuración del navbar -->
+	 <?php include('../../../Cliente/vistas/Cliente/headerCliente.php');?>
+
 	<!-- Catálogo de Productos -->
 	<h1 class="title">Catálogo de Productos</h1>
 	<div class="container__productos">
@@ -28,6 +31,8 @@
 		<?php } ?>
 	</div>
 
+	<!-- Footer -->
+	<iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
 </body>
 
 </html>
