@@ -90,12 +90,12 @@ include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
         </ul>
       </li>
       <li>
-        <a href="listarAdministrador.php">
+        <a href="../../../Cliente/vistas/Administrador/listarAdministrador.php">
           <i class='fas fa-users'></i>
           <span class="link_name">Usuarios</span>
         </a>
         <ul class="sub-menu blank">
-          <li><a href="listarAdministrador.php" class="link_name">Usuarios</a></li>
+          <li><a href="../../../Cliente/vistas/Administrador/listarAdministrador.php" class="link_name">Usuarios</a></li>
         </ul>
       </li>
       <li>
