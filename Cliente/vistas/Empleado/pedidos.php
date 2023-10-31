@@ -14,33 +14,14 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
   <title>Tabla de pedidos </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="../../../Cliente/css/styleEmpleado.css">
+  <script src="../../../Cliente/js/inicioEmpleado.js"></script>
 </head>
 
 
 <body>
   <!-------- incluir el  navbar ----->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#f9cb9c;">
-    <div class="container-fluid" style="background-color:#f9cb9c;">
-      <img src="../../../Cliente/recursos/img/logo.png" alt="" style="width:5em ;">
-      <a class="navbar-brand" href="indexAdministrador.php" style="font-family:var;color:#783f04;margin-left:1em;font-weight:600;font-size:22px;">Pastelería Dolce Rivoluzione</a>
-
-      <div class="collapse navbar-collapse" id="bar">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="btn btn-outline-light" href="../Empleado/indexEmpleado.php" aria-current="page" style="color:#783f04;margin-left:3em;font-weight:600;">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-outline-light" href="../Empleado/pedidos.php" style="margin-left:2em;color:#783f04;font-weight:600;">Pedidos</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-outline-light" href="../Empleado/productoEmpleado.php" style="color:#783f04;margin-left:2em;font-weight:600;">Productos </a>
-          </li>
-        </ul>
-
-      </div>
-    </div>
-  </nav>
+  <?php include '../../../Cliente/vistas/Empleado/headerEmpleado.php'; ?>
 
   <style>
     #bar a {
@@ -65,6 +46,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
           <th scope="col" style="background-color:#f9cb9c;">Metodo de pago</th>
           <th scope="col" style="background-color:#f9cb9c;">Estado</th>
           <th scope="col" style="background-color:#f9cb9c;">Acciones</th>
+          <th scope="col" style="background-color:#f9cb9c;">Detalle Pedido</th>
         </tr>
       </thead>
 
@@ -102,6 +84,9 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
               <a href='../../../Servidor/PHP/EmpleadoServidor/eliminarPedido.php?ID_PEDIDO=$idpedido'class=\"btn btn-danger\"><i class='fas fa-trash-alt'></i>
               </a>
               </td>";
+              echo "<td>
+              <a href='../Empleado/detallePedido.php?id=$idpedido' class=\"btn btn-success\">Ver detalle de pedido</a>
+                </td>";
 
             echo "</tr>";
           }
@@ -132,6 +117,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
   </style>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="../../../Cliente/js/inicioEmpleado.js"></script>
 </body>
 
 </html>
