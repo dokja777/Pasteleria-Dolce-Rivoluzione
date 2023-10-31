@@ -13,52 +13,10 @@ include('../../../Servidor/PHP/Administrador/SessionAbiertaAdmin.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pagina Inicio Administrador</title>
   <link rel="stylesheet" href="../../../Cliente/css/styleAdmin.css">
+  <link rel="stylesheet" href="../../../Cliente/css/styleIndexAdministrador.css">
   <!-- Iconos en font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <style>
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      border-bottom: none;
-    }
-
-    .card {
-      border: 2px solid #783f04;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 10px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      background-color: white;
-      width: calc(50% - 20px);
-    }
-
-    .card i {
-      font-size: 36px;
-      color: #783f04;
-      margin-bottom: 10px;
-    }
-
-    .card h2 {
-      color: #783f04;
-      font-size: 1.5rem;
-      margin: 10px
-    }
-
-    @media (max-width: 768px) {
-      .card-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .card {
-        width: 100%;
-        margin: 10px 0;
-      }
-    }
-  </style>
 </head>
 
 <body>
