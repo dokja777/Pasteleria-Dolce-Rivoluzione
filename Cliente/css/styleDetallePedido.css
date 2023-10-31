@@ -1,0 +1,46 @@
+/* Estilo base común a todas las pantallas */
+.img-small {
+  max-width: 40%;
+  max-height: 40%;
+  object-fit: contain;
+  padding: 0px;
+  transition: filter 0.3s;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  width: fit-content;
+}
+
+.table-container {
+  margin-left: 77px;
+}
+
+.table {
+  padding: 20px 20px;
+}
+
+/* Estilo para pantallas pequeñas (ejemplo: dispositivos móviles) */
+@media (max-width: 768px) {
+  .img-small {
+    max-width: 80%;
+    max-height: 80%;
+  }
+}
+
+/* Estilo para pantallas medianas (ejemplo: tablets) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .img-small {
+    max-width: 60%;
+    max-height: 60%;
+  }
+}
+
+/* Estilo para pantallas grandes (ejemplo: computadoras de escritorio) */
+@media (min-width: 992px) {
+  .img-small {
+    max-width: 40%;
+    max-height: 40%;
+  }
+}
