@@ -1,0 +1,212 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Roboto','sans-serif';
+    background-color: rgb(221, 217, 212);
+}
+
+
+button{
+    padding: 5px 15px ;
+    font-size:4vw;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 9px;
+    box-shadow: 2px 2px 10px black;
+    background-color: coral;
+    letter-spacing: 0.2em;
+   
+}
+
+
+form :hover{
+    background-color: rgb(255, 106, 52);
+}
+
+ .lefMid th{
+    color: brown;
+}
+.lefMid td{
+    color: rgb(173, 84, 51);
+}
+
+.fa-circle-user {
+    font-size: 100px; /* Establece el tamaño del icono */
+    width: 100px; /* Establece el ancho */
+    height: 100px; /* Establece la altura */
+    color: #783f04;
+}
+
+h1{font-size:2.3em ; color: #783f04; display: flex; align-items: center;}
+ul{ font-size: 1.3em; list-style: none; } 
+h2{color: #783f04; font-size: 5.5vw;}
+p{font-size: 1.1em; color: black;}
+h3{font-size: 1.29em;}
+a{text-decoration: none; color: black; }
+ul :hover{
+   color:  rgb(255, 106, 52) ;
+}
+
+.containerPrincipal{
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    align-items: center;
+    
+}
+
+.izquierda{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh ;
+    text-align: center;
+    margin-bottom: 50px;
+
+    
+}
+ .izquierda #logo{
+    margin:0;
+    margin-top: 12px;
+     
+}
+
+.derecha{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  height: 90vh;  
+}
+
+.derecha .grid{
+    display: flex;
+    align-items: center;
+    
+}
+
+form{
+    margin-left: 18px;
+    margin-bottom: 9px;
+}
+
+.container1{
+    display: flex;
+    flex-direction: column;
+ }
+
+.top{
+    margin-top: 19px;
+    border: 1px solid rgb(250, 108, 56);
+    padding: 10px  8px;
+    background-color: rgb(253, 168, 137);
+}
+
+.lefMid{
+    border: 1px solid rgb(250, 108, 56);
+    padding: 10px  8px;
+}
+
+.top .total{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width:720px){
+
+    .containerPrincipal{
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        align-items: center;
+        
+    }
+
+    .izquierda{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 40vh ; 
+        position: relative;
+        left: -40px;
+        text-align: center;
+        top: 40%;
+    }
+    .derecha{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        top: 70%;
+        position: relative;
+      }
+
+      .container1{
+        display: flex;
+        flex-direction: column;
+        width: 110%;
+     }
+     .top .total{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+       
+    }
+
+    button{
+        padding: 5px 15px ;
+        font-size:16px;
+        font-weight: bold;
+        border: 2px solid black;
+        border-radius: 9px;
+        box-shadow: 2px 2px 10px black;
+        background-color: coral;
+        letter-spacing: 0.2em;
+       
+    }
+
+    h2{color: #783f04; font-size: 35px;}
+    form{
+        margin-left: 200px;
+        margin-bottom: 9px;
+    }
+    
+    .izquierda i{
+       position: relative;
+       left: -155px;
+       top: -90px;
+    }
+    .fa-circle-user {
+        font-size: 100px; /* Establece el tamaño del icono */
+        width: 100px; /* Establece el ancho */
+        height: 100px; /* Establece la altura */
+        color: #783f04;
+        position: relative;
+        
+    }
+
+    h1 {
+        font-size: 2.3em;
+        color: #783f04;
+        display: flex;
+        position: relative;
+        margin-left: 30px;
+        top: -160px;
+        
+    }
+   
+    ul{
+        position: relative;
+        margin-right: 100px;
+        margin-top: -130px;
+    }
+    li{
+        padding-top: 90px;
+    }
+
+
+}

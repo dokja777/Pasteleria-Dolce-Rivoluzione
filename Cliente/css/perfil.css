@@ -205,7 +205,8 @@ body.PerfilCliente {
 
 .grid-container {
   display: flex;
-  align-items: center;
+  position: relative;
+  
   padding: 5%;
 }
 
