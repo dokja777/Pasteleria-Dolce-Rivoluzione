@@ -19,7 +19,7 @@
         echo "<td>$nombreEmpleado</td>";
         echo "<td>$contraseñaEmpleado</td>";
         echo "<th>
-        <a href='../../../Cliente/vistas/Administrador/editarEmp.php?ID_EMPLEADO=$idEmpleado' class=\"btn btn-warning\">Editar</a>
+        <a href='../../../Cliente/vistas/Administrador/editarEmp.php?idE=$idEmpleado&usuarioE=$usuarioEmpleado&nombreE=$nombreEmpleado&contraseñaE=$contraseñaEmpleado' class=\"btn btn-warning\">Editar</a>
         <br>
         <br>
         <a href='../../../Servidor/PHP/Administrador/eliminarEmpleado.php?ID_EMPLEADO=$idEmpleado' class=\"btn btn-danger eliminar_empleado\" > Eliminar </a>
