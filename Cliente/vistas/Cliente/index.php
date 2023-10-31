@@ -1,3 +1,7 @@
+<?php
+include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
+
+?>
 
 
 

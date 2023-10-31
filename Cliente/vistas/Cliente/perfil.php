@@ -1,23 +1,7 @@
 <?php
-
-include('../../../config/conexion.php');
-
-session_start();
-if (!isset($_SESSION['Id'])){
-    header("Location: index.php");
-
-}
-
-$iduser = $_SESSION['Id'];
-
-$sql = "SELECT ID_CLIENTE, NOMBRE, Apellido, NUMERO_DOC, Telefono, Correo FROM cliente WHERE ID_CLIENTE = '$iduser' ";
-
-$resultado = $conexion->query($sql);
-$row = $resultado->fetch_assoc();
+include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -71,8 +55,12 @@ $row = $resultado->fetch_assoc();
                         <li><i class="fa-solid fa-envelope"></i> Correo electrónico: <?php echo utf8_decode($row['Correo']); ?></li>
                         
                     </ul>
-                    
-                    <button>Editar</button>
+                    <form action="">
+                    <button>Editar</button> 
+                    </form>
+                    <form action="../../../Cliente/vistas/Cliente/historialPedido.php">
+                        <button>Pedidos</button>
+                    </form>
                 </section>
             </main>
 

@@ -1,3 +1,7 @@
+<?php
+include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +42,7 @@
         <div class="derecha">
             <div class="grid">
                 <h2> <strong>Mis Pedidos</strong> </h2>
-                <form action="../../../Cliente/vistas/Cliente/perfil.php"">
+                <form action="../../../Cliente/vistas/Cliente/perfil.php">
                     <button> <i class=" fas fa-arrow-left"></i>Pefil </button>
                 </form>
             </div>
@@ -46,8 +50,11 @@
 
             <div class="container1">
                 <div class="top">
-                    <p><strong>Fecha de Compra : xxxxxxxxxxxxxxx</strong></p>
-                    <p><strong>Metodo Pago :xxxxxxxxxxxxxxxxxxxx </strong></p>
+                    <p><strong>Fecha de Compra :</strong>  
+                    <?php echo ($row['FECHA']); ?>
+                    <p><strong>Metodo Pago : </strong>
+                    <?php echo ($row['METODO_PAGO']); ?>
+                    </p>
                     <p class="total"><strong>Total de compra : </strong> $00.00</p>
                 </div>
                 <div class="lefMid">
