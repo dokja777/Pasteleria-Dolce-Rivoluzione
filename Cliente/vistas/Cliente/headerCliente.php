@@ -2,7 +2,7 @@
   <div class="header-left">
     <div class="logo">
       <a href="../../../Cliente/vistas/Cliente/index.php">
-        <img src="../../../Cliente/recursos/img/logo.png" alt="" />
+        <img class="imglogo" src="../../../Cliente/recursos/img/logo.png" alt="" />
       </a>
     </div>
     <nav>
