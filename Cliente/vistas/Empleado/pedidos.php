@@ -85,7 +85,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
               </a>
               </td>";
               echo "<td>
-              <a href='../Empleado/detallePedido.php?id=$idpedido' class=\"btn btn-success\">Ver detalle de pedido</a>
+              <a href='../Empleado/detallePedidoEm.php?id=$idpedido' class=\"btn btn-success\">Ver detalle de pedido</a>
                 </td>";
 
             echo "</tr>";
