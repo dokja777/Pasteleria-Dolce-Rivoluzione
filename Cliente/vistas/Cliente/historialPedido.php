@@ -41,13 +41,12 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
 
         <div class="derecha">
             <div class="grid">
-                <h2> <strong>Mis Pedidos</strong> </h2>
+                <h2> <strong>Mi Pedidos</strong> </h2>
                 <form action="../../../Cliente/vistas/Cliente/perfil.php">
                     <button> <i class=" fas fa-arrow-left"></i>Pefil </button>
                 </form>
             </div>
             
-
             <?php include('../../../Servidor/PHP/Cliente/historial.php'); ?>
 
         </div>
