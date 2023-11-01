@@ -21,7 +21,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 
 <body>
   <!-------- incluir el  navbar ----->
-  <?php include '../../../Cliente/vistas/Empleado/headerEmpleado.php'; ?>
+  <?php include '../../../Cliente/vistas/Empleado/headerSecundario.php'; ?>
 
   <style>
     #bar a {

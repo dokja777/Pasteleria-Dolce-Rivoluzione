@@ -15,6 +15,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link rel="stylesheet" href="../../../Cliente/css/styleEmpleado.css">
+	
 	<link rel="stylesheet" href="../../../Cliente/css/styleDetallePedido.css">
 	<script src="../../../Cliente/js/inicioEmpleado.js"></script>
 </head>
@@ -52,6 +53,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 			<a href="agregarDetallePedido.php" class="btn btn-success">Agregar Detalle Pedido</a>
 		</div>
 	</div>
+	
 </body>
 
 </html>
