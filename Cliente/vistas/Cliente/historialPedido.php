@@ -31,7 +31,7 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
         <div class="containerPrincipal">
         <div class="izquierda">
             <i class="fa-solid fa-circle-user" id="logo"></i>
-            <h1><strong>Hola , Usuario</strong> </h1>
+            <h1><strong>Hola , <?php echo ($row['NOMBRE']); ?></strong> </h1>
             <ul>
                 <li><a href="#">Mi Perfil</a></li>
                 <li><a href="#">Mis pedidos</a></li>
@@ -48,41 +48,7 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
             </div>
             
 
-            <div class="container1">
-                <div class="top">
-                    <p><strong>Fecha de Compra :</strong>  
-                    <?php echo ($row['FECHA']); ?>
-                    <p><strong>Metodo Pago : </strong>
-                    <?php echo ($row['METODO_PAGO']); ?>
-                    </p>
-                    <p class="total"><strong>Total de compra : </strong> $00.00</p>
-                </div>
-                <div class="lefMid">
-                    <h3><strong>Productos</strong></h3>
-                    <div class="table-responsive">
-                        <table class="table  table-borderless table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Nombre del Producto</th>
-                                    <th scope="col">Precio</th>
-                                    <th scope="col">Cantidad</th>
-                                    <th scope="col">Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td scope="row">1</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>S/ 15</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            <?php include('../../../Servidor/PHP/Cliente/historial.php'); ?>
 
         </div>
 
@@ -93,6 +59,8 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+
+        
 </body>
 
 </html>

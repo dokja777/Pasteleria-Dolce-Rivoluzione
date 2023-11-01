@@ -1,4 +1,5 @@
 <?php
+include('../../../Config/conexion.php');
 include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
 
 ?>
@@ -35,7 +36,7 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
                     <i class="fa-solid fa-circle-user"></i>
                 </div>
                 <div class="nombre">
-                    <h1>Hola, <?php echo utf8_decode($row['NOMBRE']); ?></h1>
+                    <h1>Hola, <?php echo ($row['NOMBRE']); ?></h1>
                 </div>
             </section>
         
@@ -48,11 +49,11 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
                 <section class="perfil">
                     <h2>Mi Perfil</h2>
                     <ul>
-                        <li><i class="fa-solid fa-user"></i> Nombre: <?php echo utf8_decode($row['NOMBRE']); ?></li>
-                        <li><i class="fa-regular fa-user"></i> Apellido: <?php echo utf8_decode($row['Apellido']); ?></li>
-                        <li><i class="fa-solid fa-address-card"></i> Número de documento: <?php echo utf8_decode($row['NUMERO_DOC']); ?></li>
-                        <li><i class="fa-solid fa-phone"></i> Número de teléfono: <?php echo utf8_decode($row['Telefono']); ?></li>
-                        <li><i class="fa-solid fa-envelope"></i> Correo electrónico: <?php echo utf8_decode($row['Correo']); ?></li>
+                        <li><i class="fa-solid fa-user"></i> Nombre: <?php echo ($row['NOMBRE']); ?></li>
+                        <li><i class="fa-regular fa-user"></i> Apellido: <?php echo ($row['APELLIDO']); ?></li>
+                        <li><i class="fa-solid fa-address-card"></i> Número de documento: <?php echo ($row['NUMERO_DOC']); ?></li>
+                        <li><i class="fa-solid fa-phone"></i> Número de teléfono: <?php echo ($row['TELEFONO']); ?></li>
+                        <li><i class="fa-solid fa-envelope"></i> Correo electrónico: <?php echo ($row['CORREO']); ?></li>
                         
                     </ul>
                     <form action="">
@@ -83,45 +84,7 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
 
 
     <!-- Footer -->
-    <footer>
-        <div class="container__footer">
-            <div class="box__footer">
-                <div class="logo">
-                    <img src="img/logo.png" alt="" />
-                </div>
-            </div>
-            <div class="box__footer">
-            <h2>Nosotros</h2>
-            <a href="nosotros.html">¿Quiénes somos?</a>
-            <a href="horarioAtencion.html">Horarios de Atención</a>
-            <a href="politicas_privacidad">Política de privacidad</a>
-            <a href="#">Política de cookies</a>
-            <a href="#">Libro de reclamaciones</a>
-          </div>
-    
-          <div class="box__footer">
-            <h2>Contáctanos</h2>
-            <a href="#"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a>
-            <a href="mailto:dolcerivoluzionepasteleria@gmail.com"><i class="fa-regular fa-envelope"></i> Correo</a>
-            <a href="#"><i class="fa-solid fa-phone"></i> Teléfono</a>
-            <a href="https://www.google.com/maps?q=Av+San+Juan+N%C2%B0+1061,+SJM+15801" target="_blank">
-              <i class="fa-solid fa-location-dot"></i> Av San Juan N° 1061, SJM 15801
-            </a>
-          </div>
-
-            <div class="box__footer">
-                <h2>Síguenos</h2>
-                <a href="#"><i class="fab fa-facebook-square"></i> Facebook</a>
-                <a href="#"><i class="fab fa-twitter-square"></i> Twitter</a>
-                <a href="#"><i class="fab fa-instagram-square"></i> Instagram</a>
-            </div>
-        </div>
-
-        <div class="box__copyright">
-            <hr />
-            <p>Todos los derechos reservados © 2023 <b>Pastelería Dolce Rivoluzione</b></p>
-        </div>
-    </footer>
+    <iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
 
 </body>
 
