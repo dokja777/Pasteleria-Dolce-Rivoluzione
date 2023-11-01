@@ -85,7 +85,7 @@
         position: relative;
       }
 
-       #H {
+       a  {
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -102,7 +102,7 @@
         font-size: 17px;
       }
 
-       #H :hover {
+       a :hover {
         background-color: lightsalmon;
         font-size: 20px;
         box-shadow: 2px 2px 7px orangered;
