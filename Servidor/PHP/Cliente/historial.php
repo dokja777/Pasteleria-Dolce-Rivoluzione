@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
         echo '</thead>';
         echo '<tbody>';
         echo '<tr>';
-        echo '<td style="width:90px; "; ><img src="data:image/jpg;base64, ' . base64_encode($row['IMG']) . '"></td>';
+        echo '<td><img  style="width:90px; "  src="data:image/jpg;base64, ' . base64_encode($row['IMG']) . '"></td>';
         echo '<td >' . $row['N_PRODUCTO'] . '</td>';
         echo '<td>S/ ' . $row['PRECIO'] . '</td>';
         echo '<td>' . $row['CANTIDAD'] . '</td>';
