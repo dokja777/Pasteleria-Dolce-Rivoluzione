@@ -20,24 +20,24 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#f9cb9c;">
   <div class="container-fluid">
   <img src="img/logo.png" alt="" style="width:5em ;margin-botton:1em;">
-    <a class="navbar-brand" href="indexAdministrador.php"  style="font-family:var;color:#783f04;margin-left:1em;font-weight:600;font-size:22px;">Pastelería Dolce Rivoluzione</a>
+    <a class="navbar-brand" href="../../../Cliente/vistas/Administrador/indexAdministrador.php"  style="font-family:var;color:#783f04;margin-left:1em;font-weight:600;font-size:22px;">Pastelería Dolce Rivoluzione</a>
     
     <div class="collapse navbar-collapse" id="bar" >
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="btn btn-outline-light" href="indexAdministrador.php"  aria-current="page"  style="color:#783f04;margin-left:3em;font-weight:600;">Inicio</a>
+          <a class="btn btn-outline-light" href="../../../Cliente/vistas/Administrador/indexAdministrador.php"  aria-current="page"  style="color:#783f04;margin-left:3em;font-weight:600;">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-outline-light" href="pedidos.php" style="margin-left:2em;color:#783f04;font-weight:600;">Pedidos</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-light" href="listaproductos.php"  style="color:#783f04;margin-left:2em;font-weight:600;" >Productos </a>
+          <a class="btn btn-outline-light" href="../../../Cliente/vistas/Administrador/listaproductos.php"  style="color:#783f04;margin-left:2em;font-weight:600;" >Productos </a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-light" href="listarAdministrador.php" style="color:#783f04;margin-left:2em;font-weight:600;" >Usuarios</a>
+          <a class="btn btn-outline-light" href="../../../Cliente/vistas/Administrador/listarAdministrador.php" style="color:#783f04;margin-left:2em;font-weight:600;" >Usuarios</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-light" href="listarEmpleados.php" style="color:#783f04;margin-left:2em;font-weight:600;" >Empleados</a>
+          <a class="btn btn-outline-light" href="../../../Cliente/vistas/Administrador/listarEmpleados.php" style="color:#783f04;margin-left:2em;font-weight:600;" >Empleados</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-outline-light" href="demanda.php" style="color:#783f04;margin-left:2em;font-weight:600;">Demandas</a>
@@ -103,76 +103,11 @@
   </thead>
       <tbody>
       <?php
-    include('../../../Servidor/conexion.php');
-    // Definir la cantidad de productos por página
-    $productosPorPagina = 5;
+          //  conexion para mostrar los productos
+          include('../../../Servidor/conexion.php');
 
-    // Obtener el número de página actual desde la URL
-    $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
-
-    // Calcular el límite y el desplazamiento para la consulta SQL
-    $limite = $productosPorPagina;
-    $desplazamiento = ($pagina - 1) * $productosPorPagina;
-
-    // Consulta SQL con LIMIT y OFFSET para la paginación
-    $sql = $conexion->query("SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK, producto.MEDIDA
-                             FROM PRODUCTO
-                             INNER JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
-                             INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN
-                             LIMIT $limite OFFSET $desplazamiento");
-
-    if ($sql) {
-        while ($resultado = $sql->fetch_assoc()) {
-            // (Tu código para mostrar los productos aquí)
-            $idProducto = $resultado['ID_PRODUCTO'];
-            $nombreAdmin = $resultado['ADMIN_NOMBRE'];
-            $nombreProducto = $resultado['N_PRODUCTO'];
-            $nombreCategoria = $resultado['N_CATEGORIA'];
-            $imagen = $resultado['IMG'];
-            $descripcion = $resultado['DESCRIPCION'];
-            $precio = $resultado['PRECIO'];
-            $stock = $resultado['STOCK'];
-            $medida=$resultado['MEDIDA'];
-
-            // Imprime las filas de la tabla con las columnas específicas
-            echo "<tr  data-aos=\"zoom-in-up\"  >";
-            echo "<th scope='row'>$idProducto</th>";
-            echo "<td>$nombreAdmin</td>";
-            echo "<td>$nombreProducto</td>";
-            echo "<td>$nombreCategoria</td>";
-            echo "<td><img  style='width: 120px; border-radius: 30px;'  src='data:image/jpg;base64," . base64_encode($imagen) . "'></td>";
-            echo "<td>$descripcion</td>";
-            echo "<td> S/ $precio </td>";
-            echo "<td>$stock</td>";
-            echo "<td>$medida</td>";
-            echo "<th>
-            <a href='Formulario/editar.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
-            <br>
-            <br>
-            <a href='CRUD/eliminar.php?ID_PRODUCTO=$idProducto'class=\"btn btn-danger\">Eliminar</a>
-            </th>";
-            echo "</tr>";
-        }
-    }
-
-        // Calcular la cantidad total de páginas
-        $sqlTotal = $conexion->query("SELECT COUNT(*) as total FROM PRODUCTO");
-        $totalProductos = $sqlTotal->fetch_assoc()['total'];
-        $totalPaginas = ceil($totalProductos / $productosPorPagina);
-
-        // Mostrar enlaces de paginación
-        echo '<div class="container">';
-        for ($i = 1; $i <= $totalPaginas; $i++) {
-            $active = $i == $pagina ? 'active' : '';
-            echo "<a class='btn btn-secondary $active' href='listaproductos.php?pagina=$i'>$i</a>";
-        }
-        echo '</div>';
-
-        // Cierra la conexión a la base de datos cuando hayas terminado
-        $conexion->close();
-        ?>
-
-
+          include('../../../Servidor/PHP/Administrador/listaProductos.php');
+      ?>
 
       </tbody>
     </table>
