@@ -98,7 +98,7 @@ $row = $resultado->fetch_assoc();
             <br>
             <br>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <a class="btn" href="agregar_al_carrito.php?id=<?php echo $idProducto; ?>">Agregar al carrito</a>
+                <a class="btn" href="agregar_al_carrito.php?id=<?php echo $idProducto; ?>">Agrega al carrito</a>
             </div>
         </div>
     </div>

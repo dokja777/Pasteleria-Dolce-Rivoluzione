@@ -19,7 +19,7 @@
   <body>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"
+        <a class="navbar-brand" href="../../../Cliente/vistas/Empleado/indexEmpleado.php"
           ><img src="../../../Cliente/recursos/img/logo.png" alt="" />
           <span>Pastelería Dolce Rivoluzione</span>
         </a>
