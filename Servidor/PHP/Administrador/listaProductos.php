@@ -42,10 +42,10 @@
             echo "<td>$stock</td>";
             echo "<td>$medida</td>";
             echo "<th>
-            <a href='Formulario/editar.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
+            <a href='../../../Cliente/vistas/Administrador/editarProducto.php?id=$idProducto' class=\"btn btn-warning\">Editar</a>
             <br>
             <br>
-            <a href='CRUD/eliminar.php?ID_PRODUCTO=$idProducto'class=\"btn btn-danger\">Eliminar</a>
+            <a href='../../../Servidor/PHP/Administrador/eliminarProducto.php?ID_PRODUCTO=$idProducto'class=\"btn btn-danger\">Eliminar</a>
             </th>";
             echo "</tr>";
         }
