@@ -1,5 +1,5 @@
 <?php
-// se llama a la base de datos
+// recibe la ID del producto para mostrarlo 
 include('../../../Servidor/PHP/Cliente/RecibirIDProducto.php');
 ?>
 
