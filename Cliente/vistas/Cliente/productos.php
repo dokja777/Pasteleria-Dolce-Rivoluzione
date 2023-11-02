@@ -65,7 +65,8 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
 					<p><a>S/</a>
 						<?php echo $producto['PRECIO']; ?>
 					</p>
-					<button class="ver-detalle">Ver Detalle del Producto</button>
+					<a  class="ver-detalle"  href="../../../Cliente/vistas/Cliente/DetalleProducto.php?ID_PRODUCTO=<?php echo $producto['ID_PRODUCTO']; ?>">Ver Detalle del Producto</a>
+					
 				</div>
 				<?php
 			} ?>
