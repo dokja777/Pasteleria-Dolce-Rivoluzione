@@ -5,11 +5,13 @@
     $idEmpleado = $_GET['ID_EMPLEADO'];
     $sql = "DELETE FROM empleado where  ID_EMPLEADO = '$idEmpleado'";
 
-    $query = mysqli_query($conexion,$sql);
+    $query = mysqli_query($conexion, $sql);
 
     if ($query) {
-        header("Location: ../../../Cliente/vistas/Administrador/listarEmpleado.php");
+        // Empleado eliminado exitosamente
+        echo "<script>alert('Empleado eliminado exitosamente'); window.location.href='../../../Cliente/vistas/Administrador/listarEmpleados.php';</script>";
     } else {
-        echo "<script>alert('No se pudo eliminar'); window.history.go(-1); </script>";
+        // No se pudo eliminar
+        echo "<script>alert('No se pudo eliminar'); window.history.go(-1);</script>";
     }
-?> 
+?>

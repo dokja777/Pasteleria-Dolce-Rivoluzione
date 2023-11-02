@@ -1,0 +1,54 @@
+
+.btn-compra {
+    letter-spacing: 2px;
+    font-family: monospace;
+   display: inline-block;
+    padding: 10px 20px;
+    background-color: coral;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-compra:hover {
+    background-color: LightSalmon;
+}
+
+.btn-compra::before,
+.btn-compra::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: coral;
+    transition: transform 0.3s ease;
+}
+
+.btn-compra::before {
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+         
+.btn-compra::after {
+    bottom: 0;
+    right: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.btn-compra:hover::before {
+    transform: scaleX(1);
+}
+     
+.btn-compra:hover::after {
+    transform: scaleX(1);
+}
