@@ -22,10 +22,10 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 
 <body>
 	<!-------- incluir el  navbar ----->
-	<?php include '../../../Cliente/vistas/Empleado/headerEmpleado.php'; ?>
+	<?php include '../../../Cliente/vistas/Empleado/headerSecundario.php'; ?>
 
 	<div class="table-container">
-		<table class="table table-striped" style="background-color:#f9cb9c; font-family:var;">
+		<table class="table table-striped" style="background-color:#f9cb9c; font-family:var;margin-top: 40px;     margin-left: -17px;">
 			<thead>
 				<tr>
 					<th scope="col" style="background-color:#f9cb9c;">ID Detalle Pedido</th>
