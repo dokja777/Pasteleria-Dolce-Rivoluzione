@@ -1,0 +1,157 @@
+
+        @media (max-width: 768px) {
+
+            /* Estilos para pantallas más pequeñas */
+            .container-detalle {
+                flex-direction: column;
+            }
+
+            /* Añade más estilos para personalizar la apariencia en pantallas pequeñas */
+        }
+
+        /* Estilo para el contenedor principal */
+        .container-detalle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo para el contenedor de la imagen */
+        .container-imagen {
+            flex-basis: 40%;
+        }
+
+        .img-detalle img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1em;
+        }
+
+        /* Estilo para el contenedor de la información */
+        .container-info {
+            flex-basis: 55%;
+            padding-left: 20px;
+        }
+
+
+        /* Estilo para el título del producto */
+        .titulo-detalle h1 {
+            font-family: monospace;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 40px;
+            margin: 0;
+            margin-bottom: 10px;
+            position: relative;
+            /* Establece posición relativa para el elemento padre */
+        }
+
+        /* Estilo para la línea encima del título */
+        .titulo-detalle h1::before {
+            content: "";
+            /* Agrega contenido al elemento pseudo */
+            position: absolute;
+            /* Establece posición absoluta para el elemento pseudo */
+            top: -10px;
+            /* Ajusta la posición vertical (encima del título) */
+            left: 0;
+            /* Ajusta la posición horizontal (alineado con el título) */
+            width: 50px;
+            /* Ancho de la línea corta */
+            height: 3px;
+            /* Grosor de la línea */
+            background-color: coral;
+            /* Color de la línea */
+        }
+
+        /* Estilo para la descripción del producto */
+        .descripcion {
+            font-family: monospace;
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+
+
+        }
+
+        /* Estilo para el precio del producto */
+        .precio {
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: bold;
+            color: coral;
+            margin-bottom: 10px;
+        }
+         
+
+       
+
+        /* Estilo para el botón de agregar al carrito */
+        .btn {
+            letter-spacing: 2px;
+            font-family: monospace;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: coral;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+            /* Oculta el contenido fuera del botón */
+        }
+
+        .btn:hover {
+            background-color: LightSalmon;
+        }
+
+        /* Estilo para la línea superior */
+        .btn::before,
+        .btn::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: coral;
+            transition: transform 0.3s ease;
+        }
+
+        /* Estilo para la línea superior */
+        .btn::before {
+            top: 0;
+            left: 0;
+            transform: scaleX(0);
+            /* Inicialmente, la línea está invisible */
+            transform-origin: left;
+        }
+
+        /* Estilo para la línea inferior */
+        .btn::after {
+            bottom: 0;
+            right: 0;
+            transform: scaleX(0);
+            /* Inicialmente, la línea está invisible */
+            transform-origin: right;
+        }
+
+        /* Estilo para las líneas cuando el botón se desplace */
+        .btn:hover::before {
+            transform: scaleX(1);
+            /* Muestra la línea superior */
+        }
+
+        /* Estilo para las líneas cuando el botón se desplace */
+        .btn:hover::after {
+            transform: scaleX(1);
+            /* Muestra la línea inferior */
+        }
+    
