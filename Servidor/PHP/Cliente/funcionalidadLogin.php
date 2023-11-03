@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('../../../config/conexion.php');
+include('../../../Config/conexion.php');
 
 if (isset($_SESSION['Id'])){
     header("Location: ../../../Cliente/vistas/Cliente/perfil.php");
@@ -32,7 +32,7 @@ if (isset($_POST['Correo']) && isset($_POST['Contraseña'])) {
         if(mysqli_num_rows($result) == 1){
             $row = mysqli_fetch_assoc($result);
             if($row['CONTRASEÑA'] === $Contraseña){
-                $_SESSION['Correo'] = $row['Correo'];
+                $_SESSION['Correo'] = $row['CORREO'];
                 $_SESSION['Id'] = $row['ID_CLIENTE'];
                 header("Location: ../../../Cliente/vistas/Cliente/perfil.php");
                 exit();

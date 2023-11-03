@@ -35,7 +35,7 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
     <hr>
 
     <!-- Catálogo de Productos -->
-    <link rel="stylesheet" href="../../css/styleProductos.css" />
+   
     <h1 class="title">Catálogo de Productos</h1>
     <div class="container__productos__general">
 
@@ -48,6 +48,45 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
         </select>
         <button type="submit" name="ordenar_btn">Ordenar</button>
       </form>
+		// Muestra los productos del catálogo
+		include('../../../Servidor/PHP/Cliente/CatalogoProductos.php');
+		// Realiza la búsqueda en la base de datos luego de aplicar filtros
+		include('../../../Servidor/PHP/Cliente/filtradoProductos.php');
+    if (isset($_GET['ordenar_btn'])) {
+        // Incluye la lógica de ordenamiento
+        include('../../../Servidor/PHP/Cliente/ordenarProductos.php');
+      }
+		// para ver los productos 
+		$filtro=$productos;
+		// para ver filtrado productos no encontrados $filtro="";
+		$productos = buscarProductosEnBaseDeDatos($filtro);
+
+		if (empty($productos)) { ?>
+			<div class="producto-no-encontrado">
+            <img src="..\..\recursos\img\notFound.png" alt="Imagen de producto no encontrado" >
+      </div>
+			<?php
+			} else { ?>
+				<div class="container__productos">
+			<?php foreach ($productos as $producto) {
+				?>
+				<div class="card">
+					<img src="data:image/jpg;base64, <?php echo base64_encode($producto['IMG']); ?>">
+					<h4>
+						<?php echo $producto['N_PRODUCTO']; ?>
+					</h4>
+					<p><a>S/</a>
+						<?php echo $producto['PRECIO']; ?>
+					</p>
+					<a  class="ver-detalle"  href="../../../Cliente/vistas/Cliente/DetalleProducto.php?ID_PRODUCTO=<?php echo $producto['ID_PRODUCTO']; ?>">Ver Detalle del Producto</a>
+					
+				</div>
+				<?php
+			} ?>
+			</div> <?php
+		}
+		?>
+	</div>
 
 
 

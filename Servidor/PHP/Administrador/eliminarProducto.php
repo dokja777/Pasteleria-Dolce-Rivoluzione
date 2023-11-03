@@ -1,6 +1,6 @@
 <?php
 // esto sirve para elimar las productos de la base de datos en el formulario listaproductos 
-include ("../config/conexion.php");
+include ("../../../Servidor/conexion.php");
 
 $idProducto=$_GET['ID_PRODUCTO'];
 $sql="DELETE FROM producto where  ID_PRODUCTO ='$idProducto'";
@@ -8,6 +8,6 @@ $sql="DELETE FROM producto where  ID_PRODUCTO ='$idProducto'";
 
 $query = mysqli_query($conexion,$sql);
 if ($query === TRUE) {
-    header("Location:../listaproductos.php");
+    header("Location:../../../Cliente/vistas/Administrador/listaproductos.php");
 }
 ?>

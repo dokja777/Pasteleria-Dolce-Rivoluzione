@@ -1,5 +1,5 @@
 <?php
-include('../../../Config/conexion.php');
+
 include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
 
 ?>
