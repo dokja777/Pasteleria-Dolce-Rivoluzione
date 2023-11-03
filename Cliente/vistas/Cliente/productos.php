@@ -48,7 +48,9 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
         </select>
         <button type="submit" name="ordenar_btn">Ordenar</button>
       </form>
-		// Muestra los productos del catálogo
+		
+    <?php
+    // Muestra los productos del catálogo
 		include('../../../Servidor/PHP/Cliente/CatalogoProductos.php');
 		// Realiza la búsqueda en la base de datos luego de aplicar filtros
 		include('../../../Servidor/PHP/Cliente/filtradoProductos.php');
