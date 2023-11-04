@@ -27,19 +27,7 @@ ul.categoria-lista li {
   text-align: center;
 }
 
-ul.categoria-lista li a {
-  text-decoration: none;
-  color: black;
-  font-style: italic;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-ul.categoria-lista li a:hover {
-  background-color: LightSalmon;
-  color: black;
+	ul.categoria-lista li a:hover {
   font-weight: bold;
   letter-spacing: 3px;
 }

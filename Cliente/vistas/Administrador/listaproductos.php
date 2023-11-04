@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--busqueda de productos-->
+    <link rel="stylesheet" href="../../../Cliente/css/filtroProductoAdmin.css">
+    <script defer src="../../../Cliente/js/buscar_productoAdmin.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -14,7 +18,7 @@
 </head>
     <title>Lista producto</title>
 </head>
-<body style="background-color:#EAE6CA;">
+<body style="background-color:#EAE6CA; padding-bottom: 50px">
 
     <!-- Configuración del navbar user y lista -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#f9cb9c;">
@@ -71,19 +75,18 @@
     
     <div class="container" >
 
-          <form action="buscar.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px">
-                <a style="margin-right:20px">Buscar por:</a>
-                <select name="filtro" id="filtro" style="margin-right:10px">
-                    <option value="nombre">Nombre del Producto</option>
-                </select>
-                <input type="text" name="buscar" id="buscar" style="margin-right:10px; border-color:black;">
-                <input type="submit" class="btn" style="background-color:#f9cb9c" value="Buscar">
-            </form>
+      <div class="BuscarYFiltrar" style="border: 2px solid #783f04; padding-left: 20px;">
+        <label for="codigo"> Código:</label>
+        <input type="text" id="codigo" onkeyup="buscar()">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" onkeyup="buscar()">
+        <label for="stock">Stock:</label>
+        <input type="text" id="stock" onkeyup="buscar()">
+      </div>
 
-        <div class="container ">
+      <div class="container ">
         <a href="agregar.php"class="btn btn-success">Agregar producto</a>
-   
-    </div>
+      </div>
 
     <table class="table  table-striped"   style="background-color:#f9cb9c; font-family:var; text-align:justify;">
   <thead >
@@ -110,12 +113,9 @@
       ?>
 
       </tbody>
-    </table>
-    
+    </table> 
 
     </div>
-
-
 
   <style>
     .container{
@@ -135,6 +135,8 @@
     AOS.init();
   </script>
 
+
+    <script src="../../../Cliente/js/filtradoBusquedaProductos.js"></script>
     <!-- Incluir Bootstrap JS y jQuery (opcional) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

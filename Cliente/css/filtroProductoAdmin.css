@@ -1,0 +1,29 @@
+/*busqueda por nombre, stock de productos*/
+.BuscarYFiltrar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .BuscarYFiltrar label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .BuscarYFiltrar input {
+    width: 40%;
+    height: 25px;
+    border: 2px solid black;
+    background-color: white;
+    margin-right: 30px;
+    margin-left: 30px;
+    border-radius: 4px;
+  }
+  
+  .BuscarYFiltrar button {
+    width: 20%;
+    margin-left: 30px;
+    margin-right: 40px;
+  }
