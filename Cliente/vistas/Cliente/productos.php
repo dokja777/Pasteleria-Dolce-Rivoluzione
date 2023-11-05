@@ -1,8 +1,3 @@
-<?php
-include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 

@@ -3,26 +3,6 @@
 include('../../../Servidor/PHP/Cliente/RecibirIDProducto.php');
 ?>
 
-<?php
-
-include('../../../Config/conexion.php');
-
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-if (!isset($_SESSION['Id'])) {
-    header("Location: ../../../Cliente/vistas/Cliente/index.php");
-}
-
-$iduser = $_SESSION['Id'];
-
-$sql = "SELECT ID_CLIENTE, NOMBRE, Apellido, NUMERO_DOC, Telefono, Correo FROM cliente WHERE ID_CLIENTE = '$iduser' ";
-
-$resultado = $conexion->query($sql);
-$row = $resultado->fetch_assoc();
-
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -42,7 +22,7 @@ $row = $resultado->fetch_assoc();
 
 <body>
     <!-- Configuración del navbar -->
-    <?php include 'headerCliente.php'; ?>
+    <?php include '../../../Cliente/vistas/Cliente/headerCliente.php'; ?>
 
     <!-- Detalles del Producto -->
     <div class="container-detalle">
@@ -68,10 +48,6 @@ $row = $resultado->fetch_assoc();
             </div>
         </div>
     </div>
-
-
-    
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
