@@ -1,9 +1,3 @@
-<?php
-
-include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -50,10 +44,10 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
                     <h2>Mi Perfil</h2>
                     <ul>
                         <li><i class="fa-solid fa-user"></i> Nombre: <?php echo ($row['NOMBRE']); ?></li>
-                        <li><i class="fa-regular fa-user"></i> Apellido: <?php echo ($row['APELLIDO']); ?></li>
+                        <li><i class="fa-regular fa-user"></i> Apellido: <?php echo ($row['Apellido']); ?></li>
                         <li><i class="fa-solid fa-address-card"></i> Número de documento: <?php echo ($row['NUMERO_DOC']); ?></li>
-                        <li><i class="fa-solid fa-phone"></i> Número de teléfono: <?php echo ($row['TELEFONO']); ?></li>
-                        <li><i class="fa-solid fa-envelope"></i> Correo electrónico: <?php echo ($row['CORREO']); ?></li>
+                        <li><i class="fa-solid fa-phone"></i> Número de teléfono: <?php echo ($row['Telefono']); ?></li>
+                        <li><i class="fa-solid fa-envelope"></i> Correo electrónico: <?php echo ($row['Correo']); ?></li>
                         
                     </ul>
                     <form action="">
@@ -65,6 +59,7 @@ include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
                 </section>
             </main>
 
+            <br>
             <form id="cerrarSesionForm" action="../../../Servidor/PHP/Cliente/cerrarSesionCliente.php" method="post">
                 <button type="button" class="cerrar-sesion-button" onclick="confirmarCerrarSesion()">Cerrar Sesión</button>
             </form>

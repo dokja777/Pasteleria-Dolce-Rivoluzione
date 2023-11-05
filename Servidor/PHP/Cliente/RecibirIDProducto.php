@@ -1,5 +1,5 @@
 <?php
-include('../../../Config/conexion.php');
+include('../../../Servidor/conexion.php');
 
 // verificamos si existe el parametro id
 if (isset($_GET['ID_PRODUCTO'])) {
