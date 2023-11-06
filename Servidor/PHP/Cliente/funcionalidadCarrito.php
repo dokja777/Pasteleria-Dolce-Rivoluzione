@@ -25,7 +25,7 @@ if (isset($_SESSION['carrito'])) {
     echo '<td class="cant' . $arregloCarrito[$i]['Id'] . '">';
     echo 'S/ ' . $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad'];
     echo '</td>';
-    echo '<td><a href="eliminar_producto.php?id=' . $arregloCarrito[$i]['Id'] . '" class="btn btn-primary btn-sm">X</a></td>';
+    echo '<td><a href="../../../Servidor/PHP/Cliente/eliminarProducto_carrito.php?id=' . $arregloCarrito[$i]['Id'] . '" class="btn btn-primary btn-sm">X</a></td>';
     echo '</tr>';
   }
 }
