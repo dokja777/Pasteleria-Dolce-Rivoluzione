@@ -81,7 +81,7 @@
             <!-- Columna 2: Sección de Carrito -->
             <div class="section-carrito">
                 <div class="titulo-carrito" style="text-align:center; color:#783f04; padding-top:20px;">
-                    <h3>Resumen de compra:</h3>
+                    <h3>Resumens de compra:</h3>
                 </div>
                 <div class="container-carrito">
                     <?php
