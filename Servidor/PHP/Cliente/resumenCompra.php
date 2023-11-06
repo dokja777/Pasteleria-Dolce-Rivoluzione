@@ -21,3 +21,4 @@
         echo '<p>Total de la compra: S/ ' . $totalCompra . '</p>';
     }
 ?>
+
