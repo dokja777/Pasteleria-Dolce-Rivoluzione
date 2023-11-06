@@ -22,3 +22,16 @@ function buscar() {
     }
   }
 }
+
+    // Obtener los valores de los campos del filtro de la URL y establecerlos en los elementos de la página
+    const urlParams = new URLSearchParams(window.location.search);
+    const cantidad = urlParams.get("cantidad");
+    const codigo = urlParams.get("codigo");
+    const nombre = urlParams.get("nombre");
+    const stock = urlParams.get("stock");
+
+    document.getElementById("cantidad").value = cantidad;
+    document.getElementById("codigo").value = codigo;
+    document.getElementById("nombre").value = nombre;
+    document.getElementById("stock").value = stock;
+

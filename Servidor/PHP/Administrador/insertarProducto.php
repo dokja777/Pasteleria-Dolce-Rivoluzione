@@ -1,5 +1,5 @@
 <?php
-include("../config/conexion.php");
+include("../../../Servidor/conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $administrador = mysqli_real_escape_string($conexion, $_POST['Administrador']);
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         
         if (mysqli_stmt_execute($stmt)) {
-            header("location:../listaproductos.php");
+            header("location:../../../Cliente/vistas/Administrador/listaproductos.php");
         } else {
             echo "Error al insertar datos: " . mysqli_error($conexion);
         }
