@@ -24,5 +24,5 @@ if (isset($_GET['id'])) {
     }
 }
 
-header("Location: agregar_al_carrito.php"); 
+header("Location: ../../../Cliente/vistas/Cliente/agregar_al_carrito.php"); 
 ?>
