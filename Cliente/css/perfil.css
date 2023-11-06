@@ -289,3 +289,21 @@ button:hover {
 .cerrar-sesion-button:hover {
   background-color: #654321; /* Cambia de color al pasar el ratón por encima */
 }
+
+/* Estilos para el botón "Guardar Cambios" */
+.guardar-button {
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s; 
+}
+
+.guardar-button:hover {
+  background-color: #9b560d; 
+  border-color: #9b560d;
+}
+
