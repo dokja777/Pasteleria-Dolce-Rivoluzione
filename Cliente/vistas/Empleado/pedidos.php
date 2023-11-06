@@ -12,6 +12,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tabla de pedidos </title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="../../../Cliente/css/styleEmpleado.css">
@@ -23,17 +24,10 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
   <!-------- incluir el  navbar ----->
   <?php include '../../../Cliente/vistas/Empleado/headerSecundario.php'; ?>
 
-  <style>
-    #bar a {
-      border-style: none;
-      background-color:#f9cb9c ;
-      border-radius: 10px;
-    }
-  </style>
-
+    
   <h1 class="text-center">Tabla Pedido</h1>
 
-  <div class="container">
+  <div class="container" >
     <a href="../Empleado/agregarPedido.php" class="btn btn-success" style="margin-bottom:4px">Agregar nuevo pedido</a>
     <table class="table table-hover text-center">
       <thead>
@@ -49,17 +43,35 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
           <th scope="col" style="background-color:#f9cb9c;">Detalle Pedido</th>
         </tr>
       </thead>
-
+      <script src="../../../Cliente/js/pagination.js"></script>
       <tbody>
         <?php
         require('../../../Config/conexion.php');
 
+        $porPagina = 5;
 
-        // Consulta preparada
+        // Página actual (por defecto, es la página 1)
+        $pagina = isset($_GET['page']) ? $_GET['page'] : 1;
+
+        // Calcular el desplazamiento (offset) en la consulta
+        $offset = ($pagina -1) * $porPagina;
+
+        // Consulta SQL modificada con LIMIT y OFFSET
         $query = "SELECT pedido.ID_PEDIDO, cliente.NOMBRE, empleado.N_EMPLEADO, pedido.FECHA, pedido.MONTO_FINAL, pedido.METODO_PAGO, pedido.ESTADO 
           FROM pedido 
           INNER JOIN cliente ON pedido.ID_CLIENTE = cliente.ID_CLIENTE 
-          INNER JOIN empleado ON pedido.ID_EMPLEADO = empleado.ID_EMPLEADO";
+          INNER JOIN empleado ON pedido.ID_EMPLEADO = empleado.ID_EMPLEADO
+          LIMIT $porPagina OFFSET $offset";
+
+        // Realizar la consulta
+        $resultado = $conexion->query($query);
+
+        // Calcular el número total de páginas
+        
+        $queryTotal = "SELECT COUNT(*) AS total FROM pedido";  //=22
+        $totalResult = $conexion->query($queryTotal);   //=22
+        $total = $totalResult->fetch_assoc()['total'];   
+        $totalPaginas = ceil($total / $porPagina);
 
         if ($stmt = $conexion->prepare($query)) {
           // Ejecutar la consulta
@@ -84,18 +96,28 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
               <a href='../../../Servidor/PHP/EmpleadoServidor/eliminarPedido.php?ID_PEDIDO=$idpedido'class=\"btn btn-danger\"><i class='fas fa-trash-alt'></i>
               </a>
               </td>";
-              echo "<td>
+            echo "<td>
               <a href='../Empleado/detallePedidoEm.php?id=$idpedido' class=\"btn btn-success\">Ver detalle de pedido</a>
                 </td>";
 
             echo "</tr>";
           }
 
+
+          echo '<div class="w3-bar">';
+          for ($i = 1; $i <= $totalPaginas; $i++) {
+            $activeClass = ($i == $pagina) ? 'active' : '';
+            echo '<a href="?page=' . $i . '" class="w3-button ' . $activeClass . '">' . $i . '</a>';
+          }
+          echo '</div>';
+
           // Cerrar la sentencia preparada
           $stmt->close();
         } else {
           echo "Error en la consulta preparada";
         }
+
+
 
         $conexion->close();
         ?>
@@ -107,7 +129,14 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 
   </div>
 
+
   <style>
+    #bar a {
+      border-style: none;
+      background-color: #f9cb9c;
+      border-radius: 10px;
+    }
+
     .container {
       font-family: monospace;
       margin-top: 1em;

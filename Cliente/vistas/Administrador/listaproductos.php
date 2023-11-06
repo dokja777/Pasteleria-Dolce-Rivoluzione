@@ -70,20 +70,36 @@
       <h1 class="text-center" style=" background-color:black;color:white; height: 80px; font-family:var; padding-top: 12px;"> Lista de productos</h1>
     </div>
 
+    
+
     <!-- Tabla de lista de productos  -->
     
-    
     <div class="container" >
+      
+    <?php
+          //  conexion para mostrar los productos
+          include('../../../Servidor/conexion.php');
+      ?>
 
-      <div class="BuscarYFiltrar" style="border: 2px solid #783f04; padding-left: 20px;">
-        <label for="codigo"> Código:</label>
-        <input type="text" id="codigo" onkeyup="buscar()">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" onkeyup="buscar()">
-        <label for="stock">Stock:</label>
-        <input type="text" id="stock" onkeyup="buscar()">
-      </div>
-
+<form id="formFiltros" style="border: 2px solid #783f04; padding-left: 20px;" method="GET">
+    <label for="cantidad">Mostrar cantidad de productos:</label>
+    <select name="cantidad" id="cantidad">
+        <option value="10" <?= (isset($productosPorPagina) && $productosPorPagina == 10 ? 'selected' : '') ?>>10</option>
+        <option value="20" <?= (isset($productosPorPagina) && $productosPorPagina == 20 ? 'selected' : '') ?>>20</option>
+        <option value="30" <?= (isset($productosPorPagina) && $productosPorPagina == 30 ? 'selected' : '') ?>>30</option>
+        <option value="40" <?= (isset($productosPorPagina) && $productosPorPagina == 40 ? 'selected' : '') ?>>40</option>
+        <option value="50" <?= (isset($productosPorPagina) && $productosPorPagina == 50 ? 'selected' : '') ?>>50</option>
+    </select>
+    <br>
+    <input type="hidden" name="pagina" value="1">
+    <label for="codigo"> Código:</label>
+    <input type="text" name="codigo" id="codigo" value="<?= isset($valorCodigo) ? $valorCodigo : '' ?>">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" value="<?= isset($valorNombre) ? $valorNombre : '' ?>">
+    <label for="stock">Stock:</label>
+    <input type="text" name="stock" id="stock" value="<?= isset($valorStock) ? $valorStock : '' ?>">
+    <button type="submit" class="btn btn-success">Aplicar</button>
+</form>
       <div class="container ">
         <a href="agregar.php"class="btn btn-success">Agregar producto</a>
       </div>
@@ -106,8 +122,7 @@
   </thead>
       <tbody>
       <?php
-          //  conexion para mostrar los productos
-          include('../../../Servidor/conexion.php');
+
 
           include('../../../Servidor/PHP/Administrador/listaProductos.php');
       ?>
