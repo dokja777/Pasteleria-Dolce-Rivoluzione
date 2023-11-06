@@ -59,7 +59,7 @@
      <br>
     <div class="container" >
         <h1 class="text-center"style=" background-color:black;color:white; font-family:var;">Agregar productos</h1>
-    <form style="font-family:var;" action="CRUD/insertar.PHP" method="POST" enctype="multipart/form-data" >
+    <form style="font-family:var;" action="../../../Servidor/PHP/Administrador/insertarProducto.php" method="POST" enctype="multipart/form-data" >
  
       <!-- llamamos al administrador de  la base de datos  con php -->
       <!-- esta dentro del formulario  -->
@@ -68,7 +68,7 @@
         <option     selected disabled>-- Selecciona tu nombre si vas a agregar --</option>
        
         <?php
-         include ("config/conexion.php");
+         include ("../../../Servidor/conexion.php");
          $sql = $conexion-> query("SELECT*fROM ADMIN");
          while($resultado=$sql->fetch_assoc()){
             echo "<option value='".$resultado['ID_ADMIN']."'>".$resultado['NOMBRE']."</option> ";
@@ -83,7 +83,7 @@
         <option selected disabled>-- Selecciona la categoria del producto --</option>
 
         <?php
-         include ("config/conexion.php");
+         include ("../../../Servidor/conexion.php");
          $sql = $conexion-> query("SELECT*fROM categoria_producto");
          while($resultado=$sql->fetch_assoc()){
             echo "<option value='".$resultado['ID_CATEGORIA']."'>".$resultado['N_CATEGORIA']."</option> ";
@@ -130,7 +130,7 @@
          listaproductos.php  -->
         <div class="text-center" style="margin-bottom:1em;">
         <button type="submit" class="btn btn-danger"    >Agregar</button>
-        <a href="listaproductos.php" class="btn btn-dark">Volver</a>
+        <a href="../../../Cliente/vistas/Administrador/listaproductos.php" class="btn btn-dark">Volver</a>
         </div>   
         
     </form>

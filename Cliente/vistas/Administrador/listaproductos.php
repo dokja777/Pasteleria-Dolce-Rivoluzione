@@ -101,7 +101,7 @@
     <button type="submit" class="btn btn-success">Aplicar</button>
 </form>
       <div class="container ">
-        <a href="agregar.php"class="btn btn-success">Agregar producto</a>
+        <a href="../../../Cliente/vistas/Administrador/agregarProducto.php"class="btn btn-success">Agregar producto</a>
       </div>
 
     <table class="table  table-striped"   style="background-color:#f9cb9c; font-family:var; text-align:justify;">
