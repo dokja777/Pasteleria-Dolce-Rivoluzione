@@ -68,7 +68,8 @@
                     <div id="pago1" class="pago">
                         <div class="tarjeta_debito">
                             <?php include ('../../../Cliente/vistas/Cliente/MetodosPago/tarjetacredito.php');?>
-                            <a href="../../../Cliente/vistas/Cliente/index.php"><button type="submit" >COMPRAR</button></a>
+                            <a href="../../../Cliente/vistas/Cliente/GenerarBoleta.php"><button type="submit" >COMPRAR</button></a>
+                            
                         </div>
                     </div>
                     <div id="pago2" class="pago">Contenido de la Opción 2</div>
