@@ -46,38 +46,38 @@
                 </section>
                 <br>
                 <br>
+               <div class="met_pagos-container">
                 <section class="pago-section">
                     <h2>Pago</h2>
                     <br>
-                    <p>
-                        <input type="radio" name="tipo_pago" value="tarjeta_debito"> Tarjeta de débito
-                        <input type="radio" name="tipo_pago" value="tarjeta_credito"> Tarjeta de crédito
-                        <input type="radio" name="tipo_pago" value="yape"> Yape
-                        <input type="radio" name="tipo_pago" value="paypal"> Paypal
-                        <input type="radio" name="tipo_pago" value="efectivo"> Efectivo
-                    </p>
-                    <br>
-                    <p>
-                        <label for="numero">Número de tarjeta:</label>
-                        <input type="text" id="numero">
-                    </p>
-                    <p>
-                        <label for="nombre_apellido">Nombre y apellido como figura en la tarjeta:</label>
-                        <input type="text" id="nombre_apellido">
-                    </p>
-                    <p>
-                        <label for="fecha_vencimiento">Fecha de vencimiento:</label>
-                        <input type="date" id="fecha_vencimiento">
-                    </p>
-                    <BR>
-                    <p>
-                        <input type="checkbox" id="terminos_condiciones"> Acepto los términos y condiciones
-                    </p>
-                    <br>
-                    <button type="submit">COMPRAR</button>
+
+                    <form class="met_pagos">
+                        <input type="radio" id="tarjeta_debito" name="opciones" value="tarjeta_debito">
+                        <label for="tarjeta_debito">Tarjeta de Débito</label>
+                        
+                        <input type="radio" id="yape" name="opciones" value="yape">
+                        <label for="yape">Yape</label>
+
+                        <input type="radio" id="paypal" name="opciones" value="paypal">
+                        <label for="paypal">Paypal</label>
+
+                        <input type="radio" id="efectivo" name="opciones" value="efectivo">
+                        <label for="efectivo">Efectivo</label>
+                    </form>
+
+                    <div id="pago1" class="pago">
+                        <div class="tarjeta_debito">
+                            <?php include ('../../../Cliente/vistas/Cliente/MetodosPago/tarjetacredito.php');?>
+                            <a href="../../../Cliente/vistas/Cliente/index.php"><button type="submit" >COMPRAR</button></a>
+                        </div>
+                    </div>
+                    <div id="pago2" class="pago">Contenido de la Opción 2</div>
+                    
                 </section>
+                </div> 
             </div>
-            
+
+        
             <!-- Columna 2: Sección de Carrito -->
             <div class="section-carrito">
                 <div class="titulo-carrito" style="text-align:center; color:#783f04; padding-top:20px;">
@@ -95,5 +95,12 @@
 
     <!-- ... Tu código para el footer ... -->
     <iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
+
+    <script src="../../../Cliente/js/resumenCompra.js"></script>
+    <style>
+        .pago {
+            display: none;
+        }
+    </style>
 </body>
 </html>
