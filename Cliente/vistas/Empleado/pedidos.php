@@ -27,6 +27,18 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 
   <h1 class="text-center">Tabla Pedido</h1>
 
+  <form id="formFiltros" style="border: 2px solid #783f04; margin: 20px; padding: 20px;" method="GET">
+    <label for="cantidad">Mostrar cantidad de productos:</label>
+    <select name="cantidad" id="cantidad">
+        <option value="10" <?= (isset($productosPorPagina) && $productosPorPagina == 10 ? 'selected' : '') ?>>10</option>
+        <option value="20" <?= (isset($productosPorPagina) && $productosPorPagina == 20 ? 'selected' : '') ?>>20</option>
+        <option value="30" <?= (isset($productosPorPagina) && $productosPorPagina == 30 ? 'selected' : '') ?>>30</option>
+        <option value="40" <?= (isset($productosPorPagina) && $productosPorPagina == 40 ? 'selected' : '') ?>>40</option>
+        <option value="50" <?= (isset($productosPorPagina) && $productosPorPagina == 50 ? 'selected' : '') ?>>50</option>
+    </select>
+    <button type="submit" class="btn btn-success">Aplicar</button>
+</form>
+
   <div class="container">
     <a href="../Empleado/agregarPedido.php" class="btn btn-success" style="margin-bottom:4px">Agregar nuevo pedido</a>
     <table class="table table-hover text-center">
