@@ -68,8 +68,8 @@
                     <div id="pago1" class="pago">
                         <div class="tarjeta_debito">
                             <?php include ('../../../Cliente/vistas/Cliente/MetodosPago/tarjetacredito.php');?>
-                            <a href="../../../Cliente/vistas/Cliente/GenerarBoleta.php"><button type="submit" >COMPRAR</button></a>
-                            <button id="btnFactura">COMPRAR CON FACTURA</button>
+                            <a href="../../../Cliente/vistas/Cliente/GenerarBoleta.php"><button type="submit" >COMPRAR CON BOLETA</button></a>
+                            <button type="submit" id="btnFactura">COMPRAR CON FACTURA</button>
 
                             <style>
                                 .modal {
@@ -143,16 +143,17 @@
                                         <br><br>
 
                                         <label for="telefono">Teléfono de contacto:</label>
-                                        <input type="tel" id="telefono" name="telefono">
+                                        <input type="tel" id="telefono" name="telefono"  class="pago-section-input">
                                         <br><br>
 
                                         <label for="email">Correo Electrónico:</label>
-                                        <input type="email" id="email" name="email" required>
+                                        <input type="email" id="email" name="email" class="pago-section-input" required>
                                         <br><br>
 
                                         <br>
-                                        <button type="submit">Generar Factura</button>
-                                        <button id="btnFactura">Generar Factura1</button>
+                                        
+                                        <button id="btnFactura" class="btn-compra">Generar Factura</button>
+
                                     </form>
                                 </div>
                             </div>
