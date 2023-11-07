@@ -7,12 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Estructura de la boleta -->
 <div class="boleta">
     <div class="header">
         <h1><strong>Boleta de Compra</strong> </h1>
         <img class="imglogo" src="../../../Cliente/recursos/img/logo.png" alt="" />
     </div>
     <?php
+    // consulta para la boleta 
     if(isset($_SESSION['carrito'])){
         $arregloCarrito = $_SESSION['carrito'];
         $totalCompra = 0;
@@ -43,10 +45,11 @@
     }
     ?>
 </div>
-
+<!-- ballot styles -->
 <style>
     body{
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
     }
 
     .boleta {
@@ -76,6 +79,7 @@
         margin: 10px 0;
         border-bottom: 3px solid #ddd;
         padding-bottom: 10px;
+      
     }
 
     .info-adicional {
