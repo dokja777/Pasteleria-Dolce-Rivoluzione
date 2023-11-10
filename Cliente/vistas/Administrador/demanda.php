@@ -68,6 +68,7 @@
 
     <!-- Obtén los datos de los productos más vendidos (nombre y cantidad) y guárdalos en un array $productosMasVendidos -->
 
+    <?php if (!empty($productosMasVendidos)) : ?>
 <table>
     <caption>Productos más vendidos</caption>
     <thead>
@@ -85,6 +86,8 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<?php else : ?>
+<?php endif; ?>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
