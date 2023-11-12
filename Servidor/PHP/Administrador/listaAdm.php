@@ -22,7 +22,7 @@
         <a href='editarAdmin.php?ID_ADMIN=$idAdmin' class=\"btn btn-warning\">Editar</a>
         <br>
         <br>
-        <a href='eliminarAdmin.php?ID_ADMIN=$idAdmin'class=\"btn btn-danger\">Eliminar</a>
+        <a href='../../../Servidor/PHP/Administrador/eliminarAdmin.php?ID_ADMIN=$idAdmin'class=\"btn btn-danger eliminar_administrador\">Eliminar</a>
       </th>";
             echo "</tr>";
           }

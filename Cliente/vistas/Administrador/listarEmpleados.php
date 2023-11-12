@@ -27,9 +27,6 @@
           <a class="btn btn-outline-light" href="../../../Cliente/vistas/Administrador/indexAdministrador.php"  aria-current="page"  style="color:#783f04;margin-left:3em;font-weight:600;">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-light" href="pedidos.php" style="margin-left:2em;color:#783f04;font-weight:600;">Pedidos</a>
-        </li>
-        <li class="nav-item">
           <a class="btn btn-outline-light" href="listaproductos.php"  style="color:#783f04;margin-left:2em;font-weight:600;" >Productos </a>
         </li>
         <li class="nav-item">
