@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../../Cliente/js/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="../../../Cliente/css/style.css" />
     <link rel="stylesheet" href="../../../Cliente/css/resumencompra.css" />
     <!-- Iconos en font awesome -->
@@ -189,14 +190,70 @@
                                     if (!confirmacion) {
                                         // Si el usuario cancela la confirmación, evita que el formulario se envíe
                                         return false;
+                                    } else {
+                                        // Obtiene el método de pago seleccionado
+                                        var metodoPago = obtenerMetodoPagoSeleccionado();
+
+                                        // Si no se seleccionó ningún método de pago, muestra un mensaje y evita el envío del formulario
+                                        if (!metodoPago) {
+                                            alert("Por favor, selecciona un método de pago.");
+                                            return false;
+                                        }
+
+                                        // Si la confirmación es verdadera, realiza una petición AJAX para enviar la fecha de recojo y el método de pago
+                                        var fechaRecojo = document.getElementById('fecha_recojo').value;
+
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open('POST', '../../../Servidor/PHP/Cliente/RegistrarPedido.php', true);
+                                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                                        xhr.onreadystatechange = function () {
+                                            if (xhr.readyState === 4) {
+                                                if (xhr.status === 200) {
+                                                    // Maneja la respuesta del servidor
+                                                    console.log(xhr.responseText);
+                                                } else {
+                                                    // Maneja errores de la solicitud AJAX
+                                                    console.error('Error en la solicitud AJAX:', xhr.status, xhr.statusText);
+                                                }
+                                            }
+                                        };
+
+                                        // Construye los datos a enviar
+                                        var datos = "fecha_recojo=" + encodeURIComponent(fechaRecojo) + "&metodo_pago=" + encodeURIComponent(metodoPago);
+
+                                        // Envía la petición
+                                        xhr.send(datos);
+
+                                        // Evita el envío del formulario si estás manejando todo en el mismo bloque de código
+                                        return true;
+                                    }
+                                }
+
+                                function obtenerMetodoPagoSeleccionado() {
+                                    var opcionesMetodoPago = document.getElementsByName('opciones');
+
+                                    for (var i = 0; i < opcionesMetodoPago.length; i++) {
+                                        if (opcionesMetodoPago[i].checked) {
+                                            var valorSeleccionado = opcionesMetodoPago[i].value;
+
+                                            // Identifica el método de pago según el valor seleccionado
+                                            if (valorSeleccionado === 'tarjeta_debito') {
+                                                return 'Débito';
+                                            } else if (valorSeleccionado === 'yape') {
+                                                return 'Yape';
+                                            } else if (valorSeleccionado === 'paypal') {
+                                                return 'Paypal';
+                                            } else if (valorSeleccionado === 'efectivo') {
+                                                return 'Efectivo';
+                                            }
+                                        }
                                     }
 
-                                    // Si la confirmación es verdadera, el formulario se enviará normalmente
-                                    return true;
+                                    // Retorna null si no se seleccionó ningún método de pago
+                                    return null;
                                 }
                             
                             </script>
-
                         </div>
                     </div>
                     <div id="pago2" class="pago">Contenido de la Opción 2</div>
