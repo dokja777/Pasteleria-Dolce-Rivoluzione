@@ -41,17 +41,10 @@ ul.categoria-lista li {
 }
 
 .container__productos {
-  width: auto;
-  column-count: 4;
-  max-width: auto;
-  height: auto;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  overflow: hidden;
-  flex-basis: 0;
-  flex-grow: 999;
-  min-width: 60%;
   margin-bottom: 30px;
-  display: wrap;
 }
 
 .container__productos .card {
@@ -63,9 +56,7 @@ ul.categoria-lista li {
   margin: 20px;
   text-align: center;
   transition: all 0.25s;
-  float: left;
   position: relative;
-  overflow: hidden;
 }
 
 .container__productos .card:hover {
