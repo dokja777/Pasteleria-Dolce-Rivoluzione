@@ -49,7 +49,7 @@ if ($sql) {
         echo "<tr data-aos=\"zoom-in-up\">";
         echo "<th scope='row'>$idpedido</th>";
         echo "<td>$idcliente</td>";
-        echo "<td>$idempleado</td>";
+        echo "<td class=\"articulos\" >$idempleado</td>";
         echo "<td>$fecha</td>";
         echo "<td>$montofinal</td>";
         echo "<td>$metodopago</td>";
