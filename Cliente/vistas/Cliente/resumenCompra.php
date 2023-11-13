@@ -68,8 +68,10 @@
                     <div id="pago1" class="pago">
                         <div class="tarjeta_debito">
                             <?php include ('../../../Cliente/vistas/Cliente/MetodosPago/tarjetacredito.php');?>
-                            <a href="../../../Cliente/vistas/Cliente/GenerarBoleta.php"><button type="submit" >COMPRAR CON BOLETA</button></a>
-                            <button type="submit" id="btnFactura">COMPRAR CON FACTURA</button>
+                            <a href="../../../Cliente/vistas/Cliente/GenerarBoleta.php" onclick="return confirmarCompra('boleta')">
+                                <button type="submit">COMPRAR CON BOLETA</button>
+                            </a>
+                            <button type="submit" id="btnFactura" >COMPRAR CON FACTURA</button>
 
                             <style>
                                 .modal {
@@ -111,7 +113,7 @@
                                 <div class="modal-contenido">
                                     <span class="cerrar" id="cerrarModalFactura">&times;</span>
                                     <h2>Ingrese los datos de facturación</h2>
-                                    <form action="GenerarFactura.php" method="post">
+                                    <form action="GenerarFactura.php" method="post" onsubmit="return confirmarCompra('factura')">
                                         <br>
                                        
                                         <label for="ruc">RUC (Empresa):</label>
@@ -152,7 +154,7 @@
 
                                         <br>
                                         
-                                        <button id="btnFactura" class="btn-compra">Generar Factura</button>
+                                        <button id="btnFactura" class="btn-compra" >Generar Factura</button>
 
                                     </form>
                                 </div>
@@ -179,6 +181,20 @@
 
                                 //  cerrar el modal al hacer clic en la "X"
                                 cerrarModalFactura.addEventListener('click', cerrarModal);
+                            
+                                function confirmarCompra(tipoCompra) {
+                                    var mensaje = "¿Estás seguro de realizar la compra con " + tipoCompra + "?";
+                                    var confirmacion = confirm(mensaje);
+
+                                    if (!confirmacion) {
+                                        // Si el usuario cancela la confirmación, evita que el formulario se envíe
+                                        return false;
+                                    }
+
+                                    // Si la confirmación es verdadera, el formulario se enviará normalmente
+                                    return true;
+                                }
+                            
                             </script>
 
                         </div>
