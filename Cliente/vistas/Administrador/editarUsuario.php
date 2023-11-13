@@ -56,7 +56,7 @@
    <section>
        <h2>Editar Administrador</h2>
        <hr>
-      <form action="../../../Servidor/PHP/Administrador/editarUsuarios.php"   method="POST"  name="formularioEditar"  enctype="multipart/form-data">
+      <form action="../../../Servidor/PHP/Administrador/editarUsuarios.php"   method="POST"  name="formularioEditar"  enctype="multipart/form-data" >
          <div class="tituloSecundario">
             <label class="form-label" >Modificar los Datos :</label>
             <input type="hidden" name="idU" value="<?=$idU?>">
