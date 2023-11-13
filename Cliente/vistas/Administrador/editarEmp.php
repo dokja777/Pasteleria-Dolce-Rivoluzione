@@ -48,7 +48,7 @@
   <style>
     #bar a{
         border-style:none;
-        background-color:;
+      
         border-radius:10px;
     }
   </style>
