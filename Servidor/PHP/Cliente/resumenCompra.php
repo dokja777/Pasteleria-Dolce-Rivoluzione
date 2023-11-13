@@ -16,9 +16,7 @@
             echo '</div>';
             echo '<hr>';
         }
-                        
-        // Total de la compra 
-        echo '<p>Total de la compra: S/ ' . $totalCompra . '</p>';
+       
     }
 ?>
 
