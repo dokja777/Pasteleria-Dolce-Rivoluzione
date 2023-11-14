@@ -12,6 +12,8 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tabla de pedidos </title>
+  <link rel="stylesheet" href="../../../Cliente/css/graficoDemanda.css">
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -25,10 +27,28 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
   <?php include '../../../Cliente/vistas/Empleado/headerSecundario.php'; ?>
 
 
-  <h1 class="text-center">Tabla Pedido</h1>
+  
+
+  
+  <form method="post" action="../../../Cliente/vistas/Empleado/filtradoPedidoEm.php">
+        <p>Ingresa fecha de recojo</p>
+
+        <br>
+        <label for="fecha_inicio">Fecha inicial:</label>
+        <input type="date" name="fecha_inicio" id="fecha_inicio" required>
+
+        <label for="fecha_fin">Fecha final:</label>
+        <input type="date" name="fecha_fin" id="fecha_fin" required>
+        <br>
+        <br>
+        
+        <input type="submit" value="Filtrar">
+    </form>
+
 
   <form id="formFiltros"  method="GET">
     <div class="conte1">
+      <br>
     <label  class="cant" for="cantidad">Mostrar cantidad de pedidos:</label>
     <select name="cantidad" id="cantidad">
       <option value="10" <?= (isset($productosPorPagina) && $productosPorPagina == 10 ? 'selected' : '') ?>>10</option>
@@ -43,7 +63,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
     <input type="text" name="cliente"  class="clienteinput" id="cliente" value="<?= isset($valorCliente) ? $valorCliente : '' ?>">
     <button  type="submit" class="btn btn-success">Aplicar</button>
     </div>
-    
+    <br>
     <div class="conte2">
     <label class="Emple"> Empleado :</label>
     <input list="opciones" class="buscador" id="buscador" name="buscador">
@@ -55,12 +75,13 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
       <option value="maximo">
       <option value="cristiano">
     </datalist>
-    
+    <br>
     <a href="../Empleado/agregarPedido.php" class="boton" style="margin-bottom:4px">Agregar nuevo pedido</a>
     
     </div>
   </form>
 
+  <h1 class="text-center">Tabla Pedido</h1>
 
   <div class="container">
     <table class="table table-hover text-center">
@@ -117,33 +138,25 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 
    
 
-    form {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      background-color: wheat;
-      border: 2px solid #783f04;
-      margin: 25px 55px;
-      padding: 10px 55px;
-      gap: 13px;
-    }
-
+   
     h1 {
       margin-top: 14px;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: 2px;
     }
 
     form .conte1{
       display: flex;
       flex-direction: row;
-      
+      margin-top: 15px;
       align-items: center;
+      margin-right: 47px;
      
      
     }
     .conte1 select{
       padding: 3px 25px;
-      margin-right: 65px;
+      margin-right: 10px;
       text-align: center;
       border: 1px solid black;
       border-radius: 2px;
@@ -153,6 +166,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
    .conte1 .cant{
      padding-right: 20px;
     font-size: 16px;
+    width: 200px;
    }
     .conte1 .client{
       font-size: 16px;
@@ -160,7 +174,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
       padding-right: 25px;
     }
     .conte1 .clienteinput{
-      margin-right: 29px;
+      margin-right: 20px;
       border: 1px solid black;
       border-radius: 2px;
       box-shadow: 1px 2px 10px whitesmoke;
@@ -173,8 +187,13 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
       box-shadow: 1px 2px 10px black;
     }
 
+    .conte2 {
+      margin-bottom: 15px;
+    }
+
     .conte2 .Emple{
      letter-spacing: 1px;
+
     }
     .conte2 .buscador{
       margin-left: 25px;
@@ -185,11 +204,9 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
       
     }
     .conte2 a{
-      display: flex;
-      margin-top: 40px;
-      margin-right: 900px;
-      background-color: red;
-      display: flex;
+      margin-top: 20px;
+      margin-left: 40px;
+      margin-bottom: 20px;
       text-align: center;
       align-items: center;
       justify-content: center;
@@ -200,6 +217,7 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
       background-color: #198754;
       padding: 7px 10px;
       box-shadow: 1px 2px 10px black;
+      width: 200px;
     }
 
     
