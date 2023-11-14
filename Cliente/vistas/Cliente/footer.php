@@ -23,7 +23,7 @@
       </div>
       <div class="box__footer">
         <h2>Nosotros</h2>
-        <a href="nosotros.html">¿Quiénes somos?</a>
+        <a href="nosotros.html">¿Quiénes somos ?</a>
         <a href="horarioAtencion.html">Horarios de Atención</a>
         <a href="politicas_privacidad">Política de privacidad</a>
         <a href="#">Política de cookies</a>
