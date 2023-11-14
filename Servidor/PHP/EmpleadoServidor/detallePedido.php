@@ -1,6 +1,6 @@
 <?php
 // Conectar a la base de datos (reemplaza los valores por los tuyos)
-include('../../../Servidor/conexion.php');
+include('../../../Config/conexion.php');
 
 // Obtener el ID del pedido de manera segura
 $idpedido = $_GET['id'];
