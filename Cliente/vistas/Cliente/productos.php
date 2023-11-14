@@ -44,6 +44,9 @@
         </select>
         <button type="submit" name="ordenar_btn">Ordena</button>
       </form>
+     <!-- Agrega estos botones a tu HTML -->
+<button onclick="ordenarProductos('asc')">Ordenar A-Z</button>
+<button onclick="ordenarProductos('desc')">Ordenar Z-A</button>
 
 		
     <?php
@@ -71,7 +74,7 @@
 				?>
 				<div class="card">
 					<img src="data:image/jpg;base64, <?php echo base64_encode($producto['IMG']); ?>">
-					<h4>
+					<h4 class="NombreProducto">
 						<?php echo $producto['N_PRODUCTO']; ?>
 					</h4>
 					<p><a>S/</a>
@@ -88,6 +91,8 @@
 	</div>
 
 
+  
+ <script src="../../../Cliente/js/ordenarAz.js"></script>
 
 
     <!-- Footer -->
