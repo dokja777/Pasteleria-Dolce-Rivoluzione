@@ -256,8 +256,28 @@
                             </script>
                         </div>
                     </div>
-                    <div id="pago2" class="pago">Contenido de la Opción 2</div>
                     
+                    <div id="pago2" class="pago">
+                        <div class="yape-content">
+                            <br>
+                            <p style="font-size: 15px;">
+                                Importante: Si elegiste la opción de pago con Yape, Plin o Transferencia una vez realizado tu pago toma un 
+                                screenshot y envíanos tu comprobante de pago a nuestro correo, colocando en la parte de asunto tu número 
+                                de pedido. Este mensaje tiene que ser enviado durante las primeras 4 horas siguientes a haber realizado tu pedido en la web.
+                            </p> 
+                            <strong>Caso contrario será anulado</strong>
+
+                            
+                            <br><br>
+                            <img src="YapeImagen.jpeg" alt="Yape" style="width: 60%; margin-left: 20%;">
+
+                            <p style="font-size: 12px;">
+                                <input type="checkbox" id="aceptoTerminos" name="aceptoTerminos">
+                                <label for="aceptoTerminos">Acepto los términos y condiciones</label>
+                            </p>
+                        </div>
+                    </div>
+
                 </section>
                 </div> 
             </div>
