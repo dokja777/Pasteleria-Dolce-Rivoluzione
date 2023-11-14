@@ -19,7 +19,7 @@
         echo "<td>$nombreAdmin</td>";
         echo "<td>$contraseñaAdmin</td>";
         echo "<th>
-        <a href='editarAdmin.php?ID_ADMIN=$idAdmin' class=\"btn btn-warning\">Editar</a>
+        <a href='../../../Cliente/vistas/Administrador/editarUsuario.php?idU=$idAdmin&usuarioU=$usuarioAdmin&usuarioN=$nombreAdmin&usuarioP=$contraseñaAdmin' class=\"btn btn-warning\">Editar</a>
         <br>
         <br>
         <a href='../../../Servidor/PHP/Administrador/eliminarAdmin.php?ID_ADMIN=$idAdmin'class=\"btn btn-danger eliminar_administrador\">Eliminar</a>

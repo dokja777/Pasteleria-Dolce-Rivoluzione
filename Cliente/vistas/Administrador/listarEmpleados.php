@@ -18,7 +18,7 @@
    <!-- Configuración del navbar user y lista -->
    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#f9cb9c;">
   <div class="container-fluid">
-  <img src="img/logo.png" alt="" style="width:5em ;margin-botton:1em;">
+  <img src="img/logo.png" alt="" style="width:5em ;">
     <a class="navbar-brand" href="../../../Cliente/vistas/Administrador/indexAdministrador.php"  style="font-family:var;color:#783f04;margin-left:1em;font-weight:600;font-size:22px;">Pastelería Dolce Rivoluzione</a>
     
     <div class="collapse navbar-collapse" id="bar" >
@@ -50,7 +50,6 @@
   <style>
     #bar a{
         border-style:none;
-        background-color:;
         border-radius:10px;
     }
   </style>

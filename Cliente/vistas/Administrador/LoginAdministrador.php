@@ -15,14 +15,11 @@
 <body>
 
   <div   data-aos="zoom-in"  class="ContenedorPrincipal">
-
     <div class="contenedorInfo">
       <div class="fondo">
-        
           <h2>Pasteleria Dolce Rivoluzione</h2>
           <h4> Login Administrador</h4>
           <img id="logo" src="../../../Cliente/recursos/img/logo.png" width="170px" alt="Logo de la pasteleria">
-        
       </div>
     </div>
     <div class="contenedorInfo2">

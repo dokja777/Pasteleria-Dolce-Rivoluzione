@@ -72,9 +72,6 @@
             <input type="hidden" name="idE" value="<?=$idE?>">
         </div>  
         
-        <!-- aqui se muestra los espacios para ingresar el usuario, nombre, contraseña del empleado  -->
-        <!-- es el formulario de registro  --> 
-
         <div class="mb-3"  >
             <label class="form-label"  style="margin-left:1em;font-style:italic;font-size:20px;"  >Usuario : </label>
             <input type="text" class="form-control" style="background-color:#EAE6CA;border-color:black;"   name="usuarioE" value="<?=$usuarioE?>">
