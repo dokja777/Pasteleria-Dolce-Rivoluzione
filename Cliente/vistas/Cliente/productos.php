@@ -42,7 +42,7 @@
           <option value="menor_precio">Menor a Mayor Precio</option>
           <option value="popularidad">Productos más populares</option>
         </select>
-        <button type="submit" name="ordenar_btn">Ordenar</button>
+        <button type="submit" name="ordenar_btn">Ordena</button>
       </form>
 
 		
