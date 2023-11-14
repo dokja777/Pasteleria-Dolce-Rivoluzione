@@ -59,7 +59,9 @@
 
 
 	<!-- Footer -->
-	<iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
+	<?php
+	include('../../../Cliente/vistas/Cliente/footer.php');
+	?>
 
 </body>
 

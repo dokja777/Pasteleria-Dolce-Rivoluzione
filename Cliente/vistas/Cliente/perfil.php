@@ -50,12 +50,14 @@
                         <li><i class="fa-solid fa-envelope"></i> Correo electrónico: <?php echo ($row['Correo']); ?></li>
                         
                     </ul>
-                    <form action="">
-                    <button>Editar</button> 
-                    </form>
-                    <form action="../../../Cliente/vistas/Cliente/historialPedido.php">
-                        <button>Pedidos</button>
-                    </form>
+                    <div class="containerFinal">
+                        <form action="">
+                           <button>Editar</button> 
+                        </form>
+                        <form action="../../../Cliente/vistas/Cliente/historialPedido.php">
+                            <button>Pedidos</button>
+                        </form>
+                    </div>
                 </section>
             </main>
 
@@ -73,13 +75,40 @@
             </script>
         
         </body>
-
-       
-
-
-
     <!-- Footer -->
-    <iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
+    <?php
+	include('../../../Cliente/vistas/Cliente/footer.php');
+	?>
+
+ 
+<style>
+    main  .containerFinal{
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+   }
+
+   button {
+  background-color: #000;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 1px 2px 10px black;
+  transition: background-color 0.3s; /* Agregamos una transición suave */
+}
+button:hover {
+  background-color: #9b560d; /* Cambiamos el color de fondo al pasar el mouse */
+  border-color: #9b560d;
+  box-shadow: 1px 2px 10px wheat;
+  letter-spacing: 2px;
+}
+</style>
 
 </body>
 

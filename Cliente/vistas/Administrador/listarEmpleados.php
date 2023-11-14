@@ -18,16 +18,13 @@
    <!-- Configuración del navbar user y lista -->
    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#f9cb9c;">
   <div class="container-fluid">
-  <img src="img/logo.png" alt="" style="width:5em ;margin-botton:1em;">
+  <img src="img/logo.png" alt="" style="width:5em ;">
     <a class="navbar-brand" href="../../../Cliente/vistas/Administrador/indexAdministrador.php"  style="font-family:var;color:#783f04;margin-left:1em;font-weight:600;font-size:22px;">Pastelería Dolce Rivoluzione</a>
     
     <div class="collapse navbar-collapse" id="bar" >
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="btn btn-outline-light" href="../../../Cliente/vistas/Administrador/indexAdministrador.php"  aria-current="page"  style="color:#783f04;margin-left:3em;font-weight:600;">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-outline-light" href="pedidos.php" style="margin-left:2em;color:#783f04;font-weight:600;">Pedidos</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-outline-light" href="listaproductos.php"  style="color:#783f04;margin-left:2em;font-weight:600;" >Productos </a>
@@ -53,7 +50,6 @@
   <style>
     #bar a{
         border-style:none;
-        background-color:;
         border-radius:10px;
     }
   </style>

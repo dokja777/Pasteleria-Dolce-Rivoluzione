@@ -40,9 +40,11 @@
         <select name="ordenar" id="ordenar">
           <option value="mayor_precio">Mayor a Menor Precio</option>
           <option value="menor_precio">Menor a Mayor Precio</option>
+          <option value="popularidad">Productos más populares</option>
         </select>
         <button type="submit" name="ordenar_btn">Ordena</button>
       </form>
+
 		
     <?php
     // Muestra los productos del catálogo
@@ -87,53 +89,11 @@
 
 
 
-      <?php
-
-      // Muestra los productos del catálogo
-      include('../../../Servidor/PHP/Cliente/CatalogoProductos.php');
-      // Realiza la búsqueda en la base de datos luego de aplicar filtros
-      include('../../../Servidor/PHP/Cliente/filtradoProductos.php');
-
-      if (isset($_GET['ordenar_btn'])) {
-        // Incluye la lógica de ordenamiento
-        include('../../../Servidor/PHP/Cliente/ordenarProductos.php');
-      }
-      // para ver los productos 
-      $filtro = $productos;
-      // para ver filtrado productos no encontrados $filtro="";
-      $productos = buscarProductosEnBaseDeDatos($filtro);
-
-      if (empty($productos)) { ?>
-        <div class="producto-no-encontrado">
-          <img src="..\..\recursos\img\notFound.png" alt="Imagen de producto no encontrado">
-        </div>
-        <?php
-      } else { ?>
-        <div class="container__productos">
-          <?php foreach ($productos as $producto) {
-            ?>
-            <div class="card">
-              <img src="data:image/jpg;base64, <?php echo base64_encode($producto['IMG']); ?>">
-              <h4>
-                <?php echo $producto['N_PRODUCTO']; ?>
-              </h4>
-              <p><a>S/</a>
-                <?php echo $producto['PRECIO']; ?>
-              </p>
-              <button class="ver-detalle">Ver Detalle del Producto</button>
-            </div>
-            <?php
-          } ?>
-        </div>
-        <?php
-      }
-      ?>
-    </div>
-
 
     <!-- Footer -->
-    <iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%"
-      height="320px"></iframe>
+    <?php
+	include('../../../Cliente/vistas/Cliente/footer.php');
+	?>
 </body>
 
 </html>
