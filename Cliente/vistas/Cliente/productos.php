@@ -41,7 +41,7 @@
           <option value="mayor_precio">Mayor a Menor Precio</option>
           <option value="menor_precio">Menor a Mayor Precio</option>
         </select>
-        <button type="submit" name="ordenar_btn">Ordenar</button>
+        <button type="submit" name="ordenar_btn">Ordena</button>
       </form>
 		
     <?php
