@@ -62,45 +62,106 @@
         <br>
         <br>
 
-        <label for="cantidad_dias">Cantidad de días con más ingresos a mostrar (opcional):</label>
-        <input type="number" name="cantidad_dias" id="cantidad_dias" min="1">
-        <br>
-        <br>
+        <label for="mostrar_todos">Mostrar todos los días:</label>
+        <select name="mostrar_todos" id="mostrar_todos">
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+        </select>
 
+        <!-- Agregamos un div que contiene el campo cantidad_dias, pero inicialmente lo ocultamos -->
+        <div id="cantidad_dias_container" style="display: none;">
+            <label for="cantidad_dias">Cantidad de días con más ingresos a mostrar (opcional):</label>
+            <input type="number" name="cantidad_dias" id="cantidad_dias" min="1">
+        </div>
+
+        <br>
         <input type="submit" value="Generar Gráfico">
     </form>
+
+    <script>
+        // Agregamos un script para mostrar/ocultar el campo cantidad_dias según la opción seleccionada
+        document.getElementById('mostrar_todos').addEventListener('change', function () {
+            var cantidadDiasContainer = document.getElementById('cantidad_dias_container');
+            if (this.value === 'si') {
+                cantidadDiasContainer.style.display = 'none';
+            } else {
+                cantidadDiasContainer.style.display = 'block';
+            }
+        });
+    </script>
+
    
-    <?php
-    include('../../../Config/conexion.php');
+<?php
+include('../../../Config/conexion.php');
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $fecha_inicio = $_POST['fecha_inicio'];
-        $fecha_fin = $_POST['fecha_fin'];
+$mostrar_todos = '0'; // AsignAMOS UN VALOR INICIAL
 
-        // Verifica si se proporcionó la cantidad de días
-        if (isset($_POST['cantidad_dias']) && $_POST['cantidad_dias'] != '') {
-            $cantidad_dias = $_POST['cantidad_dias'];
-            $limit_clause = "LIMIT $cantidad_dias";
-        } else {
-            $limit_clause = "";
-        }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $fecha_inicio = $_POST['fecha_inicio'];
+    $fecha_fin = $_POST['fecha_fin'];
+
+    // Verificamos si se ingreso la cantidad de días
+    if (isset($_POST['cantidad_dias']) && $_POST['cantidad_dias'] != '') {
+        $cantidad_dias = $_POST['cantidad_dias'];
 
         $query = "SELECT DATE(FECHA) AS DIA, SUM(MONTO_FINAL) AS INGRESOS_DIARIOS
                   FROM pedido
-                  WHERE ESTADO = 'Entregado'
+                  WHERE ESTADO IN ('Entregado', 'Pendiente')
                   AND FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
-                  GROUP BY DIA
+                  GROUP BY DATE(FECHA)
                   ORDER BY INGRESOS_DIARIOS DESC
-                  $limit_clause";
+                  LIMIT $cantidad_dias";
 
-        $resultado = $conexion->query($query);
-        $data = array();
+        $result = $conexion->query($query);
+        $data = [];
 
-        while ($row = $resultado->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             $data[$row['DIA']] = $row['INGRESOS_DIARIOS'];
         }
+    } else {
+        
+        $query = "SELECT fecha FROM pedido WHERE fecha BETWEEN '$fecha_inicio' AND '$fecha_fin'";
+        $result = $conexion->query($query);
+        $dias_disponibles = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $dias_disponibles[] = $row['fecha'];
+        }
+
+        
+        $data = [];
+        $fecha_actual = $fecha_inicio;
+
+        while ($fecha_actual <= $fecha_fin) {
+            $dia_actual = date('Y-m-d', strtotime($fecha_actual));
+
+            if ($mostrar_todos == 'no' && !in_array($dia_actual, $dias_disponibles)) {
+                // se omite los dias qu eno tienen ingresos
+                $fecha_actual = date('Y-m-d', strtotime($fecha_actual . ' + 1 day'));
+                continue;
+            }
+
+            if (!in_array($dia_actual, $dias_disponibles)) {
+                // mostrar en 0 los dias que no tienen ingresos
+                $data[$dia_actual] = 0;
+            } else {
+                // obtener el monto por dia
+                $query = "SELECT DATE(FECHA) AS DIA, SUM(MONTO_FINAL) AS INGRESOS_DIARIOS
+                        FROM pedido
+                        WHERE ESTADO IN ('Entregado', 'Pendiente')
+                        AND FECHA = '$dia_actual'";
+                $result = $conexion->query($query);
+                $row = $result->fetch_assoc();
+                $data[$dia_actual] = $row['INGRESOS_DIARIOS'];
+            }
+
+            $fecha_actual = date('Y-m-d', strtotime($fecha_actual . ' + 1 day'));
+        }
     }
-    ?>
+}
+?>
+
+
 
     <section>
     <h2 style="margin-left: 44%;">Ingresos Diarios</h2>
