@@ -62,18 +62,35 @@
         <br>
         <br>
 
-        <label for="cantidad_dias">Cantidad de días con más ingresos a mostrar (opcional):</label>
-        <input type="number" name="cantidad_dias" id="cantidad_dias" min="1">
-        <br>
-        <br>
+        <label for="mostrar_todos">Mostrar todos los días:</label>
+        <select name="mostrar_todos" id="mostrar_todos">
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+        </select>
 
+        <!-- Agregamos un div que contiene el campo cantidad_dias, pero inicialmente lo ocultamos -->
+        <div id="cantidad_dias_container" style="display: none;">
+            <label for="cantidad_dias">Cantidad de días con más ingresos a mostrar (opcional):</label>
+            <input type="number" name="cantidad_dias" id="cantidad_dias" min="1">
+        </div>
+
+        <br>
         <input type="submit" value="Generar Gráfico">
     </form>
-   
+
+    <script>
+        // Agregamos un script para mostrar/ocultar el campo cantidad_dias según la opción seleccionada
+        document.getElementById('mostrar_todos').addEventListener('change', function () {
+            var cantidadDiasContainer = document.getElementById('cantidad_dias_container');
+            if (this.value === 'si') {
+                cantidadDiasContainer.style.display = 'none';
+            } else {
+                cantidadDiasContainer.style.display = 'block';
+            }
+        });
+    </script>
+
     
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
