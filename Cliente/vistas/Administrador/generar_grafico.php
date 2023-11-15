@@ -82,7 +82,7 @@
                   FROM detalle_pedido dp
                   JOIN pedido pe ON dp.ID_PEDIDO = pe.ID_PEDIDO
                   JOIN producto p ON dp.ID_PRODUCTO = p.ID_PRODUCTO
-                  WHERE pe.ESTADO = 'Entregado'
+                  WHERE ESTADO IN ('Entregado', 'Pendiente')
                   AND pe.FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
                   GROUP BY p.N_PRODUCTO
                   ORDER BY VENTAS DESC
@@ -97,7 +97,10 @@
         }
 
     }
+
     ?>
+
+
 
     <section>
     <h2 style="margin-left: 40%;">Productos más vendidos</h2>
@@ -144,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               FROM detalle_pedido dp
               JOIN pedido pe ON dp.ID_PEDIDO = pe.ID_PEDIDO
               JOIN producto p ON dp.ID_PRODUCTO = p.ID_PRODUCTO
-              WHERE pe.ESTADO = 'Entregado'
+              WHERE ESTADO IN ('Entregado', 'Pendiente')
               AND pe.FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
               GROUP BY p.N_PRODUCTO
               ORDER BY VENTAS DESC
