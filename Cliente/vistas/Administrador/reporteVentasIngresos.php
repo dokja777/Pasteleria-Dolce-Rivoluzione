@@ -94,16 +94,20 @@
 <?php
 include('../../../Config/conexion.php');
 
-$mostrar_todos = '0'; // AsignAMOS UN VALOR INICIAL
+$mostrar_todos = 'no'; // Valor predeterminado
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fecha_inicio = $_POST['fecha_inicio'];
     $fecha_fin = $_POST['fecha_fin'];
 
-    // Verificamos si se ingreso la cantidad de días
-    if (isset($_POST['cantidad_dias']) && $_POST['cantidad_dias'] != '') {
+    // Verifica si se seleccionó la opción de mostrar todos los días
+    $mostrar_todos = isset($_POST['mostrar_todos']) ? $_POST['mostrar_todos'] : 'no';
+
+    // Verificamos si se proporcionó la cantidad de días
+    if ($mostrar_todos == 'no' && isset($_POST['cantidad_dias']) && $_POST['cantidad_dias'] != '') {
         $cantidad_dias = $_POST['cantidad_dias'];
 
+     
         $query = "SELECT DATE(FECHA) AS DIA, SUM(MONTO_FINAL) AS INGRESOS_DIARIOS
                   FROM pedido
                   WHERE ESTADO IN ('Entregado', 'Pendiente')
@@ -128,15 +132,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dias_disponibles[] = $row['fecha'];
         }
 
-        
+       
         $data = [];
         $fecha_actual = $fecha_inicio;
 
         while ($fecha_actual <= $fecha_fin) {
             $dia_actual = date('Y-m-d', strtotime($fecha_actual));
-
+                // se omite los dias que no tienen ingresos            
             if ($mostrar_todos == 'no' && !in_array($dia_actual, $dias_disponibles)) {
-                // se omite los dias qu eno tienen ingresos
+               
                 $fecha_actual = date('Y-m-d', strtotime($fecha_actual . ' + 1 day'));
                 continue;
             }
@@ -160,6 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 
 
 
