@@ -299,8 +299,9 @@
     </main>
 
     <!-- ... Tu código para el footer ... -->
-    <iframe src="../../../Cliente/vistas/Cliente/footer.html" frameborder="0" scrolling="no" width="100%" height="320px"></iframe>
-
+    <?php
+	include('../../../Cliente/vistas/Cliente/footer.php');
+	?>
     <script src="../../../Cliente/js/resumenCompra.js"></script>
     <style>
         .pago {

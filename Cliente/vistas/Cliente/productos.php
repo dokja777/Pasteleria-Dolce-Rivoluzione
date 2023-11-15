@@ -44,10 +44,10 @@
         </select>
         <button type="submit" name="ordenar_btn">Ordena</button>
       </form>
-     <!-- Agrega estos botones a tu HTML -->
-<button onclick="ordenarProductos('asc')">Ordenar A-Z</button>
-<button onclick="ordenarProductos('desc')">Ordenar Z-A</button>
-
+    <div class="botones">
+   <button  class="a" onclick="ordenarProductos('asc')">Ordenar A - Z</button>
+   <button  class="z" onclick="ordenarProductos('desc')">Ordenar Z - A</button>
+   </div>
 		
     <?php
     // Muestra los productos del catálogo
@@ -99,6 +99,39 @@
     <?php
 	include('../../../Cliente/vistas/Cliente/footer.php');
 	?>
+
+
+<style>
+    .container__productos__general .botones{
+    display: flex;
+    align-items: center;
+    margin: 20px 17px;
+  }
+
+  .botones .a{
+   font-weight: 900;
+   border: 1px solid black;
+   cursor: pointer;
+   padding: 2px 10px;
+   background-color: white;
+   border-radius: 4px;
+  }
+  
+ 
+  
+  .botones .z{
+    margin-left: 9px;
+   font-weight: 900;
+   border: 1px solid black;
+   cursor: pointer;
+   padding: 2px 10px;
+   background-color: white;
+   border-radius: 4px;
+  }
+  .botones :hover{
+   background-color: wheat;
+  }
+</style>
 </body>
 
 </html>
