@@ -157,7 +157,7 @@ function confirmLogout() {
         <i class="fas fa-chart-bar"></i>
         <h2>Productos más vendidos</h2>
       </a>
-      <a href="ingresos.php" class="card">
+      <a href="ingreso.php" class="card">
         <i class="fas fa-chart-line"></i>
         <h2>Reporte de ingresos de ventas</h2>
       </a>

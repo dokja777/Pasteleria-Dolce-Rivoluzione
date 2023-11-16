@@ -50,7 +50,7 @@
 
     <br>
     
-    <form method="post" action="generar_grafico.php">
+    <form method="post" action="reporteVentasIngresos.php">
         <p>Ingrese el rango de las fechas</p>
 
         <br>
@@ -62,48 +62,114 @@
         <br>
         <br>
 
-        <label for="cantidad_productos">Cantidad de productos a mostrar:</label>
-        <input type="number" name="cantidad_productos" id="cantidad_productos" required min="1">
-        <br>
-        <br>
+        <label for="mostrar_todos">Mostrar todos los días:</label>
+        <select name="mostrar_todos" id="mostrar_todos">
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+        </select>
 
+        <!-- Agregamos un div que contiene el campo cantidad_dias, pero inicialmente lo ocultamos -->
+        <div id="cantidad_dias_container" style="display: none;">
+            <label for="cantidad_dias">Cantidad de días con más ingresos a mostrar (opcional):</label>
+            <input type="number" name="cantidad_dias" id="cantidad_dias" min="1">
+        </div>
+
+        <br>
         <input type="submit" value="Generar Gráfico">
     </form>
+
+    <script>
+        // Agregamos un script para mostrar/ocultar el campo cantidad_dias según la opción seleccionada
+        document.getElementById('mostrar_todos').addEventListener('change', function () {
+            var cantidadDiasContainer = document.getElementById('cantidad_dias_container');
+            if (this.value === 'si') {
+                cantidadDiasContainer.style.display = 'none';
+            } else {
+                cantidadDiasContainer.style.display = 'block';
+            }
+        });
+    </script>
+
    
-    <?php
-    include('../../../Config/conexion.php');
+<?php
+include('../../../Config/conexion.php');
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $fecha_inicio = $_POST['fecha_inicio'];
-        $fecha_fin = $_POST['fecha_fin'];
-        $cantidad_productos = $_POST['cantidad_productos']; // Obtener la cantidad de productos desde el formulario
+$mostrar_todos = 'no'; // Valor predeterminado
 
-        $query = "SELECT p.N_PRODUCTO, SUM(dp.CANTIDAD) AS VENTAS
-                  FROM detalle_pedido dp
-                  JOIN pedido pe ON dp.ID_PEDIDO = pe.ID_PEDIDO
-                  JOIN producto p ON dp.ID_PRODUCTO = p.ID_PRODUCTO
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $fecha_inicio = $_POST['fecha_inicio'];
+    $fecha_fin = $_POST['fecha_fin'];
+
+    // Verifica si se seleccionó la opción de mostrar todos los días
+    $mostrar_todos = isset($_POST['mostrar_todos']) ? $_POST['mostrar_todos'] : 'no';
+
+    // Verificamos si se proporcionó la cantidad de días
+    if ($mostrar_todos == 'no' && isset($_POST['cantidad_dias']) && $_POST['cantidad_dias'] != '') {
+        $cantidad_dias = $_POST['cantidad_dias'];
+
+     
+        $query = "SELECT DATE(FECHA) AS DIA, SUM(MONTO_FINAL) AS INGRESOS_DIARIOS
+                  FROM pedido
                   WHERE ESTADO IN ('Entregado', 'Pendiente')
-                  AND pe.FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
-                  GROUP BY p.N_PRODUCTO
-                  ORDER BY VENTAS DESC
-                  LIMIT $cantidad_productos"; // Usar la cantidad de productos en la consulta
+                  AND FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
+                  GROUP BY DATE(FECHA)
+                  ORDER BY INGRESOS_DIARIOS DESC
+                  LIMIT $cantidad_dias";
 
-        $resultado = $conexion->query($query);
-        $data = array();
+        $result = $conexion->query($query);
+        $data = [];
 
-        while ($row = $resultado->fetch_assoc()) {
-            $data[$row['N_PRODUCTO']] = $row['VENTAS'];
-            
+        while ($row = $result->fetch_assoc()) {
+            $data[$row['DIA']] = $row['INGRESOS_DIARIOS'];
+        }
+    } else {
+        
+        $query = "SELECT fecha FROM pedido WHERE fecha BETWEEN '$fecha_inicio' AND '$fecha_fin'";
+        $result = $conexion->query($query);
+        $dias_disponibles = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $dias_disponibles[] = $row['fecha'];
         }
 
-    }
+       
+        $data = [];
+        $fecha_actual = $fecha_inicio;
 
-    ?>
+        while ($fecha_actual <= $fecha_fin) {
+            $dia_actual = date('Y-m-d', strtotime($fecha_actual));
+                // se omite los dias que no tienen ingresos            
+            if ($mostrar_todos == 'no' && !in_array($dia_actual, $dias_disponibles)) {
+               
+                $fecha_actual = date('Y-m-d', strtotime($fecha_actual . ' + 1 day'));
+                continue;
+            }
+
+            if (!in_array($dia_actual, $dias_disponibles)) {
+                // mostrar en 0 los dias que no tienen ingresos
+                $data[$dia_actual] = 0;
+            } else {
+                // obtener el monto por dia
+                $query = "SELECT DATE(FECHA) AS DIA, SUM(MONTO_FINAL) AS INGRESOS_DIARIOS
+                        FROM pedido
+                        WHERE ESTADO IN ('Entregado', 'Pendiente')
+                        AND FECHA = '$dia_actual'";
+                $result = $conexion->query($query);
+                $row = $result->fetch_assoc();
+                $data[$dia_actual] = $row['INGRESOS_DIARIOS'];
+            }
+
+            $fecha_actual = date('Y-m-d', strtotime($fecha_actual . ' + 1 day'));
+        }
+    }
+}
+?>
+
 
 
 
     <section>
-    <h2 style="margin-left: 40%;">Productos más vendidos</h2>
+    <h2 style="margin-left: 44%;">Ingresos Diarios</h2>
         <!-- referencia a la biblioteca Chart.js -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -118,7 +184,7 @@
                 data: {
                     labels: Object.keys(data),
                     datasets: [{
-                        label: 'Cantidad de Ventas',
+                        label: 'Ingresos Diarios S/',
                         data: Object.values(data),
                         backgroundColor: 'rgba(120, 63, 4, 0.2)',
                         borderColor: 'rgba(120, 63, 4, 1)',
@@ -136,60 +202,8 @@
         </script>
     </section>
 
-<!-- Obtener datos para la tabla -->
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $fecha_inicio = $_POST['fecha_inicio'];
-    $fecha_fin = $_POST['fecha_fin'];
-    $cantidad_productos = $_POST['cantidad_productos'];
 
-    $query = "SELECT p.N_PRODUCTO, p.IMG, SUM(dp.CANTIDAD) AS VENTAS
-              FROM detalle_pedido dp
-              JOIN pedido pe ON dp.ID_PEDIDO = pe.ID_PEDIDO
-              JOIN producto p ON dp.ID_PRODUCTO = p.ID_PRODUCTO
-              WHERE ESTADO IN ('Entregado', 'Pendiente')
-              AND pe.FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
-              GROUP BY p.N_PRODUCTO
-              ORDER BY VENTAS DESC
-              LIMIT $cantidad_productos";
 
-    $resultado = $conexion->query($query);
-    $productosMasVendidos = array();
-
-    while ($row = $resultado->fetch_assoc()) {
-        $productosMasVendidos[] = array(
-            'N_PRODUCTO' => $row['N_PRODUCTO'],
-            'IMG' => $row['IMG'],
-            'VENTAS' => $row['VENTAS']
-        );
-    }
-}
-?>
-
-<!-- código para mostrar la tabla -->
-<section>
-<br>
-        <br>
-    <!-- código para mostrar la tabla con estilos -->
-    <table class="table table-bordered" style="width: 77%; margin: 0 auto; border: 2px solid black;">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" style="border: 2px solid black;">Imagen del Producto</th>
-                <th scope="col" style="border: 2px solid black;">Nombre del Producto</th>
-                <th scope="col" style="border: 2px solid black;">Cantidad de Ventas</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($productosMasVendidos as $producto) { ?>
-                <tr>
-                <td style="border: 2px solid black; color: #783f04;"><img style='width: 120px; border-radius: 3px;' src='data:image/jpg;base64,<?php echo base64_encode($producto['IMG']); ?>'></td>
-                    <td style="border: 2px solid black; color: #783f04;"><?php echo $producto['N_PRODUCTO']; ?></td>
-                     <td style="border: 2px solid black; color: #783f04;"><?php echo $producto['VENTAS']; ?></td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</section>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -202,3 +216,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+
+
+
