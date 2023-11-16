@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Enlace a Font Awesome -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
@@ -192,16 +192,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
     </style>
 </head>
 <body>
+<h2><i  style="color: red;" class="fas fa-info-circle"></i> Esperar al mensaje de confirmacion Porfavor </h2>
     <!-- Mensaje de éxito -->
     <?php
     if ($_SESSION['correo_enviado']) {
-        echo '<div class="mensaje-exito">La boleta de su compra ha sido enviada satisfactoriamente.</div>';
+        echo '<div   data-aos="zoom-in"   class="mensaje-exito"> <i style="color:green";   class="fas fa-check"></i>  La boleta de su compra ha sido enviada satisfactoriamente.</div>';
         // Restablece la variable de sesión para futuros envíos
         $_SESSION['correo_enviado'] = false;
     }
     ?>
-      <h2><i  style="color: red;" class="fas fa-info-circle"></i> Esperar al mensaje de confirmacion Porfavor </h2>
-    <div class="formularioCorreo">
+      
+    <div   data-aos="zoom-in"  class="formularioCorreo">
         <h1>Correo electronico </h1>
         <hr style="border:1px solid gray">
     <form method="post" action="">
@@ -292,8 +293,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
             padding-top: 10px;
         }
 
+        .mensaje-exito{
+            text-align: center;
+            color: black;
+            font-weight: 900;
+
+        }
+
 
 
     </style>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
