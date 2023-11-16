@@ -40,8 +40,8 @@
         // Total de la compra
         echo '<p class="total"><strong>Total de la compra:</strong> S/ ' . $totalCompra . '</p>';
 
-        echo '<a href="../../../Cliente/vistas/Cliente/generar_pdf.php" class="btn-generar-pdf">Generar PDF</a>';
-        echo '<a href="enviar_whatsapp.php" class="btn-enviar-whatsapp">Enviar por WhatsApp</a>';
+        echo '<a href="../../../Cliente/vistas/Cliente/generar_pdf.php" class="btn-generar-pdf">Generar PDF Aquí</a>';
+        echo '<a href="../../../Cliente/vistas/Cliente/correo.php" class="btn-enviar-whatsapp">Enviar a su Gmail </a>';
     }
     ?>
 </div>
@@ -107,6 +107,7 @@
     display: inline-block;
     padding: 10px 20px;
     background-color: #3498db;
+    font-weight: bolder;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -122,9 +123,10 @@
 .btn-enviar-whatsapp {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #25d366;
+    background-color: red;
     color: #fff;
     text-decoration: none;
+    font-weight: 900;
     border-radius: 5px;
     transition: background-color 0.3s;
 }

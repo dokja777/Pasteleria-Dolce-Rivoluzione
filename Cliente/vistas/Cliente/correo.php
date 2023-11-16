@@ -6,7 +6,6 @@ require '../../../PHPMailer-master/src/Exception.php';
 require '../../../PHPMailer-master/src/PHPMailer.php';
 require '../../../PHPMailer-master/src/SMTP.php';
 
-
 include('../../../Servidor/PHP/Cliente/sessionAbiertaCliente.php');
 
 // Inicializar la variable de correo del cliente
@@ -61,12 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
 
             try {
                 //Server settings
-                $mail->SMTPDebug = 2; // 0 for no debug output, 2 for debug output
+                $mail->SMTPDebug = 0; // 0 for no debug output, 2 for debug output
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com'; // Configura el servidor SMTP
                 $mail->SMTPAuth = true;
                 $mail->Username = 'pasteleria.dolce.rivoluzione@gmail.com'; // Tu dirección de correo electrónico
-                $mail->Password = 'contra123_'; // Tu contraseña de correo electrónico
+                $mail->Password = 'zmgr yjzv mofy hzra'; // Tu contraseña de correo electrónico
                 $mail->SMTPSecure = 'tls'; // O 'ssl' si estás utilizando SSL
                 $mail->Port = 587; // Puerto del servidor SMTP
 
@@ -81,6 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
 
                 // Envía el correo
                 $mail->send();
+
+                // Establece la variable de sesión para mostrar el mensaje de éxito
+                $_SESSION['correo_enviado'] = true;
             } catch (Exception $e) {
                 echo "Error al enviar el correo: {$mail->ErrorInfo}";
             }
@@ -94,11 +96,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Boleta de Compras</title>
 
     <!-- Estilos de la boleta -->
     <style>
-       body{
+    body{
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     
     }
@@ -186,13 +189,99 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
     </style>
 </head>
 <body>
-    <!-- Formulario para ingresar la dirección de correo electrónico -->
+    <!-- Mensaje de éxito -->
+    <?php
+    if ($_SESSION['correo_enviado']) {
+        echo '<div class="mensaje-exito">La boleta de su compra ha sido enviada satisfactoriamente.</div>';
+        // Restablece la variable de sesión para futuros envíos
+        $_SESSION['correo_enviado'] = false;
+    }
+    ?>
+      <h2> Esperar al mensaje de confirmacion Porfavor </h2>
+    <div class="formularioCorreo">
+        <h1>Correo electronico </h1>
+        <hr style="border:1px solid gray">
     <form method="post" action="">
         <label for="correoCliente">Ingrese su correo electrónico:</label>
         <input type="email" id="correoCliente" name="correoCliente" required>
         <button type="submit">Enviar Boleta por Correo</button>
+        <a href="../../../Cliente//vistas//Cliente/productos.php">Regrese a la pagina principal</a>
     </form>
+   </div>
 
-    <!-- Resto del contenido (boleta, estilos, etc.) -->
+
+    <style>
+        body{
+            margin: 0;
+            box-sizing: border-box;
+            background-color: whitesmoke;
+        } 
+        .formularioCorreo{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid black;
+            width: 35%;
+            height: 300px;
+           margin: 100px 480px;
+           box-shadow: 1px 2px 10px black;
+           padding-bottom: 50px;
+          
+           
+        }
+        .formularioCorreo h1{
+            font-weight: 900;
+            font-size: 29px;
+            letter-spacing: 1px;
+            padding: 12px 10px;
+            
+        }
+        .formularioCorreo form{
+            display: grid ;
+            gap: 19px;
+           justify-content: center;
+           color: black;
+           font-size: 19px;
+           
+        }
+        form input{
+            padding: 4px 10px;
+        }
+        form button{
+            background-color: #1aa34a;
+            border: none;
+            color:white;
+            padding: 5px 10px;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 1px 2px 10px black;
+            border-radius: 4px;
+        }
+        form button:hover{
+          background-color: green;
+          box-shadow: 1px 2px 10px wheat;
+         letter-spacing: 1px;
+        }
+        form a{
+           background-color: #8B0000;
+           color: whitesmoke;
+           text-decoration: none;
+           font-weight: 900;
+           padding: 5px 10px;
+           font-size: 15px;
+           border-radius: 4px;
+           box-shadow: 1px 2px 10px black;
+          
+        }
+        form  a:hover{
+         background-color: red;
+          box-shadow: 1px 2px 10px wheat;
+         letter-spacing: 1px;
+        }
+
+
+
+    </style>
 </body>
 </html>
