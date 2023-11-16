@@ -51,28 +51,96 @@
     <br>
     
     <form method="post" action="generar_grafico.php">
-    <p>Ingrese el rango de las fechas</p>
+        <p>Ingrese el rango de las fechas</p>
 
-    <br>
-    <label for="fecha_inicio">Fecha de inicio:</label>
-    <input type="date" name="fecha_inicio" id="fecha_inicio" required>
+        <br>
+        <label for="fecha_inicio">Fecha de inicio:</label>
+        <input type="date" name="fecha_inicio" id="fecha_inicio" required>
 
-    <label for="fecha_fin">Fecha de fin:</label>
-    <input type="date" name="fecha_fin" id="fecha_fin" required>
-    <br>
-    <br>
+        <label for="fecha_fin">Fecha de fin:</label>
+        <input type="date" name="fecha_fin" id="fecha_fin" required>
+        <br>
+        <br>
 
-    <input type="submit" value="Generar Gráfico">
+        <label for="cantidad_productos">Cantidad de productos a mostrar:</label>
+        <input type="number" name="cantidad_productos" id="cantidad_productos" required min="1">
+        <br>
+        <br>
+
+        <input type="submit" value="Generar Gráfico">
     </form>
    
-<?php
-include('../../../Config/conexion.php');
+    <?php
+    include('../../../Config/conexion.php');
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $fecha_inicio = $_POST['fecha_inicio'];
+        $fecha_fin = $_POST['fecha_fin'];
+        $cantidad_productos = $_POST['cantidad_productos']; // Obtener la cantidad de productos desde el formulario
+
+        $query = "SELECT p.N_PRODUCTO, SUM(dp.CANTIDAD) AS VENTAS
+                  FROM detalle_pedido dp
+                  JOIN pedido pe ON dp.ID_PEDIDO = pe.ID_PEDIDO
+                  JOIN producto p ON dp.ID_PRODUCTO = p.ID_PRODUCTO
+                  WHERE pe.ESTADO = 'Entregado'
+                  AND pe.FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
+                  GROUP BY p.N_PRODUCTO
+                  ORDER BY VENTAS DESC
+                  LIMIT $cantidad_productos"; // Usar la cantidad de productos en la consulta
+
+        $resultado = $conexion->query($query);
+        $data = array();
+
+        while ($row = $resultado->fetch_assoc()) {
+            $data[$row['N_PRODUCTO']] = $row['VENTAS'];
+            
+        }
+
+    }
+    ?>
+
+    <section>
+    <h2 style="margin-left: 40%;">Productos más vendidos</h2>
+        <!-- referencia a la biblioteca Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <canvas id="grafico" ></canvas>
+
+        <script>
+            var data = <?php echo json_encode($data); ?>;
+            var ctx = document.getElementById('grafico').getContext('2d');
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(data),
+                    datasets: [{
+                        label: 'Cantidad de Ventas',
+                        data: Object.values(data),
+                        backgroundColor: 'rgba(120, 63, 4, 0.2)',
+                        borderColor: 'rgba(120, 63, 4, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    </section>
+
+<!-- Obtener datos para la tabla -->
+<?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fecha_inicio = $_POST['fecha_inicio'];
     $fecha_fin = $_POST['fecha_fin'];
+    $cantidad_productos = $_POST['cantidad_productos'];
 
-    $query = "SELECT p.N_PRODUCTO, SUM(dp.CANTIDAD) AS VENTAS
+    $query = "SELECT p.N_PRODUCTO, p.IMG, SUM(dp.CANTIDAD) AS VENTAS
               FROM detalle_pedido dp
               JOIN pedido pe ON dp.ID_PEDIDO = pe.ID_PEDIDO
               JOIN producto p ON dp.ID_PRODUCTO = p.ID_PRODUCTO
@@ -80,61 +148,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               AND pe.FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
               GROUP BY p.N_PRODUCTO
               ORDER BY VENTAS DESC
-              LIMIT 30";
+              LIMIT $cantidad_productos";
 
     $resultado = $conexion->query($query);
-    $data = array();
+    $productosMasVendidos = array();
 
     while ($row = $resultado->fetch_assoc()) {
-        $data[$row['N_PRODUCTO']] = $row['VENTAS'];
+        $productosMasVendidos[] = array(
+            'N_PRODUCTO' => $row['N_PRODUCTO'],
+            'IMG' => $row['IMG'],
+            'VENTAS' => $row['VENTAS']
+        );
     }
-
-    
 }
 ?>
 
+<!-- código para mostrar la tabla -->
 <section>
+<br>
+        <br>
+    <!-- código para mostrar la tabla con estilos -->
+    <table class="table table-bordered" style="width: 77%; margin: 0 auto; border: 2px solid black;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="border: 2px solid black;">Imagen del Producto</th>
+                <th scope="col" style="border: 2px solid black;">Nombre del Producto</th>
+                <th scope="col" style="border: 2px solid black;">Cantidad de Ventas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($productosMasVendidos as $producto) { ?>
+                <tr>
+                <td style="border: 2px solid black; color: #783f04;"><img style='width: 120px; border-radius: 3px;' src='data:image/jpg;base64,<?php echo base64_encode($producto['IMG']); ?>'></td>
+                    <td style="border: 2px solid black; color: #783f04;"><?php echo $producto['N_PRODUCTO']; ?></td>
+                     <td style="border: 2px solid black; color: #783f04;"><?php echo $producto['VENTAS']; ?></td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</section>
 
-<!-- referencia a la biblioteca Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<canvas id="grafico" ></canvas>
 
-
-<script>
-    
-    var data = <?php echo json_encode($data); ?>;
-
-    
-    var ctx = document.getElementById('grafico').getContext('2d');
-
-   
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: Object.keys(data),
-            datasets: [{
-                label: 'Cantidad de Ventas',
-                data: Object.values(data),
-                backgroundColor: 'rgba(120, 63, 4, 0.2)', // Color de fondo de las barras
-                borderColor: 'rgba(120, 63, 4, 1)', // Color del borde de las barras
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
-
-</section>
-
-<!-- Obtén los datos de los productos más vendidos (nombre y cantidad) y guárdalos en un array $productosMasVendidos -->
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

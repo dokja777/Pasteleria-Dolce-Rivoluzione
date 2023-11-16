@@ -1,3 +1,32 @@
+
+<?php
+include('../../../Config/conexion.php');
+
+$productosMasVendidos = array(); // Inicializa la variable
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $fecha_inicio = $_POST['fecha_inicio'];
+    $fecha_fin = $_POST['fecha_fin'];
+    $cantidad_productos = $_POST['cantidad_productos'];
+
+    $query = "SELECT p.N_PRODUCTO, SUM(dp.CANTIDAD) AS CANTIDAD
+              FROM detalle_pedido dp
+              JOIN pedido pe ON dp.ID_PEDIDO = pe.ID_PEDIDO
+              JOIN producto p ON dp.ID_PRODUCTO = p.ID_PRODUCTO
+              WHERE pe.ESTADO = 'Entregado'
+              AND pe.FECHA BETWEEN '$fecha_inicio' AND '$fecha_fin'
+              GROUP BY p.N_PRODUCTO
+              ORDER BY CANTIDAD DESC
+              LIMIT $cantidad_productos";
+
+    $resultado = $conexion->query($query);
+
+    while ($row = $resultado->fetch_assoc()) {
+        $productosMasVendidos[] = $row;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,33 +90,16 @@
         <input type="date" name="fecha_fin" id="fecha_fin" required>
         <br>
         <br>
-
+        <label for="cantidad_productos">Cantidad de productos a mostrar:</label>
+        <input type="number" name="cantidad_productos" id="cantidad_productos" required min="1">
+        <br>
+        <br>
         <input type="submit" value="Generar Gráfico">
     </form>
 
 
     <!-- Obtén los datos de los productos más vendidos (nombre y cantidad) y guárdalos en un array $productosMasVendidos -->
 
-    <?php if (!empty($productosMasVendidos)) : ?>
-<table>
-    <caption>Productos más vendidos</caption>
-    <thead>
-        <tr>
-            <th>Nombre del Producto</th>
-            <th>Cantidad Vendida</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($productosMasVendidos as $producto) : ?>
-            <tr>
-                <td><?php echo $producto['N_PRODUCTO']; ?></td>
-                <td><?php echo $producto['CANTIDAD']; ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-<?php else : ?>
-<?php endif; ?>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

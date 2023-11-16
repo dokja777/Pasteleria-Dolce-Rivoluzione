@@ -1,6 +1,6 @@
 <?php
     //conexion a la base de datos
-    include('../../../Servidor/conexion.php');
+include('../../../Config/conexion.php');
 
     $idpedido = $_GET['ID_PEDIDO'];
     $sql = "DELETE FROM pedido where ID_PEDIDO = '$idpedido'";

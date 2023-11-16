@@ -2,7 +2,7 @@
 
 <?php
 // listaProductos.php
-include('../../../Servidor/conexion.php');
+include('../../../Config/conexion.php');
 // Obtener los valores de los filtros desde las variables
 $valorCliente = isset($_GET['cliente']) ? $_GET['cliente'] : '';
 

@@ -10,7 +10,7 @@
     <!-- Estructura de la boleta -->
 <div class="boleta">
     <div class="header">
-        <h1><strong>Boleta de Compra</strong> </h1>
+        <h1><strong>Boleta de Compras</strong> </h1>
         <img class="imglogo" src="../../../Cliente/recursos/img/logo.png" alt="" />
     </div>
     <?php
