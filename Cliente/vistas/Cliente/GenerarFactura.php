@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             foreach($arregloCarrito as $producto){
                 echo '<div class="producto">';
-                echo '<p><strong>Nombre:</strong> ' . $producto['Nombre'] . '</p>';
+                echo '<p><strong>Nombre del pastel:</strong> ' . $producto['Nombre'] . '</p>';
                 echo '<p><strong>Precio unitario:</strong> S/ ' . $producto['Precio'] . '</p>';
                 echo '<p><strong>Cantidad:</strong> ' . $producto['Cantidad'] . '</p>';
 
@@ -77,6 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       
         echo '<a href="facturaPDF.php" class="btn-generar-pdf">Generar PDF</a>';
+        echo '<a href="correoFactura.php" class="btn-generar-gmail">Enviar a GMAIL</a>';
+
         
     ?>
     </div>
@@ -147,11 +149,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             text-decoration: none;
             border-radius: 5px;
             margin-right: 10px;
+            font-weight: 900;
             transition: background-color 0.3s;
         }
 
         .btn-generar-pdf:hover {
             background-color: #297fb8;
+        }
+        .btn-generar-gmail{
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: red;
+            box-shadow: 1px 2px 10px black;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-weight: 900;
+            transition: background-color 0.3s;
         }
     </style>
 </body>
