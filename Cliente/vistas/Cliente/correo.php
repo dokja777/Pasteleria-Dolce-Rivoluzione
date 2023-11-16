@@ -96,7 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+     <!-- Enlace a Font Awesome -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     <title>Boleta de Compras</title>
 
     <!-- Estilos de la boleta -->
@@ -197,15 +200,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
         $_SESSION['correo_enviado'] = false;
     }
     ?>
-      <h2> Esperar al mensaje de confirmacion Porfavor </h2>
+      <h2><i  style="color: red;" class="fas fa-info-circle"></i> Esperar al mensaje de confirmacion Porfavor </h2>
     <div class="formularioCorreo">
         <h1>Correo electronico </h1>
         <hr style="border:1px solid gray">
     <form method="post" action="">
         <label for="correoCliente">Ingrese su correo electrónico:</label>
-        <input type="email" id="correoCliente" name="correoCliente" required>
-        <button type="submit">Enviar Boleta por Correo</button>
-        <a href="../../../Cliente//vistas//Cliente/productos.php">Regrese a la pagina principal</a>
+        <input type="email" id="correoCliente" name="correoCliente" placeholder="tucorreo@gmail.com" required>
+        <button type="submit">Enviar Boleta </button>
+        <a href="../../../Cliente//vistas/Cliente/productos.php">Regrese a la pagina principal</a>
     </form>
    </div>
 
@@ -214,19 +217,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
         body{
             margin: 0;
             box-sizing: border-box;
-            background-color: whitesmoke;
+            background-color: wheat;
         } 
         .formularioCorreo{
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            border: 1px solid black;
+            border: 0.5px solid black;
             width: 35%;
             height: 300px;
            margin: 100px 480px;
-           box-shadow: 1px 2px 10px black;
+           box-shadow: 1px 2px 25px black;
            padding-bottom: 50px;
+           background-color: white;
           
            
         }
@@ -244,9 +248,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
            color: black;
            font-size: 19px;
            
+           
         }
         form input{
-            padding: 4px 10px;
+            padding: 9px 10px;
+            
+            border: 1px solid black;
+            
         }
         form button{
             background-color: #1aa34a;
@@ -278,6 +286,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
          background-color: red;
           box-shadow: 1px 2px 10px wheat;
          letter-spacing: 1px;
+        }
+        h2{
+            text-align: center;
+            padding-top: 10px;
         }
 
 
