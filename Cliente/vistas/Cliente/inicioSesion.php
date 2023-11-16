@@ -105,7 +105,12 @@ include('../../../Config/conexion.php');
         <button type="submit">Iniciar Sesión</button>
 
         <a href="registro.php">Crear Cuenta</a>
-
+        <br>
+        <div class="text-center">
+          <br>
+          <br>
+          <a href="recuperarContrasena.php">¿Olvidaste tu contraseña?</a>
+        </div>
 
       </form>
 
