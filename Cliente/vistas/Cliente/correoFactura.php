@@ -183,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
         <label for="correoCliente">Ingrese su correo electrónico:</label>
         <input type="email" id="correoCliente" name="correoCliente" placeholder="tucorreo@gmail.com" required>
         <button type="submit">Enviar Factura </button>
-        <a href="../../../Cliente//vistas/Cliente/productos.php">Regrese a la pagina principal</a>
+        <a href="productos.php">Regrese a la pagina principal</a>
     </form>
    </div>
 
