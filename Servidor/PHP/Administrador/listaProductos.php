@@ -5,6 +5,7 @@ include('../../../Servidor/conexion.php');
 $valorCodigo = isset($_GET['codigo']) ? $_GET['codigo'] : '';
 $valorNombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 $valorStock = isset($_GET['stock']) ? $_GET['stock'] : '';
+$valorCategoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
 
 // Definir la cantidad de productos por página
 $productosPorPagina = isset($_GET['cantidad']) ? $_GET['cantidad'] : 10;
@@ -33,6 +34,10 @@ if (!empty($valorNombre)) {
 
 if (!empty($valorStock)) {
     $sql .= " AND producto.STOCK >= $valorStock";
+}
+
+if (!empty($valorCategoria)) {
+    $sql .= " AND producto.ID_CATEGORIA = $valorCategoria";
 }
 
 // LIMIT y OFFSET para la paginación
