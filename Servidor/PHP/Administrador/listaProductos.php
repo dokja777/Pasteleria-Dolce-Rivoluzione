@@ -21,7 +21,7 @@ $desplazamiento = ($pagina - 1) * $productosPorPagina;
 $sql = "SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK, producto.MEDIDA
     FROM PRODUCTO
     INNER JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
-    INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN
+    LEFT JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN
     WHERE 1";
 
 if (!empty($valorCodigo)) {
