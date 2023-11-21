@@ -192,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
     </style>
 </head>
 <body>
-<h2><i  style="color: red;" class="fas fa-info-circle"></i> Esperar al mensaje de confirmacion Porfavor </h2>
+<h2><i  style="color: red;" class="fas fa-info-circle"></i> Esperar el mensaje de confirmacion Porfavor </h2>
     <!-- Mensaje de éxito -->
     <?php
     if ($_SESSION['correo_enviado']) {
