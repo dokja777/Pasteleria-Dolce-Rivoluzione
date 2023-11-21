@@ -195,12 +195,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['correoCliente'])) {
 <h2><i  style="color: red;" class="fas fa-info-circle"></i> Esperar el mensaje de confirmacion Porfavor </h2>
     <!-- Mensaje de éxito -->
     <?php
-    if ($_SESSION['correo_enviado']) {
-        echo '<div   data-aos="zoom-in"   class="mensaje-exito"> <i style="color:green";   class="fas fa-check"></i>  La boleta de su compra ha sido enviada satisfactoriamente.</div>';
-        // Restablece la variable de sesión para futuros envíos
-        $_SESSION['correo_enviado'] = false;
-    }
-    ?>
+if (isset($_SESSION['correo_enviado']) && $_SESSION['correo_enviado']) {
+    echo '<div   data-aos="zoom-in"   class="mensaje-exito"> <i style="color:green";   class="fas fa-check"></i>  La boleta de su compra ha sido enviada satisfactoriamente.</div>';
+    // Restablece la variable de sesión para futuros envíos
+    $_SESSION['correo_enviado'] = false;
+}
+?>
       
     <div   data-aos="zoom-in"  class="formularioCorreo">
         <h1>Correo electronico </h1>
