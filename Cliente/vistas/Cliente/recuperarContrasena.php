@@ -116,14 +116,21 @@ include('../../../Config/conexion.php');
 
 						if (respuesta.exito) {
 
-							if (respuesta.redireccionar) {
+							//if (respuesta.redireccionar) {
+
+								includeAndExecute('../../../Servidor/PHP/Cliente/recuperarContrasena.php',respuesta.correo);
+
 								// Los datos coinciden, muestra un mensaje de éxito
 								alert("Correo enviado con éxito. Revise su bandeja de entrada.");
 								console.log("Correo enviado con éxito. Revise su bandeja de entrada.");
 
-								// Redirige solo si se especifica en la respuesta
+								
+
 								window.location.href = "inicioSesion.php"; // Cambia "tu_pagina_actual.php" con tu ruta real
-							}
+								<?php
+								//include('../../../Servidor/PHP/Cliente/recuperarContrasena.php');
+								?>
+							//}
 						} else {
 							// Los datos no coinciden, muestra un mensaje de error
 							alert(respuesta.mensaje);
@@ -142,6 +149,23 @@ include('../../../Config/conexion.php');
 			// Evita que el formulario se envíe de forma convencional
 			return false;
 		}
+
+		// Función para incluir y ejecutar el código de un archivo
+    function includeAndExecute(file,correo) {
+
+			// Crea un objeto FormData para enviar los datos al servidor
+			var formData = new FormData();
+			formData.append('correo', correo);
+        var xhr = new XMLHttpRequest();
+				xhr.open('POST', file, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Ejecuta el código del archivo
+                eval(xhr.responseText);
+            }
+        };
+        xhr.send(formData);
+    }
 
 	</script>
 

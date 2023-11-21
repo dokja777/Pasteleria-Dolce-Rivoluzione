@@ -20,7 +20,7 @@ $desplazamiento = ($pagina - 1) * $productosPorPagina;
 $sql = "SELECT pedido.ID_PEDIDO, cliente.NOMBRE AS CLIENTE_NOMBRE, empleado.N_EMPLEADO AS EMPLEADO_NOMBRE, pedido.FECHA, pedido.MONTO_FINAL, pedido.METODO_PAGO, pedido.ESTADO 
     FROM pedido
     INNER JOIN cliente ON pedido.ID_CLIENTE = cliente.ID_CLIENTE
-    INNER JOIN empleado ON pedido.ID_EMPLEADO = empleado.ID_EMPLEADO
+    LEFT JOIN empleado ON pedido.ID_EMPLEADO = empleado.ID_EMPLEADO
     WHERE 1";
 
 

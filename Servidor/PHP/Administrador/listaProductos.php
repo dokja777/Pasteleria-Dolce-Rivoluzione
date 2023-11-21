@@ -5,6 +5,7 @@ include('../../../Servidor/conexion.php');
 $valorCodigo = isset($_GET['codigo']) ? $_GET['codigo'] : '';
 $valorNombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 $valorStock = isset($_GET['stock']) ? $_GET['stock'] : '';
+$valorCategoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
 
 // Definir la cantidad de productos por página
 $productosPorPagina = isset($_GET['cantidad']) ? $_GET['cantidad'] : 10;
@@ -20,7 +21,7 @@ $desplazamiento = ($pagina - 1) * $productosPorPagina;
 $sql = "SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK, producto.MEDIDA
     FROM PRODUCTO
     INNER JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
-    INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN
+    LEFT JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN
     WHERE 1";
 
 if (!empty($valorCodigo)) {
@@ -33,6 +34,10 @@ if (!empty($valorNombre)) {
 
 if (!empty($valorStock)) {
     $sql .= " AND producto.STOCK >= $valorStock";
+}
+
+if (!empty($valorCategoria)) {
+    $sql .= " AND producto.ID_CATEGORIA = $valorCategoria";
 }
 
 // LIMIT y OFFSET para la paginación
