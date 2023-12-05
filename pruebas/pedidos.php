@@ -46,7 +46,7 @@ $totalPaginas = $controlador->obtenerTotalPaginas($productosPorPagina);
           <th scope="col" style="background-color:#f9cb9c;">Empleado</th>
           <th scope="col" style="background-color:#f9cb9c;">Fecha</th>
           <th scope="col" style="background-color:#f9cb9c;">Monto final</th>
-          <th scope="col" style="background-color:#f9cb9c;">Metodo de pago</th>
+          <th scope="col" style="background-color:#f9cb9c;">Metodo de pagos</th>
           <th scope="col" style="background-color:#f9cb9c;">Estado</th>
           <th scope="col" style="background-color:#f9cb9c;">Acciones</th>
           <th scope="col" style="background-color:#f9cb9c;">Detalle Pedido</th>
