@@ -37,8 +37,8 @@ class BusquedaNombreTest extends TestCase {
 
     public function testObtenerProductosSinBusqueda()
     {
-        $catalogoProductos = new BusquedaNombre($this->conexion);
-        $productos = $catalogoProductos->obtenerProductos('coco');
+        $busquedanombre = new BusquedaNombre($this->conexion);
+        $productos = $busquedanombre->obtenerProductos('coco');
 
         $this->assertIsArray($productos);
 
@@ -48,8 +48,8 @@ class BusquedaNombreTest extends TestCase {
 
     public function testObtenerProductosConBusqueda()
     {
-        $catalogoProductos = new BusquedaNombre($this->conexion);
-        $productos = $catalogoProductos->obtenerProductos('Tiramisu');
+        $busquedanombre = new BusquedaNombre($this->conexion);
+        $productos = $busquedanombre->obtenerProductos('Tiramisu');
 
         $this->assertIsArray($productos);
 
