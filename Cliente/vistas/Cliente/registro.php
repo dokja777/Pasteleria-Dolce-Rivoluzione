@@ -128,7 +128,7 @@
             <br>
             <button type="submit">Registrarse</button>
 
-            <a href="sesion.php">Iniciar Sesión</a>
+            <a href="inicioSesion.php">Iniciar Sesión</a>
             
 
         </form>
