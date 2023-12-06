@@ -36,15 +36,6 @@
         <li><a href="../Empleado/productoEmpleado.php" class="link_name">Productos</a></li>
       </ul>
     </li>
-    <li>
-      <a href="">
-        <i class='fas fa-users'></i>
-        <span class="link_name">Usuarios</span>
-      </a>
-      <ul class="sub-menu blank">
-        <li><a href="" class="link_name">Usuarios</a></li>
-      </ul>
-    </li>
 
     <li>
       <div class="profile-details">

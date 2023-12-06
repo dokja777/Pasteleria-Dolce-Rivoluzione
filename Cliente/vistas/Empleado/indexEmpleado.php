@@ -84,10 +84,6 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
         <i class="fas fa-box"></i>
         <h2>Productos</h2>
       </a>
-      <a href="listarAdministrador.php" class="card">
-        <i class="fas fa-users"></i>
-        <h2>Usuarios</h2>
-      </a>
 
     </div>
 
