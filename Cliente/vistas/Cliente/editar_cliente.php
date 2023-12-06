@@ -23,7 +23,7 @@ if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['numero
     $correo = validate($_POST['correo']);
 
     if (empty($nombre) || empty($apellido) || empty($numero_doc) || empty($telefono) || empty($correo)){
-        header("Location: ruta_del_formulario_de_edicion.php?error=Todos los campos son requeridos");
+        header("Location: editarClient.php?error=Todos los campos son requeridos");
         exit();
     } else {
         $cliente_id = $_SESSION['Id'];
@@ -40,6 +40,6 @@ if (isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['numero
         }
     }
 } else {
-    header("Location: ruta_del_formulario_de_edicion.php");
+    header("Location: editarCliente.php");
     exit();
 }
