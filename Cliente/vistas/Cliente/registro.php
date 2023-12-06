@@ -68,7 +68,7 @@
         
         <!--LOGIN---->
         
-        <form action="funcionalidadRegistro.php" method="POST">
+        <form action="../../../Servidor/PHP/Cliente/funcionalidadRegistro.php" method="POST">
             <h1>   RESGÍSTRATE</h1>
             <hr>
 
