@@ -44,7 +44,7 @@ function procesarPedido($conexion, $carrito, $idCliente, $fechaRecojo, $metodoPa
 
                     // Inserta en la tabla detalle_pedido
                     $sqlInsertDetalle = "INSERT INTO detalle_pedido (DEDICATORIA, PRECIO, CANTIDAD, ID_PEDIDO, ID_PRODUCTO, FECHA_RECOJO)
-                                                        VALUES ('', '$subtotal', '$cantidadProducto', '$idPedido', '$idProducto', '$fechaRecojo')";
+                                        VALUES ('', '$subtotal', '$cantidadProducto', '$idPedido', '$idProducto', '$fechaRecojo')";
                     $resultInsertDetalle = $conexion->query($sqlInsertDetalle);
 
                     if ($resultInsertDetalle === false) {
@@ -61,8 +61,15 @@ function procesarPedido($conexion, $carrito, $idCliente, $fechaRecojo, $metodoPa
                 }
             }
 
-            // Ahora puedes utilizar $idPedido en tu lógica si es necesario
-            echo "Pedido registrado con éxito. Total de la compra: " . $totalCompra . ". ID del pedido: " . $idPedido;
+            $result = [];
+            if (!empty($idPedido)) {
+                // Ahora puedes utilizar $idPedido en tu lógica si es necesario
+                $result['mensaje'] = "Pedido registrado con éxito. Total de la compra: " . $totalCompra . ". ID del pedido: " . $idPedido;
+            } else {
+                $result['mensaje'] = "Error al registrar el pedido.";
+            }
+
+            return $result;
         } else {
             $error = "Error al registrar el pedido: " . $conexion->error;
             error_log($error);
@@ -72,8 +79,13 @@ function procesarPedido($conexion, $carrito, $idCliente, $fechaRecojo, $metodoPa
         // Manejar el caso en que el carrito está vacío
         echo "Error: El carrito está vacío.";
     }
+
+    return [];
 }
 
 // Llamada a la función (debes proporcionar los valores adecuados)
-procesarPedido($conexion, $_SESSION['carrito'], $idCliente, $_POST['fecha_recojo'], $_POST['metodo_pago']);
+$resultado = procesarPedido($conexion, $_SESSION['carrito'], $idCliente, $_POST['fecha_recojo'], $_POST['metodo_pago']);
+
+// Salida del resultado (puedes ajustar según tus necesidades)
+echo json_encode($resultado);
 ?>
