@@ -53,7 +53,7 @@ if ($sql) {
         echo "<td>$fecha</td>";
         echo "<td>$montofinal</td>";
         echo "<td>$metodopago</td>";
-        echo "<td>$estado</td>";
+        echo "<td class=\"estado\">$estado</td>";
  
         echo "<td>
         <a href='../Empleado/editarPedidoEm.php?id=$idpedido' class=\"btn btn-warning\"><i class='fas fa-pencil-alt'></i></a>
