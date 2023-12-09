@@ -74,6 +74,14 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
       <option value="maximo">
       <option value="cristiano">
     </datalist>
+
+    <label class="Emple"> Estado :</label>
+    <input list="opcionesEstado" class="buscador" id="buscadorEstado" name="buscadorEstado">
+    <datalist id="opcionesEstado">
+      <option value="Entregado">
+      <option value="Pendiente">
+      <option value="Completado">
+    </datalist>
     <br>
     <a href="../Empleado/agregarPedido.php" class="boton" style="margin-bottom:4px">Agregar nuevo pedido</a>
     
@@ -221,6 +229,8 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 
     
   </style>
+
+<script src="../../../Cliente/js/buscarEstadoPedido.js"> </script>
 
   <script src="../../../Cliente/js/buscadorEmpleado.js"> </script>
   <!-- script para confirmacion de eliminar un empleado -->

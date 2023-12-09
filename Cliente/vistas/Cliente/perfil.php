@@ -51,7 +51,7 @@
                         
                     </ul>
                     <div class="containerFinal">
-                        <form action="">
+                        <form action="editarCliente.php">
                            <button>Editar</button> 
                         </form>
                         <form action="../../../Cliente/vistas/Cliente/historialPedido.php">

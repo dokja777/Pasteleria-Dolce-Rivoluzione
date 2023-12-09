@@ -2,125 +2,113 @@
 include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <title>Document</title>
+  <link rel="stylesheet" href="../../../Cliente/css/StyleLista.css">
+  <title>Lista producto</title>
 </head>
 
-<body>
-<?php include '../../../Cliente/vistas/Empleado/headerSecundario.php'; ?>
+<body style="background-color:#EAE6CA; padding-bottom: 50px">
+
+  <!-- Configuración del navbar user y lista -->
+  <?php include '../../../Cliente/vistas/Empleado/headerSecundario.php'; ?>
+  <br>
+
+  <style>
+    #bar a {
+      border-style: none;
+      background-color: ;
+      border-radius: 10px;
+    }
+  </style>
+
+
+  <!-- Tabla de  lista de  producto  titulo -->
   <br>
   <div class="container">
-    <h1 class="text-center" style=" background-color:black;color:white; height: 80px; font-family:var; padding-top: 12px;"> Lista de productos</h1>
+    <h1 class="text-center"
+      style=" background-color:black;color:white; height: 80px; font-family:var; padding-top: 12px;"> Lista de productos
+    </h1>
   </div>
 
-  
+
 
   <!-- Tabla de lista de productos  -->
 
-
   <div class="container">
 
-    <form action="buscarProductoEmpleado.php" method="post" style="border: 2px solid #783f04; text-align:right; margin-bottom:10px; padding: 10px">
-      <a style="margin-right:20px">Buscar por:</a>
-      <select name="filtro" id="filtro" style="margin-right:10px">
-        <option value="nombre">Nombre del Producto</option>
+    <?php
+    //  conexion para mostrar los productos
+    include('../../../Servidor/conexion.php');
+    ?>
+
+    <form id="formFiltros" style="border: 2px solid #783f04; padding-left: 20px;" method="GET">
+      <label for="cantidad">Mostrar cantidad de productos:</label>
+      <select name="cantidad" id="cantidad">
+        <option value="10" <?= (isset($productosPorPagina) && $productosPorPagina == 10 ? 'selected' : '') ?>>10</option>
+        <option value="20" <?= (isset($productosPorPagina) && $productosPorPagina == 20 ? 'selected' : '') ?>>20</option>
+        <option value="30" <?= (isset($productosPorPagina) && $productosPorPagina == 30 ? 'selected' : '') ?>>30</option>
+        <option value="40" <?= (isset($productosPorPagina) && $productosPorPagina == 40 ? 'selected' : '') ?>>40</option>
+        <option value="50" <?= (isset($productosPorPagina) && $productosPorPagina == 50 ? 'selected' : '') ?>>50</option>
       </select>
-      <input type="text" name="buscar" id="buscar" style="margin-right:10px; border-color:black;">
-      <input type="submit" class="btn" style="background-color:#f9cb9c" value="Buscar">
+      <br>
+      <input type="hidden" name="pagina" value="1">
+      <label for="codigo"> Código:</label>
+      <input type="text" name="codigo" id="codigo" value="<?= isset($valorCodigo) ? $valorCodigo : '' ?>">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" id="nombre" value="<?= isset($valorNombre) ? $valorNombre : '' ?>">
+      <label for="stock">Stock:</label>
+      <input type="text" name="stock" id="stock" value="<?= isset($valorStock) ? $valorStock : '' ?>">
+      <br>
+      <label for="categoria">Categoría:</label>
+      <select name="categoria" id="categoria">
+        <option value="" <?= (isset($valorCategoria) && $valorCategoria == '' ? 'selected' : '') ?>>Todas las categorías
+        </option>
+        <?php
+        // Consulta para obtener las categorías
+        $queryCategorias = $conexion->query("SELECT * FROM CATEGORIA_PRODUCTO");
+        while($categoria = $queryCategorias->fetch_assoc()) {
+          $idCategoria = $categoria['ID_CATEGORIA'];
+          $nombreCategoria = $categoria['N_CATEGORIA'];
+          echo "<option value='$idCategoria' ".(isset($valorCategoria) && $valorCategoria == $idCategoria ? 'selected' : '').">$nombreCategoria</option>";
+        }
+        ?>
+      </select>
+      <button type="submit" class="btn btn-success">Aplicar</button>
     </form>
-
-    <div class="container ">
-
-
-    </div>
 
     <table class="table  table-striped" style="background-color:#f9cb9c; font-family:var; text-align:justify;">
       <thead>
-        <tr  >
-          <th scope="col" style="background-color:#f9cb9c;">ID</th>
-          <th scope="col" style="background-color:#f9cb9c;">NOMBRE DEL PRODUCTO</th>
-          <th scope="col" style="background-color:#f9cb9c;">CATEGORIA</th>
-          <th scope="col" style="background-color:#f9cb9c;">IMAGEN</th>
-          <th scope="col" style="background-color:#f9cb9c;">DESCRIPCION</th>
-          <th scope="col" style="background-color:#f9cb9c;">PRECIO</th>
-          <th scope="col" style="background-color:#f9cb9c;">STOCK</th>
-          <th scope="col" style="background-color:#f9cb9c;">MEDIDA DEL PASTEL</th>
-          <th scope="col" style="background-color:#f9cb9c;">ACCIONES</th>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NOMBRE DEL PRODUCTO</th>
+          <th scope="col">CATEGORIA</th>
+          <th scope="col">IMAGEN</th>
+          <th scope="col">DESCRIPCION</th>
+          <th scope="col">PRECIO</th>
+          <th scope="col">STOCK</th>
+          <th scope="col">MEDIDA DEL PASTEL</th>
+          <th scope="col">ACCIONES</th>
 
         </tr>
       </thead>
       <tbody>
-
-
         <?php
-        //  conexion para mostrar los productos
-        require("../../../Config/conexion.php");
-
-        $sql = $conexion->query("SELECT producto.ID_PRODUCTO, admin.NOMBRE AS ADMIN_NOMBRE, producto.N_PRODUCTO, categoria_producto.N_CATEGORIA, producto.DESCRIPCION, producto.IMG, producto.PRECIO, producto.STOCK, producto.MEDIDA
- FROM PRODUCTO
- LEFT JOIN CATEGORIA_PRODUCTO ON PRODUCTO.ID_CATEGORIA = CATEGORIA_PRODUCTO.ID_CATEGORIA
- INNER JOIN ADMIN ON PRODUCTO.ID_ADMIN = ADMIN.ID_ADMIN");
-
-        if ($sql) {
-          while ($resultado = $sql->fetch_assoc()) {
-
-            $idProducto = $resultado['ID_PRODUCTO'];
-            $nombreProducto = $resultado['N_PRODUCTO'];
-            $nombreCategoria = $resultado['N_CATEGORIA'];
-            $imagen = $resultado['IMG'];
-            $descripcion = $resultado['DESCRIPCION'];
-            $precio = $resultado['PRECIO'];
-            $stock = $resultado['STOCK'];
-            $medida = $resultado['MEDIDA'];
-
-            // Imprime las filas de la tabla con las columnas específicas
-            echo "<tr  data-aos=\"zoom-in-up\"  >";
-            echo "<th scope='row' style='background-color:#f9cb9c;'>$idProducto</th>";
-            echo "<td style='background-color:#f9cb9c;'>$nombreProducto</td>";
-            echo "<td style='background-color:#f9cb9c;'>$nombreCategoria</td>";
-            echo "<td style='background-color:#f9cb9c;'><img  style='width: 120px; border-radius: 30px;'  src='data:image/jpg;base64," . base64_encode($imagen) . "'></td>";
-            echo "<td style='background-color:#f9cb9c;'>$descripcion</td>";
-            echo "<td style='background-color:#f9cb9c;' > S/ $precio </td>";
-            echo "<td style='background-color:#f9cb9c;' >$stock</td>";
-            echo "<td style='background-color:#f9cb9c;' >$medida</td>";
-            echo "<th  style='background-color:#f9cb9c;'>
-        <a href='../../../Cliente/vistas/Empleado/editarProductoEm.php?id=$idProducto' class=\"btn btn-warning\"> <i class='fas fa-edit'></i></a>
-        <br>
-      </th>";
-            echo "</tr>";
-          }
-        } else {
-          // Maneja el error si la consulta no se ejecuta correctamente
-          echo "Error en la consulta: " . $conexion->error;
-        }
-
-        // Cierra la conexión a la base de datos cuando hayas terminado
-        $conexion->close();
+        include('../../../Servidor/PHP/EmpleadoServidor/buscarProductoEmpleado.php');
         ?>
 
       </tbody>
     </table>
 
-
   </div>
 
-
-
   <style>
-    tbody td{
-      background-color:#f9cb9c;
-    }
     .container {
       font-family: monospace;
       margin-top: 1em;
@@ -138,6 +126,13 @@ include('../../../Servidor/PHP/EmpleadoServidor/SessionAbierta.php');
     AOS.init();
   </script>
 
+
+  <script src="../../../Cliente/js/filtradoBusquedaProductos.js"></script>
+  <!-- Incluir Bootstrap JS y jQuery (opcional) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 
 </html>
