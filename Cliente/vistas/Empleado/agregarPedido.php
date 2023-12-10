@@ -61,8 +61,8 @@ if (isset($_SESSION['carritoEmpleado'])) {
 
       <div class="mb-3">
         <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;">Cliente : </label>
-        <select class="form-select mb-3 " style="background-color:#EAE6CA;border-color:black;" name="cliente">
-          <option selected disabled>-- Seleccionar cliente --</option>
+        <select class="form-select mb-3 " style="background-color:#EAE6CA;border-color:black;" name="cliente" required>
+          <option selected disabled>-- Seleccionar cliente --</option >
           <?php
           include("../../../config/conexion.php");
           $sql = $conexion->query("SELECT*fROM cliente");
@@ -82,8 +82,14 @@ if (isset($_SESSION['carritoEmpleado'])) {
 
       </div>
       <div class="mb-3">
-        <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;">Fecha : </label>
+        <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;">Fecha de Venta: </label>
         <input type="date" class="form-control" style="background-color:#EAE6CA;border-color:black;" name="fecha"
+          required>
+
+      </div>
+      <div class="mb-3">
+        <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;">Fecha de recojo: </label>
+        <input type="date" class="form-control" style="background-color:#EAE6CA;border-color:black;" name="fechaRecojo" min="<?php echo date('Y-m-d', strtotime('+3 days')); ?>"
           required>
 
       </div>
