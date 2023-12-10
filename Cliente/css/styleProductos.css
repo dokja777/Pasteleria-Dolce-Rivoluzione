@@ -45,6 +45,7 @@ ul.categoria-lista li {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 30px;
+  width: 80%;
 }
 
 .container__productos .card {

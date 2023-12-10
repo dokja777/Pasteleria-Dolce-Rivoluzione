@@ -1,7 +1,7 @@
-
 <?php
 include(__DIR__ . '/../../conexion.php');
 
+// Búsqueda por nombre
 if (isset($_GET['enviar'])) {
     $busqueda = $_GET['busqueda'];
 
@@ -14,8 +14,21 @@ if (isset($_GET['enviar'])) {
         $productos[] = $row;
     }
 } else {
-    // Si no se ha realizado una búsqueda, muestra todos los productos
+    // Filtrar por categoría si se proporciona el parámetro
+    $filtroCategoria = isset($_GET['id_categoria']) ? $_GET['id_categoria'] : '';
+
+    // Filtrar por precio si se proporciona el parámetro
+    $filtroPrecio = isset($_GET['ordenar']) ? $_GET['ordenar'] : '';
+
+    // Construir la consulta SQL
     $query = "SELECT * FROM producto";
+
+    if (!empty($filtroCategoria)) {
+        $query .= " WHERE ID_CATEGORIA = '$filtroCategoria'";
+    }
+
+    // Aquí puedes agregar más condiciones según tus necesidades, por ejemplo, para filtrar por precio
+
     $resultado = $conexion->query($query);
 
     $productos = array();
