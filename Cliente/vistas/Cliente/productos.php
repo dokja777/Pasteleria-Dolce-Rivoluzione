@@ -121,29 +121,54 @@
       </div>
 			<?php
 			} else { ?>
-				<div class="container__productos">
-			<?php foreach ($productos as $producto) {
-				?>
-				<div class="card">
-					<img src="data:image/jpg;base64, <?php echo base64_encode($producto['IMG']); ?>">
-					<h4 class="NombreProducto">
-						<?php echo $producto['N_PRODUCTO']; ?>
-					</h4>
-          <p><a>Stock : </a>
-						<?php echo $producto['STOCK']; ?>
-					</p>
-					<p><a>S/</a>
-						<?php echo $producto['PRECIO']; ?>
-					</p>
-					<a  class="ver-detalle"  href="../../../Cliente/vistas/Cliente/DetalleProducto.php?ID_PRODUCTO=<?php echo $producto['ID_PRODUCTO']; ?>">Ver Detalle del Producto</a>
-					
-				</div>
-				<?php
-			} ?>
-			</div> <?php
-		}
-		?>
-	</div>
+			<div class="container__productos">
+    <?php foreach ($productos as $producto) { ?>
+        <?php if ($producto['STOCK'] > 0) { ?>
+            <div class="card">
+                <img src="data:image/jpg;base64, <?php echo base64_encode($producto['IMG']); ?>">
+                <h4 class="NombreProducto">
+                    <?php echo $producto['N_PRODUCTO']; ?>
+                </h4>
+                <p><a>Stock : </a>
+                    <?php 
+                    if ($producto['STOCK'] > 0) {
+                        echo $producto['STOCK'];
+                    } else {
+                        echo 'AGOTADO';
+                    }
+                    ?>
+                </p>
+                <p><a>S/</a>
+                    <?php echo $producto['PRECIO']; ?>
+                </p>
+                <?php if ($producto['STOCK'] > 0) { ?>
+                    <a class="ver-detalle" href="../../../Cliente/vistas/Cliente/DetalleProducto.php?ID_PRODUCTO=<?php echo $producto['ID_PRODUCTO']; ?>">Ver Detalle del Producto</a>
+                <?php } ?>
+            </div>
+        <?php } else { ?>
+            <div class="card">
+                <img src="data:image/jpg;base64, <?php echo base64_encode($producto['IMG']); ?>">
+                <h4 class="NombreProducto">
+                    <?php echo $producto['N_PRODUCTO']; ?>
+                </h4>
+                <p><a>Stock : </a>
+                    <?php 
+                    if ($producto['STOCK'] > 0) {
+                        echo $producto['STOCK'];
+                    } else {
+                        echo 'AGOTADO';
+                    }
+                    ?>
+                </p>
+                <p><a>S/</a>
+                    <?php echo $producto['PRECIO']; ?>
+                </p>
+            </div>
+        <?php } ?>
+    <?php } ?>
+    <?php } ?>
+
+</div>
 
     <!-- Footer -->
     <?php

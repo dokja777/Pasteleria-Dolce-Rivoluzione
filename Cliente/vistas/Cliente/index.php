@@ -49,7 +49,13 @@
 					<?php echo $product['N_PRODUCTO']; ?>
 				</h4>
 				<p><a>Stock : </a>
-					<?php echo $product['STOCK']; ?>
+				<?php
+					if ($product['STOCK'] > 0) {
+						echo $product['STOCK'];
+					} else {
+						echo 'No hay Stock ';
+					}
+                ?>
 				</p>
 				<p><a>S/</a>
 					<?php echo $product['PRECIO']; ?>
