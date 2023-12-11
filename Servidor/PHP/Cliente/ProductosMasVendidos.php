@@ -17,9 +17,9 @@ $query = "SELECT
         LIMIT 30 
         ) top_products ON p.ID_PRODUCTO = top_products.ID_PRODUCTO;";
 $resultado = $conexion->query($query);
-$products = array();
+$producto = array();
 
 while ($row = $resultado->fetch_assoc()) {
-    $products[] = $row;
+    $producto[] = $row;
 }
 ?>

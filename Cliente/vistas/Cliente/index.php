@@ -42,27 +42,50 @@
 	<h1 class="title">Productos Más Vendidos</h1>
 	<div class="container__masVendidos">
 		<?php include('../../../Servidor/PHP/Cliente/ProductosMasVendidos.php'); ?>
-		<?php foreach ($products as $product) { ?>
-			<div class="card">
-				<img src="data:image/jpg;base64, <?php echo base64_encode($product['IMG']); ?>" />
-				<h4>
-					<?php echo $product['N_PRODUCTO']; ?>
-				</h4>
-				<p><a>Stock : </a>
-				<?php
-					if ($product['STOCK'] > 0) {
-						echo $product['STOCK'];
-					} else {
-						echo 'No hay Stock ';
-					}
-                ?>
-				</p>
-				<p><a>S/</a>
-					<?php echo $product['PRECIO']; ?>
-				</p>
-				<a  class="ver-detalle"  href="../../../Cliente/vistas/Cliente/DetalleProducto.php?ID_PRODUCTO=<?php echo $product['ID_PRODUCTO']; ?>">Ver Detalle del Producto</a>
-			</div>
-		<?php } ?>
+		<?php foreach ($producto as $producto) { ?>
+        <?php if ($producto['STOCK'] > 0) { ?>
+            <div class="card">
+                <img src="data:image/jpg;base64, <?php echo base64_encode($producto['IMG']); ?>">
+                <h4 class="NombreProducto">
+                    <?php echo $producto['N_PRODUCTO']; ?>
+                </h4>
+                <p><a>Stock : </a>
+                    <?php 
+                    if ($producto['STOCK'] > 0) {
+                        echo $producto['STOCK'];
+                    } else {
+                        echo 'AGOTADO';
+                    }
+                    ?>
+                </p>
+                <p><a>S/</a>
+                    <?php echo $producto['PRECIO']; ?>
+                </p>
+                <?php if ($producto['STOCK'] > 0) { ?>
+                    <a class="ver-detalle" href="../../../Cliente/vistas/Cliente/DetalleProducto.php?ID_PRODUCTO=<?php echo $producto['ID_PRODUCTO']; ?>">Ver Detalle del Producto</a>
+                <?php } ?>
+            </div>
+        <?php } else { ?>
+            <div class="card">
+                <img src="data:image/jpg;base64, <?php echo base64_encode($producto['IMG']); ?>">
+                <h4 class="NombreProducto">
+                    <?php echo $producto['N_PRODUCTO']; ?>
+                </h4>
+                <p><a>Stock : </a>
+                    <?php 
+                    if ($producto['STOCK'] > 0) {
+                        echo $producto['STOCK'];
+                    } else {
+                        echo 'AGOTADO';
+                    }
+                    ?>
+                </p>
+                <p><a>S/</a>
+                    <?php echo $producto['PRECIO']; ?>
+                </p>
+            </div>
+        <?php } ?>
+    <?php } ?>
 	</div>
 
 
