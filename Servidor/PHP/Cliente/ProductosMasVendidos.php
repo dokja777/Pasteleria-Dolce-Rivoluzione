@@ -3,6 +3,7 @@ include(__DIR__ . '/../../conexion.php');
 $query = "SELECT
         p.ID_PRODUCTO,
         p.N_PRODUCTO,
+        p.STOCK,
         p.IMG,
         p.PRECIO
         FROM producto p

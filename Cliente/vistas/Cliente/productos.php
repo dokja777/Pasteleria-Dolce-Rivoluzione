@@ -129,6 +129,9 @@
 					<h4 class="NombreProducto">
 						<?php echo $producto['N_PRODUCTO']; ?>
 					</h4>
+          <p><a>Stock : </a>
+						<?php echo $producto['STOCK']; ?>
+					</p>
 					<p><a>S/</a>
 						<?php echo $producto['PRECIO']; ?>
 					</p>

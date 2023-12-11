@@ -48,6 +48,9 @@
 				<h4>
 					<?php echo $product['N_PRODUCTO']; ?>
 				</h4>
+				<p><a>Stock : </a>
+					<?php echo $product['STOCK']; ?>
+				</p>
 				<p><a>S/</a>
 					<?php echo $product['PRECIO']; ?>
 				</p>
