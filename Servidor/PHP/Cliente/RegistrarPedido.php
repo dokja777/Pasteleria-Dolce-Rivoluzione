@@ -77,7 +77,7 @@ if (isset($_SESSION['carrito'])) {
                             $resultActualizarStock = $conexion->query($sqlActualizarStock);
 
                             if ($resultActualizarStock === false) {
-                                $error = "Error al actualizar el stock: " . mysqli_error($conexion);
+                                $error = "Error al actualizars el stock: " . mysqli_error($conexion);
                                 error_log($error);
                                 echo $error;
                             }
