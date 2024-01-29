@@ -1,5 +1,5 @@
 function mostrarConfirmacion(){
-    var resultado = confirm("¿Estás seguro de que quieres continuar?");
+    let resultado = confirm("¿Estás seguro de que quieres continuar?");
     
     if (resultado) {
         alert("¡Okey Administrador Actualizado!");
