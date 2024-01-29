@@ -20,7 +20,7 @@ if (isset($_GET['ordenar'])) {
     });
   } elseif ($orden === 'popularidad') {
     //Mostrar los productos más vendidos
-    $productos = $products;
+    $productos = $producto;
   } 
 }
 ?>

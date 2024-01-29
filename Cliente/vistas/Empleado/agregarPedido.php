@@ -74,13 +74,31 @@ if (isset($_SESSION['carritoEmpleado'])) {
       </div>
 
 
-      <div class="mb-3">
-        <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;">Monto Final S/ :
-        </label>
-        <input type="number" class="form-control" style="background-color:#EAE6CA;border-color:black;"
-          name="montoFinal">
 
-      </div>
+
+      <?php
+if (isset($_SESSION['carritoEmpleado'])) {
+  $arregloCarrito = $_SESSION['carritoEmpleado'];
+  // Variable para almacenar la suma total
+  $sumaTotal = 0;
+
+  foreach ($arregloCarrito as $producto) {
+    // ... (tu código existente)
+
+    // Actualizar la suma total
+    $sumaTotal += $producto['Precio'] * $producto['cantidad'];
+  }
+
+  
+}
+?>
+
+
+<div class="mb-3">
+  <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;">Monto Final S/ :</label>
+  <input type="number" class="form-control" style="background-color:#EAE6CA;border-color:black;" name="montoFinal" value="<?php echo isset($sumaTotal) ? $sumaTotal : ''; ?>" readonly>
+</div>
+
       <div class="mb-3">
         <label class="form-label" style="margin-left:1em;font-style:italic;font-size:20px;">Fecha de Venta: </label>
         <input type="date" class="form-control" style="background-color:#EAE6CA;border-color:black;" name="fecha"
